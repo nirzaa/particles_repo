@@ -130,8 +130,8 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
     plt.xlabel('bins number for energies')
     plt.ylabel('number of particles')
     # plt.text(15.5, 0.015, text,
-    plt.text(15.5, 0.015, text,
-             bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 3}, fontsize='x-small')
+    # plt.text(15.5, 0.015, text,
+            #  bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 3}, fontsize='x-small')
 
     plt.xticks(rng, rotation=65)
     plt.title(f'{len(output)} samples')
