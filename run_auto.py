@@ -26,7 +26,7 @@ if __name__ == '__main__':
     gpu_name = torch.cuda.get_device_name(0)
     print(f'We are using {gpu_name}')
     print('='*70)
-    num_runs = 0
+    num_runs = 7
     with open('./run.txt', 'r') as f:
         run = int(f.read())
         print(f'Working on run = {run}')
