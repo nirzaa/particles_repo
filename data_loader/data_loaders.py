@@ -249,7 +249,7 @@ class Bin_energy_data(Dataset):
         final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
         
         # bin_list = np.linspace(0, 13, bin_num)  # Generate the bin limits
-        bin_list = np.arange(0, 0.125*bin_num, 0.125) # 0.125 * 110 (classes) = 13.75
+        bin_list = np.arange(0, 0.6875*bin_num, 0.6875) # 0.6875 * 20 (classes) = 13.75
         
         binplace = np.digitize(en_list, bin_list)  # Divide the list into bins
         bin_partition = Counter(binplace)  # Count the number of showers for each bin.
