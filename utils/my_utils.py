@@ -122,7 +122,8 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
 
     rng = [i + 1 for i in range(num_classes)]
 
-    plt.figure(figsize=(28,20))
+    plt.figure()
+    plt.clf()
     plt.bar(rng, total_out, label='output', alpha=0.5)
     # plt.errorbar(rng, total_out, yerr=(1 / np.sqrt(np.abs(total_out))), fmt="+", color="b")
     plt.bar(rng, total_target, label='true_val', alpha=0.3)
