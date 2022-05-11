@@ -179,8 +179,8 @@ def main(config):
 
     #################################################################################################
     ### My evaluation function for generating histograms, images and analysing the tests results ####
-    tot_out = tot_out / tot_out.sum()
-    tot_target = tot_target / tot_target.sum()
+    # tot_out = tot_out / tot_out.sum()
+    # tot_target = tot_target / tot_target.sum()
     my_utils.evaluate_test(tot_out.cpu().numpy(), tot_target.cpu().numpy(), tot_idx.cpu().numpy(),
                            tot_sums.cpu().numpy(), config)
     #################################################################################################

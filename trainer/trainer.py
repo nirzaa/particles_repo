@@ -55,7 +55,7 @@ class Trainer(BaseTrainer):
 
             en_dep, target, _, _ = data
 
-            target = target / target.sum(axis=1).reshape(target.shape[0], 1)
+            # target = target / target.sum(axis=1).reshape(target.shape[0], 1)
             
             en_dep, target = en_dep.to(self.device), target.to(self.device)
             target = target.float()
