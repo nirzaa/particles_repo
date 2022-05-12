@@ -21,6 +21,25 @@ for mic in mic_list:
     en_dep = EcalDataIO.ecalmatio(os.path.join('./data', 'raw', f'signal.al.elaser.IP0{mic}.edeplist.mat'))  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
     energies = EcalDataIO.energymatio(os.path.join('./data', 'raw', f'signal.al.elaser.IP0{mic}.energy.mat'))
 
+    if mic == 3:
+        my_keys = energies.keys()
+        del_list = list()
+        for key in my_keys:
+            if len(energies[key]) > 10 and len(energies[key]) < 609:
+                del_list.append(key)
+        for key in del_list:
+            del en_dep[key]
+            del energies[key]
+
+    if mic == 5:
+        my_keys = energies.keys()
+        del_list = list()
+        for key in my_keys:
+            if len(energies[key]) > 10 and len(energies[key]) < 203:
+                del_list.append(key)
+        for key in del_list:
+            del en_dep[key]
+            del energies[key]
 
     en_list = [energy for energy in energies.values()]
     num_classes = 20
@@ -61,11 +80,12 @@ for mic in mic_list:
 
 plt.figure()
 plt.clf()
+alphas = [0.3, 0.5]
 for i in range(2):
-    plt.bar(rng_list[i], sumy_list[i], label=f'{mic_list[i]} micron')
+    plt.bar(rng_list[i], sumy_list[i], label=f'{mic_list[i]} micron', alpha=alphas[i])
 plt.title('3 micron target vs. 5 micron target')
 plt.legend()
-plt.savefig(f'./figures/target: 3_vs_5')
+plt.savefig(f'./figures/target 3_vs_5')
 
 
 exit()
