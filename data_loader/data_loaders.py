@@ -156,11 +156,13 @@ class Bin_energy_data(Dataset):
         tmp3 = self.en_dep3[key3]
         tmp5 = self.en_dep5[key5]
 
-        frac = np.random.randint(num_classes)
+        frac = int(np.random.randint(num_classes))
 
-        d_tens = torch.ones_like(d_tens) * (frac/num_classes)
+
+        if frac:
+            d_tens = torch.ones((110, 11, 21))
         # for z, x, y in tmp3:
-            # d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
+        #     d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
         # for z, x, y in tmp5:
         #     d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
         d_tens = d_tens.unsqueeze(0)  # Only in conv3d
@@ -195,8 +197,7 @@ class Bin_energy_data(Dataset):
 
         ######### Energy bins Generation ########
 
-        final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
-        final_list[frac] = 1
+        final_list = frac
         final_list = torch.tensor(final_list, dtype=torch.long)  # Wrap it in a tensor - important for training and testing.
         
         #########################################

@@ -123,7 +123,8 @@ class Trainer(BaseTrainer):
                 ####################################
 
                 # Accumulate the outputs, labels and biases.
-                tot_bias = torch.cat((tot_bias, bias), 0)
+                # tot_bias = torch.cat((tot_bias, bias), 0)
+                tot_bias = None
                 tot_target = torch.cat((tot_target, target), 0)
                 tot_out = torch.cat((tot_out, output), 0)
 

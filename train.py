@@ -74,7 +74,7 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     np.random.seed(SEED)
     random.seed(SEED)
-    num_classes = 20
+    num_classes = 2
 
     args = argparse.ArgumentParser(description='PyTorch Template')
     args.add_argument('-c', '--config', default=None, type=str,
