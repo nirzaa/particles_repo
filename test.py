@@ -87,6 +87,17 @@ def main(config):
             target = target.float()
             output = model(en_dep)
 
+            plt.figure(num=0, figsize=(12, 6))
+            plt.clf()
+            plt.bar(list(range(len(target.cpu()))), target.cpu() / 20, alpha=0.5, label='target')
+            plt.bar(list(range(len(output.cpu()))), output.cpu() / 20, alpha=0.5, label='output')
+            plt.ylabel('frac of 03 / 03 + 05')
+            plt.xlabel('number of event')
+            plt.legend()
+            plt.savefig('reg_3vs5')
+
+            exit()
+
             my_target = target[:, 0]
             my_output = output[:, 0]
 
