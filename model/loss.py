@@ -4,7 +4,10 @@ import torch.nn as nn
 criterion = nn.CrossEntropyLoss()
 
 def loss_3_5(output, target):
-    return criterion(output, target)
+    try:
+        return criterion(output, target)
+    except:
+        return criterion(output, target.argmax(axis=1))
 
 def nll_loss(output, target):
     return F.nll_loss(output, target)

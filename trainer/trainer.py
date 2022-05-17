@@ -55,16 +55,16 @@ class Trainer(BaseTrainer):
 
             en_dep, target, _, _ = data
 
-            target = target / target.sum(axis=1).reshape(target.shape[0], 1)
+            # target = target / target.sum(axis=1).reshape(target.shape[0], 1)
             
             en_dep, target = en_dep.to(self.device), target.to(self.device)
-            target = target.float()
+            # target = target.float()
 
             self.optimizer.zero_grad()
             output = self.model(en_dep)
 
-
-            loss = self.criterion(output, target)
+            t = target.argmax(axis=1)
+            loss = self.criterion(output, t)
             loss.backward()
             self.optimizer.step()
 
@@ -114,12 +114,13 @@ class Trainer(BaseTrainer):
             for batch_idx, data in enumerate(self.data_loader):
                 en_dep, target, _, _ = data
                 en_dep, target = en_dep.to(self.device), target.to(self.device)
-                target = target.float()
+                # target = target.float()
+                t = target.argmax(axis=1)
                 output = self.model(en_dep)
 
                 ####################################
                 # Notice: sometimes its output and sometimes its output[:, 0], depends on some loss functions and formats.
-                loss = self.criterion(output, target)
+                loss = self.criterion(output, t)
                 bias = target - output
                 ####################################
 

@@ -158,10 +158,11 @@ class Bin_energy_data(Dataset):
 
         frac = np.random.randint(num_classes)
 
-        for z, x, y in tmp3:
-            d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
-        for z, x, y in tmp5:
-            d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
+        d_tens = torch.ones_like(d_tens) * (frac/num_classes)
+        # for z, x, y in tmp3:
+            # d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
+        # for z, x, y in tmp5:
+        #     d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
         d_tens = d_tens.unsqueeze(0)  # Only in conv3d
 
         key_noise = str(np.random.random_integers(999))
@@ -171,13 +172,14 @@ class Bin_energy_data(Dataset):
             for j in range(en_dep_noise.shape[1]):
                 for k in range(en_dep_noise.shape[2]):
                     en_dep_noise[i,j,k] = self.en_dep_noise[key_noise][k,i,j]
+        
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
         # plt.imshow(d_tens.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
         # plt.colorbar()
         # plt.savefig('without_noise')
 
-        d_tens += en_dep_noise
+        # d_tens += en_dep_noise <------------- uncomment for noise
 
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
@@ -195,7 +197,7 @@ class Bin_energy_data(Dataset):
 
         final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
         final_list[frac] = 1
-        final_list = torch.Tensor(final_list)  # Wrap it in a tensor - important for training and testing.
+        final_list = torch.tensor(final_list, dtype=torch.long)  # Wrap it in a tensor - important for training and testing.
         
         #########################################
 
