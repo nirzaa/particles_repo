@@ -83,15 +83,18 @@ def main(config):
             #     en_dep[i] = torch.rand(torch.Size([1, 110, 11, 21]))
             ###############################################
 
-            en_dep, target, num, idx = en_dep.to(device), target.to(device), num.to(device), idx.to(device)
-            target = target.float()
-            output = model(en_dep)
+            plt.figure(num=0, figsize=(12, 6))
+            plt.clf()
+            plt.bar(list(range(len(target.cpu()))), target.cpu() / 20, alpha=0.5, label='target')
+            plt.bar(list(range(len(output.cpu()))), output.cpu() / 20, alpha=0.5, label='output')
+            plt.ylabel('frac of 03 / 03 + 05')
+            plt.xlabel('number of event')
+            plt.legend()
+            plt.savefig('reg_3vs5')
 
-            my_target = target[:, 0]
-            my_output = output[:, 0]
+            exit()
 
-            my_target = target.sum(axis=1)
-            my_output = output.sum(axis=1)
+
             
             my_rel_error = (my_target - my_output) / my_target            
             d = {'output': my_output.cpu(), 'target': my_target.cpu(), 'rel_error': my_rel_error.cpu()}

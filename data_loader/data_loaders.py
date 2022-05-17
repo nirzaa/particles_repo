@@ -158,11 +158,11 @@ class Bin_energy_data(Dataset):
 
         frac = np.random.randint(num_classes)
 
-        d_tens = torch.ones_like(d_tens) * (frac/num_classes)
-        # for z, x, y in tmp3:
-            # d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
-        # for z, x, y in tmp5:
-        #     d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
+        # d_tens = torch.ones_like(d_tens) * (frac/num_classes)
+        for z, x, y in tmp3:
+            d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
+        for z, x, y in tmp5:
+            d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
         d_tens = d_tens.unsqueeze(0)  # Only in conv3d
 
         key_noise = str(np.random.random_integers(999))
