@@ -376,7 +376,7 @@ def my_classifier(model_type, num_classes):
             super(Model, self).__init__()
             self.fc1 = nn.Linear(32 * 29 * 6, 512)
             self.fc2 = nn.Linear(512, 256)
-            self.fc3 = nn.Linear(256, 20)
+            self.fc3 = nn.Linear(256, 1)
             self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(2,2), stride=(2,2), padding=1,)
             self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=(2,2), stride=(2,2), padding=1, )
 
@@ -387,7 +387,6 @@ def my_classifier(model_type, num_classes):
             x = self.fc1(F.relu(y))
             x = self.fc2(F.relu(x))
             x = self.fc3(F.relu(x))
-            x = F.relu(x)
 
             return x
     model = Model()

@@ -9,6 +9,9 @@ def loss_3_5(output, target):
     except:
         return criterion(output, target.argmax(axis=1))
 
+def loss_3_5_reg(output, target):
+    return F.mse_loss(output, target.argmax(axis=1).float().unsqueeze(axis=1))
+
 def nll_loss(output, target):
     return F.nll_loss(output, target)
 
