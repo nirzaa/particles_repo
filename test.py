@@ -89,8 +89,8 @@ def main(config):
 
             plt.figure(num=0, figsize=(12, 6))
             plt.clf()
-            plt.bar(list(range(len(target.cpu()))), target.cpu() / 20, alpha=0.5, label='target')
-            plt.bar(list(range(len(output.cpu()))), output.cpu() / 20, alpha=0.5, label='output')
+            plt.bar(list(range(len(target.cpu()))), target.cpu(), alpha=0.5, label='target')
+            plt.bar(list(range(len(output.cpu()))), output.cpu(), alpha=0.5, label='output')
             plt.ylabel('frac of 03 / 03 + 05')
             plt.xlabel('number of event')
             plt.legend()
