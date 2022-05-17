@@ -160,7 +160,8 @@ class Bin_energy_data(Dataset):
 
 
         if frac:
-            d_tens = torch.ones((110, 11, 21))
+            for z, x, y in tmp5:
+                d_tens[x, y, z] += tmp5[(z, x, y)]
         else:
             for z, x, y in tmp3:
                 d_tens[x, y, z] += tmp3[(z, x, y)]
