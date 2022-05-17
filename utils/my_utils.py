@@ -11,6 +11,7 @@ import h5py
 import pandas as pd
 import random
 # from scipy.optimize import curve_fit
+import datetime
 
 my_path = os.path.join('./')
 sys.path.append(my_path)
@@ -196,6 +197,7 @@ def evaluate_test(output, target, incdices, shower_nums, config):
     return
 
 if __name__ == '__main__':
+    print(f'Started at: {datetime.datetime.now()}')
     # EDA("C:\\Users\\elihu\\PycharmProjects\\LUXE\\nongitdata\\Multiple Energies\\")
     # data_path = Path("C:\\Users\\elihu\\PycharmProjects\\LUXE\\LUXE-project-master\\data\\")
     with open('./run.txt', 'r') as f:
@@ -208,4 +210,6 @@ if __name__ == '__main__':
     random.seed(SEED)
     data_path = Path(my_path = os.path.join('./', 'data'))
     merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[5])
+    print(f'Finished at: {datetime.datetime.now()}')
     exit()
+    

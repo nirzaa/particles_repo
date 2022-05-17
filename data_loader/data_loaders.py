@@ -57,8 +57,14 @@ class Bin_energy_data(Dataset):
 
     def __init__(self, en_dep_file, en_file, moment=1, min_shower_num=0, max_shower_num=10000, file=0, noise_file=None):
 
-        self.en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
-        self.energies = EcalDataIO.energymatio(en_file)
+        en_dep_file = './data/raw/signal.al.elaser.IP03.edeplist.mat'
+        self.en_dep3 = EcalDataIO.ecalmatio(en_dep_file)
+        en_dep_file = './data/raw/signal.al.elaser.IP05.edeplist.mat'
+        self.en_dep5 = EcalDataIO.ecalmatio(en_dep_file)
+        en_file = './data/raw/signal.al.elaser.IP03.energy.mat'
+        self.energies3 = EcalDataIO.energymatio(en_file)
+        en_file = './data/raw/signal.al.elaser.IP05.energy.mat'
+        self.energies5 = EcalDataIO.energymatio(en_file)
 
         # my_keys = self.energies.keys()
         # del_list = list()
@@ -77,17 +83,17 @@ class Bin_energy_data(Dataset):
         self.file = file
 
         # Eliminate multiple numbers of some kind
-        if min_shower_num > 0:
-            del_list = []
-            for key in self.energies:
-                if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
-                    del_list.append(key)
-            for d in del_list:
-                del self.energies[d]
-                del self.en_dep[d]
+        # if min_shower_num > 0:
+        #     del_list = []
+        #     for key in self.energies:
+        #         if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
+        #             del_list.append(key)
+        #     for d in del_list:
+        #         del self.energies[d]
+        #         del self.en_dep[d]
 
     def __len__(self):
-        return len(self.en_dep)
+        return min(len(self.en_dep3), len(self.en_dep5))
 
     def calculate_moment(self, moment_num, en_list, normalize=True):
         """
@@ -132,48 +138,30 @@ class Bin_energy_data(Dataset):
 
         return res
 
-    def random_sample_for_addition(self, data, n, num_samples):
-
-        """
-        This function takes the sample and adds to it another n samples. The matrices are superpositioned and the
-        number of showers N is summed.
-        """
-
-        samples = random.sample(list(self.en_dep.keys()), num_samples)
-
-        # A loop allowing only certain num of showers to be added.
-        # while True:
-        #     if len(self.energies[samples[0]]) != 1:
-        #         samples = random.sample(list(self.en_dep.keys()), num_samples)
-        #     else:
-        #         break
-
-        sample = torch.zeros((110, 11, 21))  # Formatted as [x_idx, y_idx, z_idx]
-        N = 0
-        for key in samples:
-            N += len(self.energies[key])
-            tmp = self.en_dep[key]
-            # sum the samples:
-            for z, x, y in tmp:
-                sample[x, y, z] = sample[x, y, z] + tmp[(z, x, y)]
-
-        print(f"Orig - {n}, Add - {N}")
-        data = data + sample
-        n = n + N
-        print(f"sum - {n}")
-        return data, n
 
     def __getitem__(self, idx):
 
+        hf = h5py.File(os.path.join('./', 'num_classes.h5'), 'r')
+        num_classes = hf.get('dataset_1')
+        num_classes = int(np.array(num_classes))
+        hf.close()
+        bin_num = num_classes
+
         if torch.is_tensor(idx):
             idx = idx.tolist()
-        key = list(self.en_dep.keys())[idx]
+        key3 = list(self.en_dep3.keys())[idx]
+        key5 = list(self.en_dep5.keys())[idx]
 
         d_tens = torch.zeros((110, 11, 21))  # Formatted as [x_idx, y_idx, z_idx]
-        tmp = self.en_dep[key]
+        tmp3 = self.en_dep3[key3]
+        tmp5 = self.en_dep5[key5]
 
-        for z, x, y in tmp:
-            d_tens[x, y, z] = tmp[(z, x, y)]
+        frac = np.random.randint(num_classes)
+
+        for z, x, y in tmp3:
+            d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
+        for z, x, y in tmp5:
+            d_tens[x, y, z] += (1 - frac/num_classes) * tmp5[(z, x, y)]
         d_tens = d_tens.unsqueeze(0)  # Only in conv3d
 
         key_noise = str(np.random.random_integers(999))
@@ -197,66 +185,16 @@ class Bin_energy_data(Dataset):
         # plt.colorbar()
         # plt.savefig('with_noise')
 
-        en_list = torch.Tensor(self.energies[key])
-        num_showers = len(en_list)
+        en_list3 = torch.Tensor(self.energies3[key3])
+        en_list5 = torch.Tensor(self.energies5[key5])
+        num_showers3 = len(en_list3)
+        num_showers5 = len(en_list5)
+        num_showers = num_showers3 + num_showers5
 
-        #########################################
-        ############ Shrink sample ##############
-        # d_tens = d_tens[:, 4:7, 0:10]
-        # d_tens = torch.transpose(d_tens, 0, 1)
-        #########################################
-
-        #########################################
-        ############ Layer Removal ##############
-        # Zerofi Z layers
-        # for i in range(0, 7):
-        #     d_tens[:, :, (20 - i)] = 0
-
-        # Zerofi Y layers
-        # for i in range(0, 6):
-        #     d_tens[:, (10 - i), :] = 0
-        #     d_tens[:, i, :] = 0
-        #########################################
-
-        #########################################
-        ########## Alpha Experiment #############
-        # alpha = 1
-        #
-        # d_tens = np.cos(np.deg2rad(alpha)) * d_tens + np.sin(np.deg2rad(alpha)) * torch.rand(torch.Size([110, 11, 21]))
-        # d_tens = np.cos(np.deg2rad(alpha)) * d_tens + np.sin(np.deg2rad(alpha)) * torch.rand(torch.Size([110, 3, 10]))
-        # d_tens = (1-alpha) * d_tens + (alpha) * torch.rand(torch.Size([110, 11, 21]))
-        #########################################
-
-        #########################################
-        ############ Normalization ##############
-        # if self.file == 3:
-        #     d_tens = (d_tens - 0.0935) / 1.4025
-        #########################################
-
-        #########################################
-        ############ Superposition ##############
-        # d_tens, num_showers = self.random_sample_for_addition(d_tens, num_showers, 1)
-        #########################################
-
-        #########################################
         ######### Energy bins Generation ########
-        hf = h5py.File(os.path.join('./', 'num_classes.h5'), 'r')
-        num_classes = hf.get('dataset_1')
-        num_classes = int(np.array(num_classes))
-        hf.close()
-        bin_num = num_classes
 
         final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
-        
-        # bin_list = np.linspace(0, 13, bin_num)  # Generate the bin limits
-        bin_list = np.arange(0, 0.6875*bin_num, 0.6875) # 0.6875 * 20 (classes) = 13.75
-        
-        binplace = np.digitize(en_list, bin_list)  # Divide the list into bins
-        bin_partition = Counter(binplace)  # Count the number of showers for each bin.
-        for k in bin_partition.keys():
-            final_list[int(k) - 1] = bin_partition[k]
-        n = sum(final_list)
-        # final_list = [f / n for f in final_list]    # Bin Normalization by sum
+        final_list[frac] = 1
         final_list = torch.Tensor(final_list)  # Wrap it in a tensor - important for training and testing.
         
         #########################################

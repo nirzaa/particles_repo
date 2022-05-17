@@ -1,5 +1,10 @@
 import torch.nn.functional as F
+import torch.nn as nn
 
+criterion = nn.CrossEntropyLoss()
+
+def loss_3_5(output, target):
+    return criterion(output, target)
 
 def nll_loss(output, target):
     return F.nll_loss(output, target)
