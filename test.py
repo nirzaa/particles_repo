@@ -89,6 +89,7 @@ def main(config):
 
             plt.figure(num=0, figsize=(12, 6))
             plt.clf()
+            plt.title('label 0 = 3 micron, label 1 = 5 micron, label 2 = mixed')
             plt.bar(list(range(len(target.cpu()))), target.cpu(), alpha=0.5, label='target')
             plt.bar(list(range(len(output.squeeze(axis=1).cpu()))), output.squeeze(axis=1).cpu(), alpha=0.5, label='output')
             plt.ylabel('label')
