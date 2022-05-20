@@ -157,15 +157,21 @@ class Bin_energy_data(Dataset):
         tmp5 = self.en_dep5[key5]
 
         # frac = int(np.random.randint(num_classes))
-        frac = 1
+        # frac = 1
+        frac = int(np.random.randint(3))
 
 
-        if frac:
+        if frac == 1:
             for z, x, y in tmp5:
                 d_tens[x, y, z] += tmp5[(z, x, y)]
-        else:
+        elif frac == 0:
             for z, x, y in tmp3:
                 d_tens[x, y, z] += tmp3[(z, x, y)]
+        elif frac == 2:
+            for z, x, y in tmp3:
+                d_tens[x, y, z] += tmp3[(z, x, y)]
+            for z, x, y in tmp5:
+                d_tens[x, y, z] += tmp5[(z, x, y)]
         # for z, x, y in tmp3:
         #     d_tens[x, y, z] += (frac/num_classes) * tmp3[(z, x, y)]
         # for z, x, y in tmp5:
