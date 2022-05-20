@@ -156,7 +156,8 @@ class Bin_energy_data(Dataset):
         tmp3 = self.en_dep3[key3]
         tmp5 = self.en_dep5[key5]
 
-        frac = int(np.random.randint(num_classes))
+        # frac = int(np.random.randint(num_classes))
+        frac = 0
 
 
         if frac:
