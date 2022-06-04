@@ -265,5 +265,6 @@ class Bin_energy_data(Dataset):
 
         # print(final_list)
 
+        return d_tens.sum(axis=2)[:,:,0:20:2], final_list, num_showers, idx
         # return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
+        # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx

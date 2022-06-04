@@ -207,5 +207,5 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
     data_path = Path(my_path = os.path.join('./', 'data'))
-    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[5])
+    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[3])
     exit()
