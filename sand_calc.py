@@ -149,4 +149,4 @@ if __name__ == '__main__':
     # show_noise()
 
     # rel_error_table_nonormal(folder_name='./csv_files/paper/3_to_5/5_micron', num_runs=1, num_epochs=110)
-    excel_maker(folder_name='./saved/diff_run_res/3_to_5/5_micron/40_epochs', num_runs=1, num_classes=20)
+    excel_maker(folder_name='./saved/diff_run_res/3 micron - first 10 layers/', num_runs=1, num_classes=20)
