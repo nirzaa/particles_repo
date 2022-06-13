@@ -391,3 +391,28 @@ def model_2d_10_20classes(model_type, num_classes):
             return x
     model = Model()
     return model
+
+def model_2d_5_20classes(model_type, num_classes):
+    class Model(nn.Module):
+        '''
+        The semi fully conventional architecture of the neural net
+        '''
+        def __init__(self):
+            super(Model, self).__init__()
+            self.fc1 = nn.Linear(32 * 29 * 2, 512)
+            self.fc2 = nn.Linear(512, 256)
+            self.fc3 = nn.Linear(256, 20)
+            self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(2,2), stride=(2,2), padding=1,)
+            self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=(2,2), stride=(2,2), padding=1, )
+
+        def forward(self, x):
+            x = self.conv1(x)
+            x = self.conv2(x)
+            y = x.view(-1, 32 * 29 * 2)
+            x = self.fc1(F.relu(y))
+            x = self.fc2(F.relu(x))
+            x = self.fc3(F.relu(x))
+
+            return x
+    model = Model()
+    return model
