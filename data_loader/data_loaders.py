@@ -268,7 +268,11 @@ class Bin_energy_data(Dataset):
         # return d_tens.sum(axis=2)[:,:,1:21:2], final_list, num_showers, idx
         
         # return d_tens.sum(axis=2)[:,:,:10:2], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,1:11:2], final_list, num_showers, idx
         
+        # return d_tens.sum(axis=2)[:,:,1:11:2], final_list, num_showers, idx
+        
+        # return d_tens.sum(axis=2)[:,:,-5:], final_list, num_showers, idx
+        return torch.ones_like(d_tens.sum(axis=2)[:,:,-5:]), final_list, num_showers, idx
+
         # return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
         # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
