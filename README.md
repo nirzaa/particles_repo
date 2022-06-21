@@ -10,5 +10,5 @@ Pay attention to declare the num classes as needed in my_utils.py and also in th
 
 ## validating:
 
-`python ./test.py --resume ./saved/models/new_model/0211_113927/checkpoint-epoch30.pth --c ./config.json`
+`python ./test.py --resume ./saved/models/new_model/0210_111239/checkpoint-epoch30.pth --c ./config.json`
 

@@ -178,9 +178,7 @@ class Bin_energy_data(Dataset):
         # plt.imshow(d_tens.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
         # plt.colorbar()
         # plt.savefig('without_noise')
-
         # d_tens += en_dep_noise
-        
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
         # plt.imshow(en_dep_noise.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
