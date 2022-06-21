@@ -24,7 +24,7 @@ if __name__ == '__main__':
     gpu_name = torch.cuda.get_device_name(0)
     print(f'We are using {gpu_name}')
     print('='*70)
-    num_runs = 3
+    num_runs = 1
     for run in range(num_runs):
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
             dset = f.create_dataset("mydataset", data=run, dtype='int')
@@ -43,4 +43,4 @@ if __name__ == '__main__':
         test_func(folder_name=train_folder)
         os.system(f'mkdir ./csv_files/run_{run}')
         os.system(f'mv ./csv_files/epoch_* ./csv_files/run_{run}')
-        os.system('python ./analyze_auto.py')
+        # os.system('python ./analyze_auto.py')
