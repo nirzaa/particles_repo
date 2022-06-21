@@ -59,16 +59,6 @@ class Bin_energy_data(Dataset):
 
         self.en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
         self.energies = EcalDataIO.energymatio(en_file)
-
-        # my_keys = self.energies.keys()
-        # del_list = list()
-        # for key in my_keys:
-        #     if len(self.energies[key]) > 200:
-        #         del_list.append(key)
-        # for key in del_list:
-        #     del self.en_dep[key]
-        #     del self.energies[key]
-
         if noise_file is not None:
             self.en_dep_noise = loadmat(noise_file)
         # self.energies = EcalDataIO.xymatio(en_file)
@@ -188,9 +178,7 @@ class Bin_energy_data(Dataset):
         # plt.imshow(d_tens.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
         # plt.colorbar()
         # plt.savefig('without_noise')
-
-        d_tens += en_dep_noise
-
+        # d_tens += en_dep_noise
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
         # plt.imshow(en_dep_noise.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
@@ -247,10 +235,7 @@ class Bin_energy_data(Dataset):
         bin_num = num_classes
 
         final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
-        
-        # bin_list = np.linspace(0, 13, bin_num)  # Generate the bin limits
-        bin_list = np.arange(0, 0.6875*bin_num, 0.6875) # 0.6875 * 20 (classes) = 13.75
-        
+        bin_list = np.linspace(0, 13, bin_num)  # Generate the bin limits
         binplace = np.digitize(en_list, bin_list)  # Divide the list into bins
         bin_partition = Counter(binplace)  # Count the number of showers for each bin.
         for k in bin_partition.keys():
@@ -263,16 +248,4 @@ class Bin_energy_data(Dataset):
 
         # final_list = torch.tensor([len(en_list)])
 
-        # print(final_list)
-
-        # return d_tens.sum(axis=2)[:,:,1:21:2], final_list, num_showers, idx
-        
-        # return d_tens.sum(axis=2)[:,:,:10:2], final_list, num_showers, idx
-        
-        # return d_tens.sum(axis=2)[:,:,1:11:2], final_list, num_showers, idx
-        
-        # return d_tens.sum(axis=2)[:,:,-5:], final_list, num_showers, idx
-        return torch.ones_like(d_tens.sum(axis=2)[:,:,-5:]), final_list, num_showers, idx
-
-        # return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
-        # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx

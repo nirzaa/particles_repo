@@ -11,7 +11,6 @@ from trainer import Trainer
 from utils import prepare_device
 import h5py
 import os
-import random
 
 with h5py.File(os.path.join('./', 'run_num.h5'), 'r') as f:
         run_num = int(np.array(f.get('mydataset')))
@@ -66,14 +65,7 @@ def main(config):
 
 
 if __name__ == '__main__':
-    with open('./run.txt', 'r') as f:
-        run = int(f.read())
-    SEED = run
-    torch.manual_seed(SEED)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    np.random.seed(SEED)
-    random.seed(SEED)
+
     num_classes = 20
 
     args = argparse.ArgumentParser(description='PyTorch Template')

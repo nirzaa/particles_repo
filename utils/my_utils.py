@@ -8,14 +8,11 @@ import numpy as np
 import torch
 from scipy.io import loadmat
 import h5py
-import pandas as pd
-import random
 # from scipy.optimize import curve_fit
 
 my_path = os.path.join('./')
 sys.path.append(my_path)
 from data_loader.data_loaders import Bin_energy_data
-
 
 
 project_path = Path(__file__).parent.parent
@@ -78,7 +75,6 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
         target_sum = sum(t[i] for t in target)
         total_out[i] = out_sum
         total_target[i] = target_sum
-    
 
     # Calculate the entropy of the bin lists for output and the truelabel bins.
 
@@ -122,10 +118,9 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
 
     rng = [i + 1 for i in range(num_classes)]
 
-    plt.figure()
-    plt.clf()
+    plt.figure(figsize=(28,20))
     plt.bar(rng, total_out, label='output', alpha=0.5)
-    # plt.errorbar(rng, total_out, yerr=(1 / np.sqrt(np.abs(total_out))), fmt="+", color="b")
+    plt.errorbar(rng, total_out, yerr=(1 / np.sqrt(np.abs(total_out))), fmt="+", color="b")
     plt.bar(rng, total_target, label='true_val', alpha=0.3)
     plt.xlabel('bins number for energies')
     plt.ylabel('number of particles')
@@ -153,10 +148,6 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
         epoch_num = 0
     csv_path = os.path.join('./csv_files', f'epoch_{epoch_num}')
     plt.savefig(os.path.join(csv_path, f'binsgraph_run_{run_num}.png'))
-
-    np.savetxt(os.path.join(csv_path, 'hist_output.csv'), output, delimiter=',')
-    np.savetxt(os.path.join(csv_path, 'hist_target.csv'), target, delimiter=',')
-
     # plt.show()
     plt.clf()
     save = {'output bins': total_out, 'output entropy': out_entropy,
@@ -198,14 +189,7 @@ def evaluate_test(output, target, incdices, shower_nums, config):
 if __name__ == '__main__':
     # EDA("C:\\Users\\elihu\\PycharmProjects\\LUXE\\nongitdata\\Multiple Energies\\")
     # data_path = Path("C:\\Users\\elihu\\PycharmProjects\\LUXE\\LUXE-project-master\\data\\")
-    with open('./run.txt', 'r') as f:
-        run = int(f.read())
-    SEED = run
-    torch.manual_seed(SEED)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    np.random.seed(SEED)
-    random.seed(SEED)
+
     data_path = Path(my_path = os.path.join('./', 'data'))
     merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[3])
     exit()
