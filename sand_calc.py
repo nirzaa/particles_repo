@@ -56,7 +56,7 @@ def rel_error_table():
     })
     rel_df.to_csv(os.path.join(my_path, 'rel.csv'))
 
-def rel_error_table_nonormal(folder_name, num_runs, num_epochs):
+def rel_error_table_nonormal(folder_name, num_runs):
     
     num_runs = num_runs
     rel_mean_runs = list()
@@ -67,9 +67,9 @@ def rel_error_table_nonormal(folder_name, num_runs, num_epochs):
         epoch_list = list()
         print(f'Working on run {run}')
         print('='*30)
-        saved_path = folder_name
-        my_path = os.path.join(f'{folder_name}', f'run_{run}')
-        for i in np.linspace(10, num_epochs, int(num_epochs/10)):
+        saved_path = os.path.join('csv_files', f'{folder_name}')
+        my_path = os.path.join('csv_files', f'{folder_name}', f'run_{run}')
+        for i in np.linspace(10, 100, 10):
             if i.is_integer():
                 i = int(i)
             print(f'Working on epoch_{i}')
@@ -116,20 +116,16 @@ def show_noise():
     plt.savefig('show_noise')
     return None
 
-def excel_maker(folder_name, num_runs, num_classes):
+def excel_maker():
     df_dict_output = dict()
     df_dict_target = dict()
-    for run in range(num_runs):
-        with open(os.path.join(folder_name,f'bin_results_run_{run}.txt'), 'r') as f:
+    for run in np.linspace(0, 2, 3, dtype='int'):
+        with open(os.path.join('saved','diff_run_res',f'bin_results_run_{run}.txt'), 'r') as f:
             lines = f.readlines()
-            output = lines[0].split('[')[1].split()[:num_classes]
-            output[-1] = output[-1][:-1]
-            # output = [float(x[:-2]) for x in output]
-            output = [float(x[:-1]) for x in output]
-            target = lines[0].split('[')[2].split()[:num_classes]
-            target[-1] = target[-1][:-1]
-            # target = [float(x[:-2]) for x in target]
-            target = [float(x[:-1]) for x in target]
+            output = lines[0].split('[')[1].split()[:20]
+            output = [float(x[:-2]) for x in output]
+            target = lines[0].split('[')[2].split()[:20]
+            target = [float(x[:-2]) for x in target]
             df_dict_output[f'{run}'] = output
             df_dict_target[f'{run}'] = target
         df_output = pd.DataFrame(data=df_dict_output)
@@ -148,5 +144,6 @@ if __name__ == '__main__':
 
     # show_noise()
 
-    # rel_error_table_nonormal(folder_name='./csv_files/paper/3_to_5/5_micron', num_runs=1, num_epochs=110)
-    excel_maker(folder_name='./saved/diff_run_res/3 micron - 5 odd layers/', num_runs=1, num_classes=20)
+    rel_error_table_nonormal(folder_name='2d_10z', num_runs=3)
+    excel_maker()
+

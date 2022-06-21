@@ -5,7 +5,7 @@ import torch
 import numpy as np
 from collections import Counter
 
-i = 3
+i = 5
 num_classes = 20
 flag = 0
 

@@ -16,7 +16,6 @@ import matplotlib.pyplot as plt
 import h5py
 import numpy as np
 from scipy.optimize import curve_fit
-import random
 
 def Gauss(x, A, B):
     y = A*np.exp(-1*B*x**2)
@@ -34,7 +33,7 @@ def main(config):
     # setup data_loader instances
     data_loader = getattr(module_data, config['data_loader']['type'])(
         config['data_loader']['args']['data_dir'],
-        batch_size=1024,  # 512
+        batch_size=512,  # 512
         shuffle=False,
         validation_split=0.0,
         training=False,
@@ -179,8 +178,6 @@ def main(config):
 
     #################################################################################################
     ### My evaluation function for generating histograms, images and analysing the tests results ####
-    tot_out = tot_out / tot_out.sum()
-    tot_target = tot_target / tot_target.sum()
     my_utils.evaluate_test(tot_out.cpu().numpy(), tot_target.cpu().numpy(), tot_idx.cpu().numpy(),
                            tot_sums.cpu().numpy(), config)
     #################################################################################################
@@ -194,14 +191,6 @@ def main(config):
 
 
 if __name__ == '__main__':
-    with open('./run.txt', 'r') as f:
-        run = int(f.read())
-    SEED = run
-    torch.manual_seed(SEED)
-    torch.backends.cudnn.deterministic = True
-    torch.backends.cudnn.benchmark = False
-    np.random.seed(SEED)
-    random.seed(SEED)
     args = argparse.ArgumentParser(description='PyTorch Template')
     args.add_argument('-c', '--config', default=None, type=str,
                       help='config file path (default: None)')
