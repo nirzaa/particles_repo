@@ -63,7 +63,6 @@ if __name__ == '__main__':
             print('We finished our run')
             with open('./run.txt', 'w') as f:
                 f.write(f'0')
-    
-    
+
     elif len(run_nums) == 0:
         print('There is no runs in that folder')

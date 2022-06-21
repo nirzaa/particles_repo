@@ -45,7 +45,7 @@ def model_2d(model_type, num_classes):
         '''
         def __init__(self):
             super(Model, self).__init__()
-            self.fc1 = nn.Linear(64 * 14 * 3, 64)
+            self.fc1 = nn.Linear(64 * 14 * 1, 64)
             self.fc2 = nn.Linear(64, 32)
             self.fc3 = nn.Linear(32, 20)
             self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(2,2), stride=(2,2), padding=1,)
@@ -60,7 +60,7 @@ def model_2d(model_type, num_classes):
             x = self.conv3(x)
             # x = self.global1(x)
             # x = self.avgpool(x)
-            y = x.view(-1, 64 * 14 * 3)
+            y = x.view(-1, 64 * 14 * 1)
             # x = x.view(-1, 2 * 2 * 2)
             x = self.fc1(F.relu(y))
             x = self.fc2(F.relu(x))
