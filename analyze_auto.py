@@ -10,8 +10,9 @@ import model.model as module_arch
 import sys
 import time
 from model import model
+import random
 
-def analyze(model, input_shape, num_runs):
+def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
     output_list = list()
     target_list = list()
@@ -21,9 +22,6 @@ def analyze(model, input_shape, num_runs):
         f.write('Stats for our data\n')
         f.write('='*40)
         f.write('\n\n')
-        files_list = os.listdir(f'./saved/models/new_model/')
-        files_list.sort()
-        train_folder = files_list[0]
         
     with open(print_path, "a+") as log_file:
         sys.stdout = log_file
@@ -34,8 +32,8 @@ def analyze(model, input_shape, num_runs):
         print('='*50)
         print()
     for run_num in range(num_runs):
-        my_path = f'./csv_files/2d_1z/run_{run_num}'
-        for epoch_num in np.linspace(10, 100, 10, dtype='int'):
+        my_path = f'./csv_files/{folder_name}/run_{run_num}'
+        for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
             with h5py.File(os.path.join(my_path, f'epoch_{epoch_num}', 'data.h5'), 'r') as hf:
                 output = np.array(hf.get('dataset_1'))
                 target = np.array(hf.get('dataset_2'))
@@ -95,5 +93,13 @@ def analyze(model, input_shape, num_runs):
 
 
 if __name__ == '__main__':
-    model = model.model_2d_10(model_type=None, num_classes=None)
-    analyze(model, input_shape=(128,1,110,10), num_runs=3)
+    with open('./run.txt', 'r') as f:
+        run = int(f.read())
+    SEED = run
+    torch.manual_seed(SEED)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
+    np.random.seed(SEED)
+    random.seed(SEED)
+    model = model.model_2d_all_110classes(model_type=None, num_classes=None)
+    analyze(model, input_shape=(128,1,110,20), num_runs=1, folder_name='paper/3_to_5/3_micron', epoch_nums=110)
