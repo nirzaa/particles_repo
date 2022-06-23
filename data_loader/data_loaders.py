@@ -178,7 +178,9 @@ class Bin_energy_data(Dataset):
         # plt.imshow(d_tens.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
         # plt.colorbar()
         # plt.savefig('without_noise')
-        # d_tens += en_dep_noise
+
+        d_tens += en_dep_noise
+
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
         # plt.imshow(en_dep_noise.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
@@ -249,4 +251,4 @@ class Bin_energy_data(Dataset):
         # final_list = torch.tensor([len(en_list)])
 
         # return d_tens.sum(axis=2)[:,:,-3:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:5], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,-5:], final_list, num_showers, idx
