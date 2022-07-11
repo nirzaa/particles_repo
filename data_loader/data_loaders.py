@@ -250,5 +250,5 @@ class Bin_energy_data(Dataset):
 
         # final_list = torch.tensor([len(en_list)])
 
-        # return d_tens.sum(axis=2)[:,:,-3:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,-3:], final_list, num_showers, idx
+        # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
