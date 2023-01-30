@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import plotly.express as px
+# import plotly.express as px
 
 savename = 'without_noise_tmp'
 readname = 'without_noise'
@@ -30,16 +30,26 @@ with open(f'{readname}.npy', 'rb') as f:
 #               color='species')
 # fig.show()
 
-from mpl_toolkits.mplot3d import Axes3D
-M = en_dep.squeeze(axis=0)
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-counter1, counter2, counter3 = range(M.shape[0]), range(M.shape[1]), range(M.shape[2])
-x,y,z = np.meshgrid(counter1, counter2, counter3)
-ax.scatter(x,y,z, c=M.flat)
+import seaborn as sns
+en = en_dep.squeeze(axis=0)
+fig, axs = plt.subplots(5, 2)
+
+for i in range(10):
+    sns.heatmap(en[:,i,:], ax=axs[i%5,i%2])
+plt.savefig("heatmap_perlayer")
 
 
-plt.savefig('3dfig')
+
+# from mpl_toolkits.mplot3d import Axes3D
+# M = en_dep.squeeze(axis=0)
+# fig = plt.figure()
+# ax = fig.add_subplot(111, projection='3d')
+# counter1, counter2, counter3 = range(M.shape[0]), range(M.shape[1]), range(M.shape[2])
+# x,y,z = np.meshgrid(counter1, counter2, counter3)
+# ax.scatter(x,y,z, c=M.flat)
+
+
+# plt.show()
 
 
 # =================== #
