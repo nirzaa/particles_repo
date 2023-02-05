@@ -3,6 +3,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 import numpy as np
+from collections import Counter
 
 # ==== sizes ==== #
 # ‘xx-small’, ‘x-small’, ‘small’, ‘medium’, ‘large’, ‘x-large’, ‘xx-large’.
@@ -13,6 +14,8 @@ params = {'legend.fontsize': 'x-large',
          'xtick.labelsize':'large',
          'ytick.labelsize':'large'}
 pylab.rcParams.update(params)
+
+# https://github.com/nirzaa/particles_repo/tree/20-classes/presentation
 
 # slide 1
 # 2d_110classes_allz
@@ -34,6 +37,10 @@ pylab.rcParams.update(params)
 # 3 micron - 1 layer
 # https://github.com/nirzaa/particles_nir_repo_new/tree/20energies_2d_noise/csv_files/2d_1z/run_0/epoch_30
 
+ylim = 3
+bin_num = 1000
+projlim = 1
+project_width = 0.2
 
 for i in range(1, 6):
     df = pd.read_csv(f'./presentation/df{i}.csv') # data_frame
@@ -64,8 +71,30 @@ for i in range(1, 6):
     plt.scatter(energies, y)
     plt.xlabel('Energies [GeV]')
     plt.ylabel('(Nout-Ntrue)/Ntrue')
+    plt.ylim(-ylim, ylim)
     plt.title('180 events')
     plt.savefig(f'./presentation/figures/nont{i}.jpg')
+
+    # ==== Projection of last figure ==== #
+
+    final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
+    y = (df['output'] - df['target'])/df['target']
+    bin_list = np.linspace(-ylim, ylim, bin_num)  # Generate the bin limits
+    binplace = np.digitize(y, bin_list)  # Divide the list into bins
+    bin_partition = Counter(binplace)  # Count the number of showers for each bin.
+    for k in bin_partition.keys():
+        final_list[int(k) - 1] = bin_partition[k]
+
+    sns.set_style("darkgrid")
+    plt.figure(num=1)
+    plt.clf()
+    plt.hist(y, 20, alpha=0.7)
+    # plt.bar(x=np.linspace(-projlim, projlim, bin_num), height=y, label='output', alpha=0.5, width=project_width)
+    plt.xlabel('(Nout-Ntrue)/Ntrue')
+    plt.ylabel('Occurences')
+    plt.ylim(0, max(final_list)+1)
+    plt.title('180 events')
+    plt.savefig(f'./presentation/figures/projection{i}.jpg')
 
     # ==== output-target ==== #
 
@@ -76,7 +105,7 @@ for i in range(1, 6):
     plt.scatter(x, df['target'], label='target')
     plt.scatter(x, df['output'], label='output')
     plt.legend()
-    plt.xlabel('Number of event')
+    plt.xlabel('Event number')
     plt.ylabel('Number of particles')
     plt.title('180 events')
     plt.savefig(f'./presentation/figures/to{i}.jpg')
@@ -87,8 +116,8 @@ for i in range(1, 6):
     plt.figure(num=2)
     plt.clf()
     x = np.linspace(0, df.shape[0]-1, df.shape[0], dtype='int')
-    plt.scatter(x, (df['output'] - df['target'])/df['target'])
-    plt.xlabel('Number of event')
+    plt.scatter(df['target'], (df['output'] - df['target'])/df['target'])
+    plt.xlabel('Number of multicipies')
     plt.ylabel('(output - target)/target')
     plt.title('180 events')
     plt.savefig(f'./presentation/figures/tot{i}.jpg')
