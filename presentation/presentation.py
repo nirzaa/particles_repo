@@ -119,5 +119,6 @@ for i in range(1, 6):
     plt.scatter(df['target'], (df['output'] - df['target'])/df['target'])
     plt.xlabel('Number of multicipies')
     plt.ylabel('(output - target)/target')
+    plt.ylim(-1, 1)
     plt.title('180 events')
     plt.savefig(f'./presentation/figures/tot{i}.jpg')
