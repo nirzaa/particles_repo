@@ -30,7 +30,12 @@ pylab.rcParams.update(params)
 # 3 micron - even layers
 # https://github.com/nirzaa/particles_repo/tree/20-classes/csv_files/3%20micron%20-%20even%20layers/run_0/epoch_30
 
-for i in range(1, 5):
+# slide 5
+# 3 micron - 1 layer
+# https://github.com/nirzaa/particles_nir_repo_new/tree/20energies_2d_noise/csv_files/2d_1z/run_0/epoch_30
+
+
+for i in range(1, 6):
     df = pd.read_csv(f'./presentation/df{i}.csv') # data_frame
     ho = np.array(pd.read_csv(f'./presentation/ho{i}.csv')) # hist_output
     ht = np.array(pd.read_csv(f'./presentation/ht{i}.csv')) # hist_target
