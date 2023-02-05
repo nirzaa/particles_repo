@@ -35,14 +35,15 @@ for i in range(1, 5):
     ho = np.array(pd.read_csv(f'./presentation/ho{i}.csv')) # hist_output
     ht = np.array(pd.read_csv(f'./presentation/ht{i}.csv')) # hist_target
     energies = np.linspace(0, 13, ho.sum(axis=0).shape[0])
+    width = 0.1 if ho.sum(axis=0).shape[0] > 30 else 0.6
 
     # ==== hist figure ==== #
 
     sns.set_style("darkgrid")
     plt.figure(num=0)
     plt.clf()
-    plt.bar(x=energies, height=ho.sum(axis=0), label='output', alpha=0.5, width=0.1)
-    plt.bar(x=energies, height=ht.sum(axis=0), label='target', alpha=0.5, width=0.1)
+    plt.bar(x=energies, height=ho.sum(axis=0), label='output', alpha=0.5, width=width)
+    plt.bar(x=energies, height=ht.sum(axis=0), label='target', alpha=0.5, width=width)
     plt.legend()
     plt.xlabel('Energies [GeV]')
     plt.ylabel('Number of particles')
