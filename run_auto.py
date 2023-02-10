@@ -34,7 +34,7 @@ if __name__ == '__main__':
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
         np.random.seed(SEED)
-        # os.system('python3 ./utils/my_utils.py')
+        os.system('python3 ./utils/my_utils.py')
         print(f'This is the {run} run')
         print('='*50)
         os.system('rm ./saved/models/new_model/* -r')
