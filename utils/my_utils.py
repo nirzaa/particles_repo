@@ -67,7 +67,7 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
 
     total_out = [0] * bin_num
     total_target = [0] * bin_num
-    bars = np.linspace(0, 13, bin_num)
+    bars = np.linspace(1, 13, bin_num)
 
     # Sum over al of the bin results for each bin.
     for i in range(bin_num):
@@ -148,6 +148,10 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
         epoch_num = 0
     csv_path = os.path.join('./csv_files', f'epoch_{epoch_num}')
     plt.savefig(os.path.join(csv_path, f'binsgraph_run_{run_num}.png'))
+
+    np.savetxt(os.path.join(csv_path, 'hist_output.csv'), output, delimiter=',')
+    np.savetxt(os.path.join(csv_path, 'hist_target.csv'), target, delimiter=',')
+
     # plt.show()
     plt.clf()
     save = {'output bins': total_out, 'output entropy': out_entropy,

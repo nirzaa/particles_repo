@@ -33,7 +33,8 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         print()
     for run_num in range(num_runs):
         my_path = f'./csv_files/{folder_name}/run_{run_num}'
-        for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
+        # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
+        for epoch_num in np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int'):
             with h5py.File(os.path.join(my_path, f'epoch_{epoch_num}', 'data.h5'), 'r') as hf:
                 output = np.array(hf.get('dataset_1'))
                 target = np.array(hf.get('dataset_2'))

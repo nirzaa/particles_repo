@@ -24,7 +24,7 @@ if __name__ == '__main__':
     gpu_name = torch.cuda.get_device_name(0)
     print(f'We are using {gpu_name}')
     print('='*70)
-    num_runs = 1
+    num_runs = 10
     for run in range(num_runs):
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
             dset = f.create_dataset("mydataset", data=run, dtype='int')
@@ -34,7 +34,7 @@ if __name__ == '__main__':
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
         np.random.seed(SEED)
-        os.system('python3 ./utils/my_utils.py')
+        # os.system('python3 ./utils/my_utils.py')
         print(f'This is the {run} run')
         print('='*50)
         os.system('rm ./saved/models/new_model/* -r')

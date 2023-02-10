@@ -1,0 +1,27 @@
+base/base_trainer.py:
+120 : defining when to save checkpoint
+
+analyze_auto.py
+36 : when to calculate the loss of the epochs
+also change at the main function
+
+# Changing number of classes:
+config.json : change there the number of classes + model type
+utils/my_utils.py : 70 : bars = np.linspace(1, 13, bin_num)
+
+# noise:
+data_loader/data_loaders.py
+184: d_tens += en_dep_noise
+
+Define the bins:
+data_loader/data_loaders.py
+245 : bin_list = np.linspace(1, 13, bin_num)
+
+# saving csv:
+test.py
+116 : df.to_csv(os.path.join(my_path, "data_frame.csv"))
+
+utils/my_utils.py
+152:
+np.savetxt(os.path.join(csv_path, 'hist_output.csv'), output, delimiter=',')
+np.savetxt(os.path.join(csv_path, 'hist_target.csv'), target, delimiter=',')
