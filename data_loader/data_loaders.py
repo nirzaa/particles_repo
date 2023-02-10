@@ -8,6 +8,9 @@ from torch.utils.data import Dataset
 import matplotlib.pyplot as plt
 from base import BaseDataLoader
 from data_loader import EcalDataIO
+import json
+import pandas as pd
+import pickle
 
 import os
 import h5py
@@ -181,7 +184,7 @@ class Bin_energy_data(Dataset):
         with open('without_noise.npy', 'wb') as f:
             np.save(f, d_tens)
 
-        d_tens += en_dep_noise
+        # d_tens += en_dep_noise
 
         with open('with_noise.npy', 'wb') as f:
             np.save(f, d_tens)
@@ -255,5 +258,13 @@ class Bin_energy_data(Dataset):
 
         # final_list = torch.tensor([len(en_list)])
 
-        return d_tens.sum(axis=2)[:,:,-3:], final_list, num_showers, idx
+
+
+        # with open('sum_pixels.pickle', 'rb') as file:
+        #     sum_pixels = pickle.load(file)
+        # sum_pixels[str(idx)] = float(d_tens.sum())
+        # with open('sum_pixels.pickle', 'wb') as file:
+        #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
+
+        return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx

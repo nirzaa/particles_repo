@@ -11,6 +11,13 @@ from trainer import Trainer
 from utils import prepare_device
 import h5py
 import os
+import json
+import pandas as pd
+import pickle
+
+# sum_pixels = dict()
+# with open('sum_pixels.pickle', 'wb') as file:
+#     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
 with h5py.File(os.path.join('./', 'run_num.h5'), 'r') as f:
         run_num = int(np.array(f.get('mydataset')))

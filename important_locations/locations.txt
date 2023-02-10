@@ -13,6 +13,10 @@ utils/my_utils.py : 70 : bars = np.linspace(1, 13, bin_num)
 data_loader/data_loaders.py
 184: d_tens += en_dep_noise
 
+# physical layers:
+data_loader/data_loaders.py
+258 : return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
+
 Define the bins:
 data_loader/data_loaders.py
 245 : bin_list = np.linspace(1, 13, bin_num)
@@ -25,3 +29,9 @@ utils/my_utils.py
 152:
 np.savetxt(os.path.join(csv_path, 'hist_output.csv'), output, delimiter=',')
 np.savetxt(os.path.join(csv_path, 'hist_target.csv'), target, delimiter=',')
+
+
+sum_pixels:
+data_loader/data_loaders.py
+269
+train.py : 18
