@@ -41,6 +41,9 @@ if __name__ == '__main__':
         train_func()
         train_folder = os.listdir(f'./saved/models/new_model/')[0]
         test_func(folder_name=train_folder)
+        os.system(f'mkdir ./saved/models/saved_models/run_{run}')
+        os.system(f'mv ./saved/models/new_model/* ./saved/models/saved_models/run_{run}/')
+
         os.system(f'mkdir ./csv_files/run_{run}')
         os.system(f'mv ./csv_files/epoch_* ./csv_files/run_{run}')
         # os.system('python3 ./analyze_auto.py')
