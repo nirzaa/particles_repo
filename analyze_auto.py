@@ -34,7 +34,9 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
     for run_num in range(num_runs):
         my_path = f'./csv_files/{folder_name}/run_{run_num}'
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
-        for epoch_num in np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int'):
+        epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
+        # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
+        for epoch_num in epochs_list:
             with h5py.File(os.path.join(my_path, f'epoch_{epoch_num}', 'data.h5'), 'r') as hf:
                 output = np.array(hf.get('dataset_1'))
                 target = np.array(hf.get('dataset_2'))
@@ -102,5 +104,6 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     np.random.seed(SEED)
     random.seed(SEED)
-    model = model.model_2d_all_110classes(model_type=None, num_classes=None)
-    analyze(model, input_shape=(128,1,110,20), num_runs=1, folder_name='paper/3_to_5/3_micron', epoch_nums=110)
+    model = model.model_2d_60(model_type=None, num_classes=None)
+    analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
+    # analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_5', epoch_nums=40)
