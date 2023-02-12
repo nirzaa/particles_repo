@@ -1,0 +1,50 @@
+{
+    "name": "new_model",
+    "n_gpu": 1,
+    "arch": {
+        "type": "model_2d_60",
+        "args": {
+            "model_type": "ResNet10",
+            "num_classes": 60
+        }
+    },
+    "data_loader": {
+        "type": "data_loader",
+        "args": {
+            "data_dir": "data/",
+            "batch_size": 128,
+            "shuffle": true,
+            "validation_split": 0.1,
+            "num_workers": 2
+        }
+    },
+    "optimizer": {
+        "type": "Adam",
+        "args": {
+            "lr": 0.01,
+            "weight_decay": 0,
+            "amsgrad": true
+        }
+    },
+    "loss": "MSE_loss",
+    "metrics": [
+        "bias_avg",
+        "bias_std"
+    ],
+    "lr_scheduler": {
+        "type": "StepLR",
+        "args": {
+            "step_size": 15,
+            "gamma": 0.2
+        }
+    },
+    "trainer": {
+        "epochs": 40,
+        "save_dir": "saved/",
+        "save_period": 1,
+        "verbosity": 2,
+        "monitor": "min val_loss",
+        "early_stop": 100,
+        "tensorboard": true
+    }
+}
