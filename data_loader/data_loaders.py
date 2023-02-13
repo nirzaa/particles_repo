@@ -184,7 +184,7 @@ class Bin_energy_data(Dataset):
         with open('without_noise.npy', 'wb') as f:
             np.save(f, d_tens)
 
-        d_tens += en_dep_noise
+        # d_tens += en_dep_noise
 
         with open('with_noise.npy', 'wb') as f:
             np.save(f, d_tens)
@@ -266,5 +266,7 @@ class Bin_energy_data(Dataset):
         # with open('sum_pixels.pickle', 'wb') as file:
         #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
-        return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
+        # return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
+        
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx

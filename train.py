@@ -73,7 +73,7 @@ def main(config):
 
 if __name__ == '__main__':
 
-    num_classes = 60
+    num_classes = 48
 
     args = argparse.ArgumentParser(description='PyTorch Template')
     args.add_argument('-c', '--config', default=None, type=str,
