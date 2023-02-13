@@ -349,12 +349,12 @@ def model_2d_60_10(model_type, num_classes):
         '''
         def __init__(self):
             super(Model, self).__init__()
-            self.fc1 = nn.Linear(32 * 29 * 4, 64)
-            self.fc2 = nn.Linear(64, 32)
-            self.fc3 = nn.Linear(32, 60)
-            self.conv1 = nn.Conv2d(in_channels=1, out_channels=16, kernel_size=(2,2), stride=(2,2), padding=1,)
-            self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=(2,2), stride=(2,2), padding=1, )
-            self.conv3 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), stride=(2,2), padding=1, )
+            self.fc1 = nn.Linear(16 * 28 * 3, 256)
+            self.fc2 = nn.Linear(256, 60)
+            # self.fc3 = nn.Linear(32, 60)
+            self.conv1 = nn.Conv2d(in_channels=1, out_channels=8, kernel_size=(2,2), stride=(2,2), padding=1,)
+            self.conv2 = nn.Conv2d(in_channels=8, out_channels=16, kernel_size=(3,3), stride=(2,2), padding=1, )
+            # self.conv3 = nn.Conv2d(in_channels=32, out_channels=64, kernel_size=(3,3), stride=(2,2), padding=1, )
             self.global1 = nn.AvgPool2d(kernel_size=3, stride=1, padding=1, )
             self.avgpool = nn.AdaptiveAvgPool2d((1, 1))
 
@@ -366,11 +366,11 @@ def model_2d_60_10(model_type, num_classes):
 
             # x = self.global1(x)
             # x = self.avgpool(x)
-            y = x.view(-1, 32 * 29 * 4)
+            y = x.view(-1, 16 * 28 * 3)
             # x = x.view(-1, 2 * 2 * 2)
             x = self.fc1(F.relu(y))
             x = self.fc2(F.relu(x))
-            x = self.fc3(F.relu(x))
+            # x = self.fc3(F.relu(x))
 
             return x
     model = Model()
