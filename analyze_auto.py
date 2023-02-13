@@ -105,5 +105,5 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
     model = model.model_2d_60(model_type=None, num_classes=None)
-    analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
-    # analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_5', epoch_nums=40)
+    # analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
+    analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_1', epoch_nums=40)
