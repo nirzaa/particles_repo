@@ -32,6 +32,10 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         print('='*50)
         print()
     for run_num in range(num_runs):
+        with open(os.path.join('./csv_files', 'stats.txt'), 'a+') as f:
+            f.write(f'run {run_num}\n')
+            f.write('='*50)
+            f.write('\n')
         my_path = f'./csv_files/{folder_name}/run_{run_num}'
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
         epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
@@ -106,4 +110,4 @@ if __name__ == '__main__':
     random.seed(SEED)
     model = model.model_2d_60(model_type=None, num_classes=None)
     # analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
-    analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_1', epoch_nums=40)
+    analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_5', epoch_nums=40)

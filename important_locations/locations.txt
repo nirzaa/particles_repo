@@ -40,6 +40,10 @@ train.py : 18
 Generate new data every run:
 run_auto.py : 37
 
+# ==== Change number of layers ==== #
+data_loader/data_loaders.py : 269 : return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
+config.json : "type": "model_2d_60_10",
+model/model.py : model_2d_60_10 : put breakpoint there and run train.py under debugging to see that the dimensions are correct in the model (make sure that the architecture is similar to last run)
 
 # ==== After finishes ==== #
 saved_models: move into new folder
