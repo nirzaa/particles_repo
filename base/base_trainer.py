@@ -118,7 +118,7 @@ class BaseTrainer:
         filename = str(self.checkpoint_dir / 'checkpoint-epoch{}.pth'.format(epoch))
         # torch.save(state, filename)
         # if epoch % 10 == 0 or epoch in [1, 20, 25, 28, 30, 32]:
-        if epoch % 5 == 0:
+        if epoch % 1 == 0:
             torch.save(state, filename)
             self.logger.info("Saving checkpoint: {} ...".format(filename))
         if save_best:
