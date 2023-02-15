@@ -2,7 +2,7 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
-num_case = 5
+num_case = 1
 epochs_every = 5
 total_epochs = 40
 total_runs = 10
