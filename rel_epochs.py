@@ -22,6 +22,7 @@ for run in range(total_runs):
         cntr += 1
     plt.scatter(epochs_list, losses, label=f'run {run}')
 plt.title(f'Case {num_case}')
+plt.ylim(-7.5, 7.5)
 plt.xlabel('Epochs')
 plt.ylabel('Relative error [%]')
 plt.legend(loc='center right', bbox_to_anchor=(1.1, 0.5))
