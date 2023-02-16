@@ -1,3 +1,5 @@
+We are using NVIDIA TITAN V
+======================================================================
 
 
 
@@ -7,5 +9,68 @@
 
 
 
+We are using NVIDIA TITAN V
+======================================================================
+This is the 0 run
+==================================================
+rm: cannot remove './saved/models/new_model/*': No such file or directory
 
 
+
+
+
+
+INFO:train:Model(
+  (fc1): Linear(in_features=1344, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+WARNING:trainer:Warning: visualization (Tensorboard) is configured to use, but currently not installed on this machine. Please install TensorboardX with 'pip instal
+l tensorboardx', upgrade PyTorch to version >= 1.1 to use 'torch.utils.tensorboard' or turn off the option in the 'config.json' file.
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  727
+DEBUG:trainer:Train Epoch: 1 [1/40 (2%)] Loss: 1249.335205
+INFO:trainer:    epoch          : 1
+INFO:trainer:    loss           : 1082.8120015462239
+INFO:trainer:    bias_avg       : 8.183402419090271
+INFO:trainer:    bias_std       : 28.75001049041748
+INFO:trainer:    val_loss       : 593.9227498372396
+INFO:trainer:    val_bias_avg   : -7.869306802749634
+INFO:trainer:    val_bias_std   : 22.992496172587078
+INFO:trainer:Saving checkpoint: saved/models/new_model/0216_110240/checkpoint-epoch1.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 2 [2/40 (5%)] Loss: 594.355835
+^CTraceback (most recent call last):
+  File "/mnt/sda1/nirz/particles_repo/./train.py", line 100, in <module>
+    main(config)
+  File "/mnt/sda1/nirz/particles_repo/./train.py", line 71, in main
+    trainer.train()
+  File "/mnt/sda1/nirz/particles_repo/base/base_trainer.py", line 64, in train
+    result = self._train_epoch(epoch)
+  File "/mnt/sda1/nirz/particles_repo/trainer/trainer.py", line 85, in _train_epoch
+    val_log = self._valid_epoch(epoch)
+  File "/mnt/sda1/nirz/particles_repo/trainer/trainer.py", line 111, in _valid_epoch
+    for batch_idx, data in enumerate(self.data_loader):
+  File "/home/nir/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 681, in __next__
+    data = self._next_data()
+  File "/home/nir/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1359, in _next_data
+    idx, data = self._get_data()
+  File "/home/nir/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1325, in _get_data
+    success, data = self._try_get_data()
+  File "/home/nir/.local/lib/python3.10/site-packages/torch/utils/data/dataloader.py", line 1163, in _try_get_data
+    data = self._data_queue.get(timeout=timeout)
+  File "/usr/lib/python3.10/multiprocessing/queues.py", line 113, in get
+    if not self._poll(timeout):
+  File "/usr/lib/python3.10/multiprocessing/connection.py", line 257, in poll
+    return self._poll(timeout)
+  File "/usr/lib/python3.10/multiprocessing/connection.py", line 424, in _poll
+    r = wait([self], timeout)
+  File "/usr/lib/python3.10/multiprocessing/connection.py", line 931, in wait
+    ready = selector.select(timeout)
+  File "/usr/lib/python3.10/selectors.py", line 416, in select
+    fd_event_list = self._selector.poll(timeout)
+KeyboardInterrupt
+^C^C

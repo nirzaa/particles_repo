@@ -30,6 +30,8 @@ if __name__ == '__main__':
     print('='*70)
     num_runs = 10
     os.system('tmux capture-pane -pS - > ./csv_files/terminal_tmux.txt')
+    os.system('clear')
+    os.system('tmux clear-history')
     for run in range(num_runs):
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
             dset = f.create_dataset("mydataset", data=run, dtype='int')
