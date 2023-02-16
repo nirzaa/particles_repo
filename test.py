@@ -96,14 +96,20 @@ def main(config):
             d = {'output': my_output.cpu(), 'target': my_target.cpu(), 'rel_error': my_rel_error.cpu()}
             df = pd.DataFrame(data=d, index=range(len(my_output)))
             flag = -1
-            try:
+            try: # 3-digit epoch
                 epoch_num = int(str(config.resume)[-7:-4])
                 flag = 0
             except:
                 pass
             if flag == -1:
-                try:
+                try: # 2-digit epoch
                     epoch_num = int(str(config.resume)[-6:-4])
+                    flag = 0
+                except:
+                    pass
+            if flag == -1:
+                try: # 1-digit epoch
+                    epoch_num = int(str(config.resume)[-5:-4])
                     flag = 0
                 except:
                     pass

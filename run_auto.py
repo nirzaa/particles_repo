@@ -25,6 +25,9 @@ if __name__ == '__main__':
     print(f'We are using {gpu_name}')
     print('='*70)
     num_runs = 10
+    os.system("alias tmux-save-pane='tmux capture-pane -pS -'")
+    os.system('clear')
+    os.system('tmux-save-pane > ./csv_files/terminal_tmux.txt')
     for run in range(num_runs):
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
             dset = f.create_dataset("mydataset", data=run, dtype='int')
@@ -38,12 +41,24 @@ if __name__ == '__main__':
         print(f'This is the {run} run')
         print('='*50)
         os.system('rm ./saved/models/new_model/* -r')
+        os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt')
+        os.system('clear')
         train_func()
+        os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt')
+        os.system('clear')
         train_folder = os.listdir(f'./saved/models/new_model/')[0]
         test_func(folder_name=train_folder)
+        os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt')
+        os.system('clear')
         os.system(f'mkdir ./saved/models/saved_models/run_{run}')
         os.system(f'mv ./saved/models/new_model/* ./saved/models/saved_models/run_{run}/')
 
         os.system(f'mkdir ./csv_files/run_{run}')
         os.system(f'mv ./csv_files/epoch_* ./csv_files/run_{run}')
+
+        os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt')
+        os.system('clear')
         # os.system('python3 ./analyze_auto.py')
+    # os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt') # https://burnicki.pl/en/2021/07/04/dump-tmux-pane-history-to-a-file.html
+    os.system('tmux-save-pane >> ./csv_files/terminal_tmux.txt')
+    os.system('clear')
