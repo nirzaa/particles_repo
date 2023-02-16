@@ -3,6 +3,7 @@ import re
 import torch
 import h5py
 import numpy as np
+import time
 
 def train_func():
     os.system('python3 ./train.py --config ./config.json')
@@ -26,7 +27,9 @@ if __name__ == '__main__':
     print(f'We are using {gpu_name}')
     print('='*70)
     num_runs = 10
+    
     os.system('clear')
+    os.system('tmux clear-history')
     os.system('tmux capture-pane -pS - > ./csv_files/terminal_tmux.txt')
     for run in range(num_runs):
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
@@ -43,13 +46,16 @@ if __name__ == '__main__':
         os.system('rm ./saved/models/new_model/* -r')
         os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt')
         os.system('clear')
+        os.system('tmux clear-history')
         train_func()
         os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt')
         os.system('clear')
+        os.system('tmux clear-history')
         train_folder = os.listdir(f'./saved/models/new_model/')[0]
         test_func(folder_name=train_folder)
         os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt')
         os.system('clear')
+        os.system('tmux clear-history')
         os.system(f'mkdir ./saved/models/saved_models/run_{run}')
         os.system(f'mv ./saved/models/new_model/* ./saved/models/saved_models/run_{run}/')
 
@@ -58,7 +64,9 @@ if __name__ == '__main__':
 
         os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt')
         os.system('clear')
+        os.system('tmux clear-history')
         # os.system('python3 ./analyze_auto.py')
     # os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt') # https://burnicki.pl/en/2021/07/04/dump-tmux-pane-history-to-a-file.html
     os.system('tmux capture-pane -pS - >> ./csv_files/terminal_tmux.txt')
     os.system('clear')
+    os.system('tmux clear-history')
