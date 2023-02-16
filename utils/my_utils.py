@@ -133,14 +133,20 @@ def test_bins(output, target, nums, bin_num=10, name=None, run_num='0', config=0
     plt.legend()
     plt.savefig(os.path.join(res_path, f'binsgraph_run_{run_num}.png'))
     flag = -1
-    try:
+    try: # 3-digit epoch
         epoch_num = int(str(config.resume)[-7:-4])
         flag = 0
     except:
         pass
     if flag == -1:
-        try:
+        try: # 2-digit epoch
             epoch_num = int(str(config.resume)[-6:-4])
+            flag = 0
+        except:
+            pass
+    if flag == -1:
+        try: # 1-digit epoch
+            epoch_num = int(str(config.resume)[-5:-4])
             flag = 0
         except:
             pass
