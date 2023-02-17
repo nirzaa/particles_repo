@@ -45,16 +45,16 @@ if __name__ == '__main__':
         print(f'This is the {run} run')
         print('='*50)
         os.system('rm ./saved/models/new_model/* -r')
-        os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
+        os.system(f'tmux capture-pane -pS - >> ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
         os.system('tmux clear-history')
         train_func()
-        os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
+        os.system(f'tmux capture-pane -pS - >> ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
         os.system('tmux clear-history')
         train_folder = os.listdir(f'./saved/models/new_model/')[0]
         test_func(folder_name=train_folder)
-        os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
+        os.system(f'tmux capture-pane -pS - >> ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
         os.system('tmux clear-history')
         os.system(f'mkdir ./saved/models/saved_models/run_{run}')
@@ -63,8 +63,8 @@ if __name__ == '__main__':
         os.system(f'mkdir ./csv_files/run_{run}')
         os.system(f'mv ./csv_files/epoch_* ./csv_files/run_{run}')
 
-        os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
+        os.system(f'tmux capture-pane -pS - >> ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
         os.system('tmux clear-history')
         # os.system('python3 ./analyze_auto.py')
-    # os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt') # https://burnicki.pl/en/2021/07/04/dump-tmux-pane-history-to-a-file.html
+    # os.system(f'tmux capture-pane -pS - >> ./csv_files/terminal_tmux_{run}.txt') # https://burnicki.pl/en/2021/07/04/dump-tmux-pane-history-to-a-file.html
