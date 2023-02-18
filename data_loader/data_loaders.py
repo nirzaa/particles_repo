@@ -267,6 +267,6 @@ class Bin_energy_data(Dataset):
         #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:10], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:5], final_list, num_showers, idx
         
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
