@@ -11,13 +11,14 @@ import sys
 import time
 from model import model
 import random
+from sandbox import loss_analyzer as la
 
 def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
     output_list = list()
     target_list = list()
     rel_error_list = list()
-    print_path = os.path.join('./csv_files', 'stats.txt')
+    print_path = os.path.join(folder_name, 'stats.txt')
     with open(print_path, 'w') as f:
         f.write('Stats for our data\n')
         f.write('='*40)
@@ -32,20 +33,24 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         print('='*50)
         print()
     for run_num in range(num_runs):
-        with open(os.path.join('./csv_files', 'stats.txt'), 'a+') as f:
+        with open(os.path.join(folder_name, 'stats.txt'), 'a+') as f:
             f.write(f'run {run_num}\n')
             f.write('='*50)
             f.write('\n')
-        my_path = f'./csv_files/{folder_name}/run_{run_num}'
+        my_path = f'{folder_name}/run_{run_num}'
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
-        epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
+        
+        # epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
+        epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
+        
+        
         # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
         for epoch_num in epochs_list:
             with h5py.File(os.path.join(my_path, f'epoch_{epoch_num}', 'data.h5'), 'r') as hf:
                 output = np.array(hf.get('dataset_1'))
                 target = np.array(hf.get('dataset_2'))
                 rel_error = (output.sum()-target.sum()) / target.sum()
-                with open(os.path.join('./csv_files', 'stats.txt'), 'a+') as f:
+                with open(os.path.join(folder_name, 'stats.txt'), 'a+') as f:
                     f.write(f'The average results for {epoch_num} epoch\n')
                     f.write('='*50)
                     f.write(f'\nThe output average number of particles per event is: {output.mean():.2f}')
@@ -89,7 +94,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
     rel_error_N = (mean_output.sum()-mean_target.sum()) / mean_target.sum()
     t = mean_target.sum(axis=1)
     o = mean_output.sum(axis=1)
-    with open(os.path.join('./csv_files', 'stats.txt'), 'a+') as f:
+    with open(os.path.join(folder_name, 'stats.txt'), 'a+') as f:
         f.write(f'The average results for all the above epochs\n')
         f.write('='*50)
         f.write(f'\nThe output average number of particles per event is: {o.mean():.2f}')
@@ -99,7 +104,16 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f.write(f'\nrelative error for total N: {my_rel_error_mean*100:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
 
+
 if __name__ == '__main__':
+
+    location = './csv_files/multiple_runs/case_2'
+    epochs_num = 40
+    num_runs = 10
+    input_shape = (128,1,110,21)
+    model = model.model_2d_48(model_type=None, num_classes=None)
+    la.calculate_loss(location, num_runs, epochs_num)
+
     with open('./run.txt', 'r') as f:
         run = int(f.read())
     SEED = run
@@ -108,6 +122,10 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     np.random.seed(SEED)
     random.seed(SEED)
-    model = model.model_2d_60(model_type=None, num_classes=None)
     # analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
-    analyze(model, input_shape=(128,1,110,21), num_runs=10, folder_name='multiple_runs/case_1', epoch_nums=40)
+    analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
+
+    
+
+
+
