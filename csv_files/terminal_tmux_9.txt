@@ -22,3 +22,400 @@ rm: cannot remove './saved/models/new_model/*': No such file or directory
 
 
 
+INFO:train:Model(
+  (fc1): Linear(in_features=896, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+WARNING:trainer:Warning: visualization (Tensorboard) is configured to use, but currently not installed on this machine. Please install TensorboardX wit
+h 'pip install tensorboardx', upgrade PyTorch to version >= 1.1 to use 'torch.utils.tensorboard' or turn off the option in the 'config.json' file.
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  727
+DEBUG:trainer:Train Epoch: 1 [1/40 (2%)] Loss: 1277.344727
+INFO:trainer:    epoch          : 1
+INFO:trainer:    loss           : 1111.5378316243489
+INFO:trainer:    bias_avg       : 12.543054103851318
+INFO:trainer:    bias_std       : 29.181104342142742
+INFO:trainer:    val_loss       : 627.8419799804688
+INFO:trainer:    val_bias_avg   : -9.212785800298056
+INFO:trainer:    val_bias_std   : 23.26541519165039
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch1.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 2 [2/40 (5%)] Loss: 623.208069
+INFO:trainer:    epoch          : 2
+INFO:trainer:    loss           : 578.9834747314453
+INFO:trainer:    bias_avg       : 0.8940641681353251
+INFO:trainer:    bias_std       : 23.03384240468343
+INFO:trainer:    val_loss       : 461.48114013671875
+INFO:trainer:    val_bias_avg   : 4.307241201400757
+INFO:trainer:    val_bias_std   : 20.873040199279785
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch2.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 3 [3/40 (8%)] Loss: 485.260132
+INFO:trainer:    epoch          : 3
+INFO:trainer:    loss           : 419.1550038655599
+INFO:trainer:    bias_avg       : 1.03426290055116
+INFO:trainer:    bias_std       : 20.338906288146973
+INFO:trainer:    val_loss       : 334.7237040201823
+INFO:trainer:    val_bias_avg   : -1.4992228349049885
+INFO:trainer:    val_bias_std   : 18.19815953572591
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch3.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 4 [4/40 (10%)] Loss: 322.842834
+INFO:trainer:    epoch          : 4
+INFO:trainer:    loss           : 269.7175013224284
+INFO:trainer:    bias_avg       : -1.4676374395688374
+INFO:trainer:    bias_std       : 16.285132726033527
+INFO:trainer:    val_loss       : 167.97110239664713
+INFO:trainer:    val_bias_avg   : -1.3793432017167409
+INFO:trainer:    val_bias_std   : 12.86788813273112
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch4.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 5 [5/40 (12%)] Loss: 159.943283
+INFO:trainer:    epoch          : 5
+INFO:trainer:    loss           : 149.87530390421549
+INFO:trainer:    bias_avg       : -0.9620903233687083
+INFO:trainer:    bias_std       : 12.0698823928833
+INFO:trainer:    val_loss       : 138.83685175577799
+INFO:trainer:    val_bias_avg   : 2.769094149271647
+INFO:trainer:    val_bias_std   : 11.33173100153605
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch5.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 6 [6/40 (15%)] Loss: 159.638687
+INFO:trainer:    epoch          : 6
+INFO:trainer:    loss           : 136.29972330729166
+INFO:trainer:    bias_avg       : 0.9425043066342672
+INFO:trainer:    bias_std       : 11.516446908315023
+INFO:trainer:    val_loss       : 103.15831756591797
+INFO:trainer:    val_bias_avg   : 1.392091691493988
+INFO:trainer:    val_bias_std   : 10.013866742451986
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch6.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 7 [7/40 (18%)] Loss: 85.472824
+INFO:trainer:    epoch          : 7
+INFO:trainer:    loss           : 89.89122772216797
+INFO:trainer:    bias_avg       : 0.13472665597995123
+INFO:trainer:    bias_std       : 9.44413169225057
+INFO:trainer:    val_loss       : 79.43673706054688
+INFO:trainer:    val_bias_avg   : -0.03199845630054673
+INFO:trainer:    val_bias_std   : 8.893822828928629
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch7.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 8 [8/40 (20%)] Loss: 73.633072
+INFO:trainer:    epoch          : 8
+INFO:trainer:    loss           : 79.86037826538086
+INFO:trainer:    bias_avg       : -0.4625870610276858
+INFO:trainer:    bias_std       : 8.900466918945312
+INFO:trainer:    val_loss       : 64.04537963867188
+INFO:trainer:    val_bias_avg   : -0.687716340025266
+INFO:trainer:    val_bias_std   : 7.955056985219319
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch8.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 9 [9/40 (22%)] Loss: 72.439056
+INFO:trainer:    epoch          : 9
+INFO:trainer:    loss           : 61.74463399251302
+INFO:trainer:    bias_avg       : 0.1614666593571504
+INFO:trainer:    bias_std       : 7.829548676808675
+INFO:trainer:    val_loss       : 59.57652473449707
+INFO:trainer:    val_bias_avg   : -0.18464112157622972
+INFO:trainer:    val_bias_std   : 7.6433327198028564
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch9.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 10 [10/40 (25%)] Loss: 47.506866
+INFO:trainer:    epoch          : 10
+INFO:trainer:    loss           : 46.953015645345054
+INFO:trainer:    bias_avg       : 0.5972732951243719
+INFO:trainer:    bias_std       : 6.788481871287028
+INFO:trainer:    val_loss       : 40.716517766316734
+INFO:trainer:    val_bias_avg   : -0.2538379368682702
+INFO:trainer:    val_bias_std   : 6.361058235168457
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch10.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 11 [11/40 (28%)] Loss: 41.696327
+INFO:trainer:    epoch          : 11
+INFO:trainer:    loss           : 39.1261952718099
+INFO:trainer:    bias_avg       : 0.07229513799150784
+INFO:trainer:    bias_std       : 6.236690521240234
+INFO:trainer:    val_loss       : 33.301397959391274
+INFO:trainer:    val_bias_avg   : 0.5223382959763209
+INFO:trainer:    val_bias_std   : 5.738112052281697
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch11.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 12 [12/40 (30%)] Loss: 34.697731
+INFO:trainer:    epoch          : 12
+INFO:trainer:    loss           : 31.604918162027996
+INFO:trainer:    bias_avg       : -0.04629151771465937
+INFO:trainer:    bias_std       : 5.6015792687733965
+INFO:trainer:    val_loss       : 33.22765509287516
+INFO:trainer:    val_bias_avg   : 0.6023326565821966
+INFO:trainer:    val_bias_std   : 5.7203907171885175
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch12.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 13 [13/40 (32%)] Loss: 30.371136
+INFO:trainer:    epoch          : 13
+INFO:trainer:    loss           : 30.6351531346639
+INFO:trainer:    bias_avg       : 0.2206230436762174
+INFO:trainer:    bias_std       : 5.515188455581665
+INFO:trainer:    val_loss       : 30.728782653808594
+INFO:trainer:    val_bias_avg   : 0.16796922187010446
+INFO:trainer:    val_bias_std   : 5.527321020762126
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch13.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 14 [14/40 (35%)] Loss: 33.531624
+INFO:trainer:    epoch          : 14
+INFO:trainer:    loss           : 29.43650468190511
+INFO:trainer:    bias_avg       : 0.032516198232769966
+INFO:trainer:    bias_std       : 5.412662823994954
+INFO:trainer:    val_loss       : 30.017915725708008
+INFO:trainer:    val_bias_avg   : 0.5028962244590124
+INFO:trainer:    val_bias_std   : 5.449653625488281
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch14.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 15 [15/40 (38%)] Loss: 27.125578
+INFO:trainer:    epoch          : 15
+INFO:trainer:    loss           : 27.882483164469402
+INFO:trainer:    bias_avg       : -0.11660617558906476
+INFO:trainer:    bias_std       : 5.250726540883382
+INFO:trainer:    val_loss       : 29.22159989674886
+INFO:trainer:    val_bias_avg   : 0.605662872393926
+INFO:trainer:    val_bias_std   : 5.369214693705241
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch15.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 16 [16/40 (40%)] Loss: 28.045906
+INFO:trainer:    epoch          : 16
+INFO:trainer:    loss           : 27.377835909525555
+INFO:trainer:    bias_avg       : 0.18225152418017387
+INFO:trainer:    bias_std       : 5.197477738062541
+INFO:trainer:    val_loss       : 28.82799180348714
+INFO:trainer:    val_bias_avg   : -0.5411667923132578
+INFO:trainer:    val_bias_std   : 5.335125128428142
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch16.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 17 [17/40 (42%)] Loss: 26.506626
+INFO:trainer:    epoch          : 17
+INFO:trainer:    loss           : 27.332640329996746
+INFO:trainer:    bias_avg       : -0.2862820979207754
+INFO:trainer:    bias_std       : 5.205269813537598
+INFO:trainer:    val_loss       : 27.85492928822835
+INFO:trainer:    val_bias_avg   : 0.09450052523364623
+INFO:trainer:    val_bias_std   : 5.274386405944824
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch17.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 18 [18/40 (45%)] Loss: 28.504669
+INFO:trainer:    epoch          : 18
+INFO:trainer:    loss           : 26.329002380371094
+INFO:trainer:    bias_avg       : 0.04565426086386045
+INFO:trainer:    bias_std       : 5.115890105565389
+INFO:trainer:    val_loss       : 28.219581604003906
+INFO:trainer:    val_bias_avg   : -0.3076781779527664
+INFO:trainer:    val_bias_std   : 5.29080065091451
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch18.pth ...
+DEBUG:trainer:Train Epoch: 19 [19/40 (48%)] Loss: 25.998419
+INFO:trainer:    epoch          : 19
+INFO:trainer:    loss           : 29.307342211405437
+INFO:trainer:    bias_avg       : -0.18464269985755286
+INFO:trainer:    bias_std       : 5.386404673258464
+INFO:trainer:    val_loss       : 27.159996668497723
+INFO:trainer:    val_bias_avg   : -0.07688766624778509
+INFO:trainer:    val_bias_std   : 5.209046761194865
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch19.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 20 [20/40 (50%)] Loss: 32.360718
+INFO:trainer:    epoch          : 20
+INFO:trainer:    loss           : 27.06926504770915
+INFO:trainer:    bias_avg       : 0.01664743945002556
+INFO:trainer:    bias_std       : 5.195979118347168
+INFO:trainer:    val_loss       : 27.265103975931805
+INFO:trainer:    val_bias_avg   : -0.09558535212030013
+INFO:trainer:    val_bias_std   : 5.217189073562622
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch20.pth ...
+DEBUG:trainer:Train Epoch: 21 [21/40 (52%)] Loss: 25.487156
+INFO:trainer:    epoch          : 21
+INFO:trainer:    loss           : 24.81562264760335
+INFO:trainer:    bias_avg       : -0.10645604381958644
+INFO:trainer:    bias_std       : 4.93721870581309
+INFO:trainer:    val_loss       : 25.874929428100586
+INFO:trainer:    val_bias_avg   : 0.04619974146286646
+INFO:trainer:    val_bias_std   : 5.076531728108724
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch21.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 22 [22/40 (55%)] Loss: 27.045010
+INFO:trainer:    epoch          : 22
+INFO:trainer:    loss           : 28.63129647572835
+INFO:trainer:    bias_avg       : -0.013358026122053465
+INFO:trainer:    bias_std       : 5.329494953155518
+INFO:trainer:    val_loss       : 26.940001487731934
+INFO:trainer:    val_bias_avg   : -0.029061629126469295
+INFO:trainer:    val_bias_std   : 5.184977372487386
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch22.pth ...
+DEBUG:trainer:Train Epoch: 23 [23/40 (58%)] Loss: 25.323589
+INFO:trainer:    epoch          : 23
+INFO:trainer:    loss           : 26.24692153930664
+INFO:trainer:    bias_avg       : -0.06639246301104625
+INFO:trainer:    bias_std       : 5.116170724232991
+INFO:trainer:    val_loss       : 25.81540520985921
+INFO:trainer:    val_bias_avg   : -0.060650087582568325
+INFO:trainer:    val_bias_std   : 5.0712831020355225
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch23.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 24 [24/40 (60%)] Loss: 28.322632
+INFO:trainer:    epoch          : 24
+INFO:trainer:    loss           : 27.519553502400715
+INFO:trainer:    bias_avg       : -0.01922055458029111
+INFO:trainer:    bias_std       : 5.237033526102702
+INFO:trainer:    val_loss       : 27.37675412495931
+INFO:trainer:    val_bias_avg   : -0.1231910903006792
+INFO:trainer:    val_bias_std   : 5.2184070746103925
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch24.pth ...
+DEBUG:trainer:Train Epoch: 25 [25/40 (62%)] Loss: 25.682133
+INFO:trainer:    epoch          : 25
+INFO:trainer:    loss           : 25.355119387308758
+INFO:trainer:    bias_avg       : -0.04357557363497714
+INFO:trainer:    bias_std       : 5.025953849156697
+INFO:trainer:    val_loss       : 25.0408198038737
+INFO:trainer:    val_bias_avg   : -0.056012838458021484
+INFO:trainer:    val_bias_std   : 4.98812993367513
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch25.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 26 [26/40 (65%)] Loss: 26.196304
+INFO:trainer:    epoch          : 26
+INFO:trainer:    loss           : 26.114533106486004
+INFO:trainer:    bias_avg       : -0.07465979759581387
+INFO:trainer:    bias_std       : 5.106933116912842
+INFO:trainer:    val_loss       : 26.015124320983887
+INFO:trainer:    val_bias_avg   : -0.10557801431665818
+INFO:trainer:    val_bias_std   : 5.094991127649943
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch26.pth ...
+DEBUG:trainer:Train Epoch: 27 [27/40 (68%)] Loss: 25.626797
+INFO:trainer:    epoch          : 27
+INFO:trainer:    loss           : 28.56876023610433
+INFO:trainer:    bias_avg       : 0.016275552101433277
+INFO:trainer:    bias_std       : 5.30943767229716
+INFO:trainer:    val_loss       : 25.79969660441081
+INFO:trainer:    val_bias_avg   : -0.1483123538394769
+INFO:trainer:    val_bias_std   : 5.073190609614055
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch27.pth ...
+DEBUG:trainer:Train Epoch: 28 [28/40 (70%)] Loss: 26.275223
+INFO:trainer:    epoch          : 28
+INFO:trainer:    loss           : 25.842803319295246
+INFO:trainer:    bias_avg       : -0.18494620624308786
+INFO:trainer:    bias_std       : 5.0781246821085615
+INFO:trainer:    val_loss       : 26.42951997121175
+INFO:trainer:    val_bias_avg   : 0.10577496172239383
+INFO:trainer:    val_bias_std   : 5.134865125020345
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch28.pth ...
+DEBUG:trainer:Train Epoch: 29 [29/40 (72%)] Loss: 26.223095
+INFO:trainer:    epoch          : 29
+INFO:trainer:    loss           : 27.613539059956867
+INFO:trainer:    bias_avg       : 0.11414704471826553
+INFO:trainer:    bias_std       : 5.2384936809539795
+INFO:trainer:    val_loss       : 25.30458386739095
+INFO:trainer:    val_bias_avg   : -0.29814939945936203
+INFO:trainer:    val_bias_std   : 5.015209197998047
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch29.pth ...
+DEBUG:trainer:Train Epoch: 30 [30/40 (75%)] Loss: 24.660416
+INFO:trainer:    epoch          : 30
+INFO:trainer:    loss           : 24.69144280751546
+INFO:trainer:    bias_avg       : -0.17486405993501344
+INFO:trainer:    bias_std       : 4.950037797292073
+INFO:trainer:    val_loss       : 25.79754066467285
+INFO:trainer:    val_bias_avg   : 0.14331131180127463
+INFO:trainer:    val_bias_std   : 5.075448910395305
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch30.pth ...
+DEBUG:trainer:Train Epoch: 31 [31/40 (78%)] Loss: 24.472174
+INFO:trainer:    epoch          : 31
+INFO:trainer:    loss           : 25.268553098042805
+INFO:trainer:    bias_avg       : 0.0706807766109705
+INFO:trainer:    bias_std       : 5.022047360738118
+INFO:trainer:    val_loss       : 25.131662368774414
+INFO:trainer:    val_bias_avg   : 0.03572626722355684
+INFO:trainer:    val_bias_std   : 5.00873605410258
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch31.pth ...
+DEBUG:trainer:Train Epoch: 32 [32/40 (80%)] Loss: 26.197887
+INFO:trainer:    epoch          : 32
+INFO:trainer:    loss           : 27.506213823954266
+INFO:trainer:    bias_avg       : -0.049600254744291306
+INFO:trainer:    bias_std       : 5.221696217854817
+INFO:trainer:    val_loss       : 26.011778195699055
+INFO:trainer:    val_bias_avg   : -0.04939832747913897
+INFO:trainer:    val_bias_std   : 5.095283428827922
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch32.pth ...
+DEBUG:trainer:Train Epoch: 33 [33/40 (82%)] Loss: 24.127668
+INFO:trainer:    epoch          : 33
+INFO:trainer:    loss           : 24.86169147491455
+INFO:trainer:    bias_avg       : -0.04307209265728792
+INFO:trainer:    bias_std       : 4.980196475982666
+INFO:trainer:    val_loss       : 25.021811485290527
+INFO:trainer:    val_bias_avg   : -0.03841230381901065
+INFO:trainer:    val_bias_std   : 4.998708168665568
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch33.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 34 [34/40 (85%)] Loss: 23.980556
+INFO:trainer:    epoch          : 34
+INFO:trainer:    loss           : 26.42132059733073
+INFO:trainer:    bias_avg       : -0.029230141391356785
+INFO:trainer:    bias_std       : 5.1317458152771
+INFO:trainer:    val_loss       : 25.02661673227946
+INFO:trainer:    val_bias_avg   : -0.039541303956260286
+INFO:trainer:    val_bias_std   : 4.998926321665446
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch34.pth ...
+DEBUG:trainer:Train Epoch: 35 [35/40 (88%)] Loss: 23.988150
+INFO:trainer:    epoch          : 35
+INFO:trainer:    loss           : 25.275007883707683
+INFO:trainer:    bias_avg       : -0.08633333103110392
+INFO:trainer:    bias_std       : 5.019236087799072
+INFO:trainer:    val_loss       : 25.526570320129395
+INFO:trainer:    val_bias_avg   : -0.02456123474985361
+INFO:trainer:    val_bias_std   : 5.049044609069824
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch35.pth ...
+DEBUG:trainer:Train Epoch: 36 [36/40 (90%)] Loss: 24.626827
+INFO:trainer:    epoch          : 36
+INFO:trainer:    loss           : 24.451056480407715
+INFO:trainer:    bias_avg       : -0.0413947037110726
+INFO:trainer:    bias_std       : 4.9367334842681885
+INFO:trainer:    val_loss       : 25.121150970458984
+INFO:trainer:    val_bias_avg   : -0.011649624289323887
+INFO:trainer:    val_bias_std   : 5.008921543757121
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch36.pth ...
+DEBUG:trainer:Train Epoch: 37 [37/40 (92%)] Loss: 29.114449
+INFO:trainer:    epoch          : 37
+INFO:trainer:    loss           : 25.008153915405273
+INFO:trainer:    bias_avg       : -0.01081879468013843
+INFO:trainer:    bias_std       : 4.995153745015462
+INFO:trainer:    val_loss       : 24.619103749593098
+INFO:trainer:    val_bias_avg   : 0.016628486453555524
+INFO:trainer:    val_bias_std   : 4.956152995427449
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch37.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 38 [38/40 (95%)] Loss: 25.165426
+INFO:trainer:    epoch          : 38
+INFO:trainer:    loss           : 27.568101565043133
+INFO:trainer:    bias_avg       : -0.005307868123054504
+INFO:trainer:    bias_std       : 5.223778088887532
+INFO:trainer:    val_loss       : 24.226374944051106
+INFO:trainer:    val_bias_avg   : -0.02245161992808183
+INFO:trainer:    val_bias_std   : 4.910343647003174
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch38.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 39 [39/40 (98%)] Loss: 26.178207
+INFO:trainer:    epoch          : 39
+INFO:trainer:    loss           : 25.69936466217041
+INFO:trainer:    bias_avg       : -0.018534916763504345
+INFO:trainer:    bias_std       : 5.061931133270264
+INFO:trainer:    val_loss       : 24.59971523284912
+INFO:trainer:    val_bias_avg   : -0.15144028731932244
+INFO:trainer:    val_bias_std   : 4.949638923009236
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch39.pth ...
+DEBUG:trainer:Train Epoch: 40 [40/40 (100%)] Loss: 26.380978
+INFO:trainer:    epoch          : 40
+INFO:trainer:    loss           : 23.823338826497395
+INFO:trainer:    bias_avg       : -0.12482175603508949
+INFO:trainer:    bias_std       : 4.858403325080872
+INFO:trainer:    val_loss       : 24.429190317789715
+INFO:trainer:    val_bias_avg   : -0.08716934236387412
+INFO:trainer:    val_bias_std   : 4.93546191851298
+INFO:trainer:Saving checkpoint: saved/models/new_model/0219_144414/checkpoint-epoch40.pth ...
+
