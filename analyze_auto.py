@@ -12,6 +12,7 @@ import time
 from model import model
 import random
 from sandbox import loss_analyzer as la
+from sandbox import presentation_analyzer as pa
 
 def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
@@ -107,6 +108,12 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
 if __name__ == '__main__':
 
+    
+    my_path = './csv_files/multiple_runs/case_2/run_7/epoch_25'
+    energy_start = 1
+    energy_end = 13
+    pa.hist_fig(my_path, energy_start, energy_end)
+
     location = './csv_files/multiple_runs/case_2'
     epochs_num = 40
     num_runs = 10
@@ -124,7 +131,7 @@ if __name__ == '__main__':
     random.seed(SEED)
     # analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
     analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
-
+    
     
 
 
