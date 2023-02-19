@@ -13,6 +13,7 @@ from model import model
 import random
 from sandbox import loss_analyzer as la
 from sandbox import presentation_analyzer as pa
+import rel_epochs as re
 
 def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
@@ -42,7 +43,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
         
         # epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
-        epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
+        epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
         
         
         # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
@@ -108,18 +109,27 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
 if __name__ == '__main__':
 
-    
-    my_path = './csv_files/multiple_runs/case_5/run_7/epoch_25'
+
+    num_case = 2
+    epochs_every = 5
+    total_epochs = 40
+    total_runs = 10
     energy_start = 1
     energy_end = 13
-    pa.hist_fig(my_path, energy_start, energy_end)
-
-    location = './csv_files/multiple_runs/case_2'
     epochs_num = 40
     num_runs = 10
     input_shape = (128,1,110,21)
+    location = './csv_files/multiple_runs/case_2'
+    my_path = './csv_files/multiple_runs/case_5/run_7/epoch_25'
+
+    re.rel_fig(num_case, epochs_every, total_epochs, total_runs) # relative error vs. epochs
+
     model = model.model_2d_48(model_type=None, num_classes=None)
-    la.calculate_loss(location, num_runs, epochs_num)
+    pa.hist_fig(my_path, energy_start, energy_end) # the figures for the presentation
+
+    
+    
+    la.calculate_loss(location, num_runs, epochs_num) # loss function vs. epochs
 
     with open('./run.txt', 'r') as f:
         run = int(f.read())
