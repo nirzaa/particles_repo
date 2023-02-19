@@ -109,7 +109,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 if __name__ == '__main__':
 
     
-    my_path = './csv_files/multiple_runs/case_2/run_7/epoch_25'
+    my_path = './csv_files/multiple_runs/case_1/run_7/epoch_25'
     energy_start = 1
     energy_end = 13
     pa.hist_fig(my_path, energy_start, energy_end)
