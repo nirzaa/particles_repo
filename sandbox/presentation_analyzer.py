@@ -102,7 +102,7 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     # plt.ylim(0, 20)
     plt.title('180 events')
     plt.savefig(f'{my_path}/projection.jpg')
-    yy1, xx = np.histogram(y, bins=100, range=(-3.0,3.0))
+    yy1, xx = np.histogram(y, bins=100)
     if presentation:
         p1.plotme_hist(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.pdf')
 

@@ -1,5 +1,7 @@
 import os
 import matplotlib.pyplot as plt
+import sys
+sys.path.append('./')
 from shan_scripts import plots_1 as p1
 from shan_scripts import plots_2 as p2
 
@@ -28,7 +30,7 @@ def calculate_loss(location, runs, epochs, presentation=False, case=None):
         plt.savefig(f"{location}/run_{run}/loss.png")
         plt.savefig(f"{location}/loss_run_{run}.png")
         if presentation:
-            p1.plotme_scatter(epoch_list, loss_test, f'./shan_scripts/multiple_runs/case{case}/loss.pdf')
+            p1.plotme_scatter(epoch_list, loss_test, f'./shan_scripts/multiple_runs/case_{case}/loss.pdf')
 
 if __name__ == '__main__':
     pass
