@@ -1,10 +1,10 @@
 import os
 import matplotlib.pyplot as plt
 import numpy as np
+from shan_scripts import plots_1 as p1
 
 
-
-def rel_fig(num_case, epochs_every, total_epochs, total_runs):
+def rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=False, case=None):
 
     epochs_list = range(epochs_every, total_epochs+epochs_every, epochs_every)
 
@@ -26,6 +26,8 @@ def rel_fig(num_case, epochs_every, total_epochs, total_runs):
     plt.ylabel('Relative error [%]')
     plt.legend(loc='center right', bbox_to_anchor=(1.1, 0.5))
     plt.savefig(f'./csv_files/multiple_runs/case_{num_case}/rel_error.jpeg')
+    if presentation:
+        p1.plotme_scatter(epochs_list, losses, f'./shan_scripts/multiple_runs/case_{num_case}/rel_error.pdf')
 
 if __name__ == '__main__':
     pass

@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.pylab as pylab
 import numpy as np
 from collections import Counter
+from shan_scripts import plots_1 as p1
+from shan_scripts import plots_2 as p2
 
 # ==== sizes ==== #
 # ‘xx-small’, ‘x-small’, ‘small’, ‘medium’, ‘large’, ‘x-large’, ‘xx-large’.
@@ -45,7 +47,7 @@ project_width = 0.2
     
 
 # ==== hist figure ==== #
-def hist_fig(my_path, energy_start, energy_end):
+def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     df = pd.read_csv(f'{my_path}/data_frame.csv')
     ho = pd.read_csv(f'{my_path}/hist_output.csv')
@@ -64,6 +66,8 @@ def hist_fig(my_path, energy_start, energy_end):
     plt.ylabel('Number of particles')
     plt.title('180 events')
     plt.savefig(f'{my_path}/hist.jpg')
+    if presentation:
+        p2.plotme(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
 
     # ==== (Nout-Ntrue)/Ntrue ==== #
 
@@ -98,6 +102,9 @@ def hist_fig(my_path, energy_start, energy_end):
     # plt.ylim(0, 20)
     plt.title('180 events')
     plt.savefig(f'{my_path}/projection.jpg')
+    yy1, xx = np.histogram(y, bins=100, range=(-3.0,3.0))
+    if presentation:
+        p1.plotme_hist(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.pdf')
 
     # ==== output-target ==== #
 
@@ -125,3 +132,5 @@ def hist_fig(my_path, energy_start, energy_end):
     plt.ylim(-1, 1)
     plt.title('180 events')
     plt.savefig(f'{my_path}/tot.jpg')
+    if presentation:
+        p1.plotme_scatter(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.pdf')
