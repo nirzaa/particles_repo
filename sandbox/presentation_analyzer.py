@@ -66,6 +66,7 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     plt.ylabel('Number of particles')
     plt.title('180 events')
     plt.savefig(f'{my_path}/hist.jpg')
+    plt.clf()
     if presentation:
         p2.plotme(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
 
