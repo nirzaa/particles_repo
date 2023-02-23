@@ -32,6 +32,6 @@ def calculate_loss(location, runs, epochs, presentation=False, case=None):
         plt.savefig(f"{location}/loss_run_{run}.png")
         if presentation:
             p.loss(epoch_list, loss_test, f'./shan_scripts/multiple_runs/case_{case}/loss.pdf')
-
+            p.loss(epoch_list, loss_test, f'./shan_scripts/multiple_runs/case_{case}/loss.jpeg')
 if __name__ == '__main__':
     pass

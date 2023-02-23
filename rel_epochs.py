@@ -21,7 +21,7 @@ def rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=False
             cntr += 1
     if presentation:
         p.rel_error(epochs_list, losses, f'./shan_scripts/multiple_runs/case_{num_case}/rel_error.pdf')
-
+        p.rel_error(epochs_list, losses, f'./shan_scripts/multiple_runs/case_{num_case}/rel_error.jpeg')
 if __name__ == '__main__':
     pass
 

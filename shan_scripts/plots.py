@@ -19,7 +19,7 @@ def hist(xx, yy1, yy2, location):
     ax1 = pyplot.subplot(7,1,(1,5))
     ax2 = pyplot.subplot(7,1,(6,7), sharex=ax1)
     ax = ax1 # shared x axis
-
+    ax.set_ylim(0,50000)
     data1 = numpy.random.normal(0,1, 10000)
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
     yy1 /= ((13-1) / 48)
@@ -54,6 +54,7 @@ def loss(xx, yy, fname):
     ax.scatter(xx,yy, color='k', label="Loss function")
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
+    ax.set_ylim(0,600)
     ax.set_xlabel(r'Epochs')
     ax.set_ylabel(r'MSELoss')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
@@ -68,6 +69,7 @@ def projection(xx, yy, fname):
     ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
+    ax.set_ylim(0,90)
     ax.set_xlabel(r'(Nout - Ntrue)/Ntrue [%]')
     ax.set_ylabel(r'Occurences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
@@ -83,6 +85,7 @@ def rel_error(xx, yy, fname):
     # ax.set_xlim(-3,3)
     ax.set_xlabel(r'Epochs')
     ax.set_ylabel(r'(Nout - Ntarget)/Ntarget [%]')
+    ax.set_ylim(-10,10)
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
     ax.text(0.05,0.7,f"180 BXs {layers} layers", \
@@ -94,6 +97,7 @@ def tot(xx, yy, fname):
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(0,3500)
+    ax.set_ylim(0,1)
     ax.set_xlabel(r'Multicipies')
     ax.set_ylabel(r'(Nout - Ntrue)/Ntrue [%]')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \

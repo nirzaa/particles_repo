@@ -59,7 +59,7 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     if presentation:
         p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
-
+        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.jpeg')
     # ==== (Nout-Ntrue)/Ntrue ==== #
 
     
@@ -83,7 +83,7 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     yy1, xx = np.histogram(y, bins=100)
     if presentation:
         p.projection(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.pdf')
-
+        p.projection(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.jpeg')
     # ==== output-target ==== #
 
 
@@ -96,4 +96,5 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     x = np.linspace(0, df.shape[0]-1, df.shape[0], dtype='int')
 
     if presentation:
-        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.pdf')
+        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.pdf')   
+        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.jpeg')
