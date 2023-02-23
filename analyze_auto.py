@@ -41,8 +41,8 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         my_path = f'{folder_name}/run_{run_num}'
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
         
-        epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
-        # epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
+        # epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
+        epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
         
         
         # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
@@ -96,7 +96,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 if __name__ == '__main__':
 
 
-    num_case = 1
+    num_case = 4
     epochs_every = 5
     total_epochs = 40
     total_runs = 10

@@ -7,7 +7,7 @@ import matplotlib.pyplot as pyplot
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
-layers = 20
+layers = 1
 
 def hist(xx, yy1, yy2, location):
 
@@ -93,7 +93,7 @@ def tot(xx, yy, fname):
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
-    # ax.set_xlim(-3,3)
+    ax.set_xlim(0,3500)
     ax.set_xlabel(r'Multicipies')
     ax.set_ylabel(r'(Nout - Ntrue)/Ntrue [%]')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
