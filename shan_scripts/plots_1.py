@@ -22,7 +22,7 @@ def plotme_hist(xx, yy, fname):
 
 def plotme_scatter(xx, yy, fname):
     fig,ax = pyplot.subplots()
-    ax.scatter(yy,xx, color='k', label="A LUXE Histo")
+    ax.scatter(xx,yy, color='k', label="A LUXE Histo")
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_xlabel(r'$E_e$ [GeV]')

@@ -1,11 +1,12 @@
 import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-import matplotlib.pylab as pylab
+# import seaborn as sns
+# import matplotlib.pyplot as plt
+# import matplotlib.pylab as pylab
 import numpy as np
 from collections import Counter
 from shan_scripts import plots_1 as p1
 from shan_scripts import plots_2 as p2
+from shan_scripts import plots as p
 
 # ==== sizes ==== #
 # ‘xx-small’, ‘x-small’, ‘small’, ‘medium’, ‘large’, ‘x-large’, ‘xx-large’.
@@ -15,7 +16,7 @@ params = {'legend.fontsize': 'x-large',
          'axes.titlesize':'xx-large',
          'xtick.labelsize':'large',
          'ytick.labelsize':'large'}
-pylab.rcParams.update(params)
+# pylab.rcParams.update(params)
 
 # https://github.com/nirzaa/particles_repo/tree/20-classes/presentation
 
@@ -56,32 +57,14 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     energies = np.linspace(energy_start, energy_end, ho.sum(axis=0).shape[0])
     width = 0.1 if ho.sum(axis=0).shape[0] > 30 else 0.6
 
-    sns.set_style("darkgrid")
-    plt.figure(num=0)
-    plt.clf()
-    plt.bar(x=energies, height=ho.sum(axis=0), label='output', alpha=0.5, width=width)
-    plt.bar(x=energies, height=ht.sum(axis=0), label='target', alpha=0.5, width=width)
-    plt.legend()
-    plt.xlabel('Energies [GeV]')
-    plt.ylabel('Number of particles')
-    plt.title('180 events')
-    plt.savefig(f'{my_path}/hist.jpg')
-    plt.clf()
     if presentation:
-        p2.plotme(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
+        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
 
     # ==== (Nout-Ntrue)/Ntrue ==== #
 
-    sns.set_style("darkgrid")
-    plt.figure(num=1)
-    plt.clf()
+    
     y = (np.array(ho.sum(axis=0)) - np.array(ht.sum(axis=0))) / np.array(ho.sum(axis=0))
-    plt.scatter(energies, y)
-    plt.xlabel('Energies [GeV]')
-    plt.ylabel('(Nout-Ntrue)/Ntrue')
-    plt.ylim(-ylim, ylim)
-    plt.title('180 events')
-    plt.savefig(f'{my_path}/nont.jpg')
+
 
     # ==== Projection of last figure ==== #
 
@@ -93,45 +76,24 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     for k in bin_partition.keys():
         final_list[int(k) - 1] = bin_partition[k]
 
-    sns.set_style("darkgrid")
-    plt.figure(num=1)
-    plt.clf()
-    plt.hist(y, 20, alpha=0.7)
     # plt.bar(x=np.linspace(-projlim, projlim, bin_num), height=y, label='output', alpha=0.5, width=project_width)
-    plt.xlabel('(Nout-Ntrue)/Ntrue')
-    plt.ylabel('Occurences')
+
     # plt.ylim(0, 20)
-    plt.title('180 events')
-    plt.savefig(f'{my_path}/projection.jpg')
+
     yy1, xx = np.histogram(y, bins=100)
     if presentation:
-        p1.plotme_hist(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.pdf')
+        p.projection(xx, yy1, f'./shan_scripts/multiple_runs/case_{case}/projection.pdf')
 
     # ==== output-target ==== #
 
-    sns.set_style("darkgrid")
-    plt.figure(num=2)
-    plt.clf()
+
     x = np.linspace(0, df.shape[0]-1, df.shape[0], dtype='int')
-    plt.scatter(x, df['target'], label='target')
-    plt.scatter(x, df['output'], label='output')
-    plt.legend()
-    plt.xlabel('Event number')
-    plt.ylabel('Number of particles')
-    plt.title('180 events')
-    plt.savefig(f'{my_path}/to.jpg')
+
 
     # ==== (o-t)/t ==== #
 
-    sns.set_style("darkgrid")
-    plt.figure(num=2)
-    plt.clf()
+
     x = np.linspace(0, df.shape[0]-1, df.shape[0], dtype='int')
-    plt.scatter(df['target'], (df['output'] - df['target'])/df['target'])
-    plt.xlabel('Number of multicipies')
-    plt.ylabel('(output - target)/target')
-    plt.ylim(-1, 1)
-    plt.title('180 events')
-    plt.savefig(f'{my_path}/tot.jpg')
+
     if presentation:
-        p1.plotme_scatter(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.pdf')
+        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./shan_scripts/multiple_runs/case_{case}/tot.pdf')

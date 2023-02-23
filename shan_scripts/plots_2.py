@@ -11,7 +11,7 @@ def plotme(xx, yy1, yy2, location):
     residue_normalised = residue/yy1
 
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
-    fig = pyplot.figure(num=123, figsize=(11.025,11.025))
+    fig = pyplot.figure(num=123, figsize=(14.025,14.025))
     ax1 = pyplot.subplot(7,1,(1,5))
     ax2 = pyplot.subplot(7,1,(6,7), sharex=ax1)
     ax = ax1 # shared x axis

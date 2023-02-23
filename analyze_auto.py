@@ -1,7 +1,6 @@
 import os
 import h5py
 import numpy as np
-import matplotlib.pyplot as plt
 import torch
 # from torchsummary import summary
 from torchinfo import summary
@@ -42,8 +41,8 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         my_path = f'{folder_name}/run_{run_num}'
         # for epoch_num in np.linspace(10, epoch_nums, int(epoch_nums / 10), dtype='int'):
         
-        # epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
-        epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
+        epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
+        # epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
         
         
         # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
@@ -51,7 +50,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
             with h5py.File(os.path.join(my_path, f'epoch_{epoch_num}', 'data.h5'), 'r') as hf:
                 output = np.array(hf.get('dataset_1'))
                 target = np.array(hf.get('dataset_2'))
-                rel_error = (output.sum()-target.sum()) / target.sum()
+                rel_error = (output.sum()-target.sum()) / target.sum() * 100
                 with open(os.path.join(folder_name, 'stats.txt'), 'a+') as f:
                     f.write(f'The average results for {epoch_num} epoch\n')
                     f.write('='*50)
@@ -59,7 +58,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
                     f.write(f'\nThe target average number of particles per event is: {target.mean():.2f}')
                     f.write(f'\nthe output N value is: {output.sum()}'
                     f'\nthe target N value is: {target.sum()}')
-                    f.write(f'\nrelative error for total N: {rel_error*100:.2f}%\n\n')
+                    f.write(f'\nrelative error for total N: {rel_error:.2f}%\n\n')
             output_list.append(output)
             target_list.append(target)
             rel_error_list.append(rel_error)
@@ -76,24 +75,11 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
     for i in range(mean_output.shape[1] - 1):
         text += f'{i}: {bars[i]:.1f} - {bars[i + 1]:.1f} \n'
     rng = [i + 1 for i in range(mean_output.shape[1])]
-    plt.figure(figsize=(12, 6))
-    plt.bar(rng, mean_output.sum(axis=0), label='output', alpha=0.5)
-    plt.errorbar(rng, mean_output.sum(axis=0), yerr=(1 / np.sqrt(np.abs(mean_output.sum(axis=0)))), fmt="+", color="b")
-    plt.bar(rng, mean_target.sum(axis=0), label='true_val', alpha=0.3)
-    plt.xlabel('bins number for energies')
-    plt.ylabel('number of particles')
-    # plt.text(15.5, 0.015, text,
-    plt.text(15.5, 0.015, text,
-                bbox={'facecolor': 'white', 'alpha': 0.5, 'pad': 3}, fontsize='x-small')
-
-    plt.xticks(rng, rotation=65)
-    plt.title(f'{len(output)} samples')
-    plt.legend()
-    plt.savefig(f'./csv_files/binsgraph.png')
 
 
 
-    rel_error_N = (mean_output.sum()-mean_target.sum()) / mean_target.sum()
+
+    # rel_error_N = (mean_output.sum()-mean_target.sum()) / mean_target.sum()
     t = mean_target.sum(axis=1)
     o = mean_output.sum(axis=1)
     with open(os.path.join(folder_name, 'stats.txt'), 'a+') as f:
@@ -103,14 +89,14 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f.write(f'\nThe target average number of particles per event is: {t.mean():.2f}')
         f.write(f'\nthe output N value is: {mean_output.sum()}'
         f'\nthe target N value is: {mean_target.sum()}')
-        f.write(f'\nrelative error for total N: {my_rel_error_mean*100:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
+        f.write(f'\nrelative error for total N: {my_rel_error_mean:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
 
 
 if __name__ == '__main__':
 
 
-    num_case = 4
+    num_case = 1
     epochs_every = 5
     total_epochs = 40
     total_runs = 10
@@ -142,7 +128,7 @@ if __name__ == '__main__':
 
     
     
-    la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
+    # la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
     
     
