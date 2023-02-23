@@ -1,0 +1,36 @@
+# Default rc file:
+# https://matplotlib.org/stable/tutorials/introductory/customizing.html#the-default-matplotlibrc-file
+
+# Plain white-black color, except for needed cases
+
+# Paper size and margin
+figure.figsize: 11.025,7.875 # convert cm to inch; 28x20 cm2; aspect ratio = 7:5
+figure.dpi:     72 # default dpi=100; irrelevant to pdf file export
+figure.subplot.left:    0.16
+figure.subplot.bottom:  0.16
+figure.subplot.right:   0.95
+figure.subplot.top:     0.95
+
+# Default font and its size
+font.size:          28 # 5% of fig height (20 cm); calculated based on 72 dpi
+font.family:        sans-serif
+font.sans-serif:    Helvetica, Arial, Latin Modern Sans, sans-serif
+
+# Detailed specifications of plot
+axes.grid:      True
+grid.linestyle: :
+legend.frameon:    False
+legend.fontsize:   24 # 4% of fig height (20 cm); calculated based on 72 dpi
+xtick.major.size:       16
+xtick.minor.size:       8
+xtick.minor.visible:    True
+xtick.top:              True
+xtick.direction:        in
+ytick.major.size:       16
+ytick.minor.size:       8
+ytick.minor.visible:    True
+ytick.right:            True
+ytick.direction:        in
+xaxis.labellocation:    right
+yaxis.labellocation:    top
+axes.labelpad:          22 # dots from tick labels; SetTitleOffset(1.4) assumably use 2.8*fontsize as the offset
