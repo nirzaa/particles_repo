@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     
     
-    # la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
+    la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
     
     
