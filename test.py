@@ -85,6 +85,7 @@ def main(config):
             en_dep, target, num, idx = en_dep.to(device), target.to(device), num.to(device), idx.to(device)
             target = target.float()
             output = model(en_dep)
+            
 
             my_target = target[:, 0]
             my_output = output[:, 0]
@@ -120,6 +121,8 @@ def main(config):
                 os.makedirs(my_path)
             df = df.sort_values(by=['target'])
             df.to_csv(os.path.join(my_path, "data_frame.csv"))
+            np.savetxt(os.path.join(my_path, 'events_numbers.csv'), idx.cpu(), delimiter=',')
+
             with h5py.File(os.path.join(my_path, 'data.h5'), 'w') as hf:
                 hf.create_dataset('dataset_1', data=output.cpu())
                 hf.create_dataset('dataset_2', data=target.cpu())
