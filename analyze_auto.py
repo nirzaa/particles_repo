@@ -117,18 +117,16 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     np.random.seed(SEED)
     random.seed(SEED)
-    # analyze(model, input_shape=(128,1,110,21), num_runs=1, folder_name='long_runs/case_5', epoch_nums=100)
     
-    analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
+    # analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
-    re.rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
+    # re.rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
 
     # pay attention the hist is based on the run mentioned in my_path
     pa.hist_fig(my_path, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
 
     
-    
-    la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
+    # la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
     
     

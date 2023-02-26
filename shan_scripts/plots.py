@@ -21,9 +21,9 @@ def hist(xx, yy1, yy2, location):
     ax = ax1 # shared x axis
     ax.set_ylim(0,50000)
     data1 = numpy.random.normal(0,1, 10000)
-    _, xx = numpy.histogram(data1, bins=48, range=(1,13))
-    yy1 /= ((13-1) / 48)
-    yy2 /= ((13-1) / 48)
+    _, xx = numpy.histogram(data1, bins=37, range=(1,10))
+    yy1 /= ((10-1) / 48)
+    yy2 /= ((10-1) / 48)
     ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
     ax1.stairs(yy2,xx, fill=False, color='k', linestyle='--', label=r"$N_\mathregular{recon}$")
     ax2.stairs(residue_normalised,xx, color='k')

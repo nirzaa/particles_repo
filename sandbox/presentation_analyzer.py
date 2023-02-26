@@ -51,8 +51,18 @@ project_width = 0.2
 def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     df = pd.read_csv(f'{my_path}/data_frame.csv')
-    ho = pd.read_csv(f'{my_path}/hist_output.csv')
-    ht = pd.read_csv(f'{my_path}/hist_target.csv')
+    ho = np.array(pd.read_csv(f'{my_path}/hist_output.csv'))
+    ht = np.array(pd.read_csv(f'{my_path}/hist_target.csv'))
+    
+    # int((13-10)/((13-1) / 48)) = 12
+    ho_last_12 = np.expand_dims(ho[:, -12:].sum(axis=1), axis=1)
+    ht_last_12 = np.expand_dims(ht[:, -12:].sum(axis=1), axis=1)
+
+    ho_new = np.concatenate((ho[:,:-12], ho_last_12), axis=1)
+    ht_new = np.concatenate((ht[:,:-12], ht_last_12), axis=1)
+
+    ho = ho_new
+    ht = ht_new
 
     energies = np.linspace(energy_start, energy_end, ho.sum(axis=0).shape[0])
     width = 0.1 if ho.sum(axis=0).shape[0] > 30 else 0.6
