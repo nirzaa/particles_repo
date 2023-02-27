@@ -113,7 +113,7 @@ def ratio(xx, yy, fname):
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
-    ax.set_ylim(0,300)
+    ax.set_ylim(0,4000)
     ax.set_xlabel(r'E[GeV](target)')
     ax.set_ylabel(r'E[GeV](output) / PixelSum')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \

@@ -31,8 +31,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_5' # case number
-    layers = 20
+    name = 'case_4' # case number
+    layers = 1
 
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
@@ -56,7 +56,7 @@ if __name__ == '__main__':
     for i in tqdm(x):
         y = list(en_dep[i].keys())
         for j in y:
-            if j[1] < layers: # taking only the pixels that are in the layers we take into account
+            if j[0] <= layers: # taking only the pixels that are in the layers we take into account
                 try:
                     sum_dict[i] += en_dep[i][j]
                 except:
