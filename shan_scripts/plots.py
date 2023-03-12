@@ -71,7 +71,7 @@ def projection(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
     ax.set_ylim(0,22)
-    ax.set_xlabel(r'(Nout - Ntrue)/Ntrue [%]')
+    ax.set_xlabel(r'(Nout - Ntrue)/Ntrue')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -100,7 +100,7 @@ def tot(xx, yy, fname):
     ax.set_xlim(0,3500)
     ax.set_ylim(-1,1)
     ax.set_xlabel(r'Multicipies')
-    ax.set_ylabel(r'(Nout - Ntrue)/Ntrue [%]')
+    ax.set_ylabel(r'(Nout - Ntrue)/Ntrue')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
     ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
