@@ -13,6 +13,7 @@ import random
 from sandbox import loss_analyzer as la
 from sandbox import presentation_analyzer as pa
 import rel_epochs as re
+import pandas as pd
 
 def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
 
@@ -91,6 +92,26 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f'\nthe target N value is: {mean_target.sum()}')
         f.write(f'\nrelative error for total N: {my_rel_error_mean:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
+def fluctuation_calculator(num_case, epoch):
+    output_list = list()
+    target_list = list()
+    for run in range(10):
+        my_path = f'./csv_files/multiple_runs/case_{num_case}/run_{run}/epoch_{epoch}'
+        ho = np.array(pd.read_csv(f'{my_path}/hist_output.csv'))
+        ht = np.array(pd.read_csv(f'{my_path}/hist_target.csv'))
+        output_list.append(ho.sum(axis=0))
+        target_list.append(ht.sum(axis=0))
+    output_hist = np.stack(output_list)
+    target_hist = np.stack(target_list)
+
+    output_std = np.std(output_hist, axis=0)
+    target_std = np.std(target_hist, axis=0)
+
+    np.savetxt(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/output_std.csv", output_std, delimiter=",")
+    np.savetxt(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/target_std.csv", target_std, delimiter=",")
+
+    return None
+
 
 
 if __name__ == '__main__':
@@ -117,6 +138,8 @@ if __name__ == '__main__':
     torch.backends.cudnn.benchmark = False
     np.random.seed(SEED)
     random.seed(SEED)
+
+    fluctuation_calculator(num_case=3, epoch=25)
     
     analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
