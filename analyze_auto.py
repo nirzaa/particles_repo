@@ -107,8 +107,16 @@ def fluctuation_calculator(num_case, epoch):
     output_std = np.std(output_hist, axis=0)
     target_std = np.std(target_hist, axis=0)
 
-    np.savetxt(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/output_std.csv", output_std, delimiter=",")
-    np.savetxt(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/target_std.csv", target_std, delimiter=",")
+    output_mean = np.mean(output_hist, axis=0)
+    target_mean = np.mean(target_hist, axis=0)
+
+    df_output = pd.DataFrame({'output_mean': output_mean, 'output_std': output_std})
+    df_target = pd.DataFrame({'target_mean': target_mean, 'target_std': target_std})
+
+    df_output.to_csv(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/output_std.csv", index=False)
+    df_target.to_csv(f"/mnt/sda1/nirz/particles_repo/shan_scripts/multiple_runs/case_{num_case}/target_std.csv", index=False)
+
+
 
     return None
 
