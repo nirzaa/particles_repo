@@ -68,8 +68,8 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     width = 0.1 if ho.sum(axis=0).shape[0] > 30 else 0.6
 
     if presentation:
-        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf')
-        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.jpeg')
+        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.pdf', case)
+        p.hist(energies, ho.sum(axis=0), ht.sum(axis=0), f'./shan_scripts/multiple_runs/case_{case}/hist.jpeg', case)
     # ==== (Nout-Ntrue)/Ntrue ==== #
 
     

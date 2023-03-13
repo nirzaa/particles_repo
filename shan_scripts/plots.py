@@ -3,16 +3,22 @@
 import sys, os
 import numpy, matplotlib
 import matplotlib.pyplot as pyplot
+import numpy as np
+import pandas as pd
 # from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
-layers = 1
+layers = 5
 
-def hist(xx, yy1, yy2, location):
+def hist(xx, yy1, yy2, location, case=None):
+    # yy1 is output, yy2 is target
 
     residue = numpy.array(yy2)-numpy.array(yy1)
     residue_normalised = residue/yy1
+
+    output_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/output_std.csv')
+    target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
 
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
     fig = pyplot.figure(num=123, figsize=(14.025,14.025))
@@ -22,9 +28,13 @@ def hist(xx, yy1, yy2, location):
     ax.set_ylim(0,50000)
     data1 = numpy.random.normal(0,1, 10000)
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
+    xx_errorbar = np.linspace(1, 13, 48)
     yy1 /= ((13-1) / yy1.shape[0])
     yy2 /= ((13-1) / yy2.shape[0])
     ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
+    ax1.errorbar(xx_errorbar, yy1, yerr=output_std['output_std'], linestyle='none')
+    ax1.errorbar(xx_errorbar, yy2, yerr=target_std['target_std'], linestyle='none')
+
     ax1.stairs(yy2,xx, fill=False, color='k', linestyle='--', label=r"$N_\mathregular{recon}$")
     ax2.stairs(residue_normalised,xx, color='k')
     ax.set_xlim(xx[0],xx[-1])
