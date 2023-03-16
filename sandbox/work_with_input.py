@@ -19,8 +19,8 @@ def plot_image(ecalimage, name):
     fig,ax = pyplot.subplots()
     im = ax.imshow(ecalimage,interpolation='none',origin='lower',cmap='jet')
     ax.grid(False)
-    ax.set_xlabel(r'x [index]')
-    ax.set_ylabel(r'z [index]')
+    ax.set_xlabel(r'x [width]')
+    ax.set_ylabel(r'z [depth]')
     fig.colorbar(im, ax=ax, location='bottom', pad=0.25, \
         label=r"$E_\mathregular{dep}$ [GeV]")
     ax.text(5,32,r"$LUXE$ Input Example", \

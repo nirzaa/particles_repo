@@ -14,11 +14,16 @@ layers = 5
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
 
+    output_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/output_std.csv')
+    target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
+
     residue = numpy.array(yy2)-numpy.array(yy1)
     residue_normalised = residue/yy1
 
-    output_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/output_std.csv')
-    target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
+    std_t = target_std['target_std']
+    std_o = output_std['output_std']
+    cov = np.mean(yy2*yy1) - np.mean(yy1) * np.mean(yy2)
+    delta = 1/(yy2**2)*(std_o**2) + ((yy1**2) / (yy2**4)) * (std_t**2) - 2*(yy1/yy2**3)*cov
 
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
     fig = pyplot.figure(num=123, figsize=(14.025,14.025))
@@ -80,7 +85,7 @@ def projection(xx, yy, fname):
     ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
-    ax.set_ylim(0,22)
+    # ax.set_ylim(0,22)
     ax.set_xlabel(r'(Nout - Ntrue)/Ntrue')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
@@ -109,7 +114,7 @@ def tot(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(0,3500)
     ax.set_ylim(-1,1)
-    ax.set_xlabel(r'Multicipies')
+    ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'(Nout - Ntrue)/Ntrue')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -127,8 +132,8 @@ def ratio(xx, yy, fname):
     ax.set_xlabel(r'E[GeV](target)')
     ax.set_ylabel(r'E[GeV](output) / PixelSum')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
+        transform=ax.transAxes, verticalalignment='top', set_horizontalalignment='right')
     ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+        transform=ax.transAxes, verticalalignment='top', set_horizontalalignment='right')
     pyplot.savefig(fname)
 
