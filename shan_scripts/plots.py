@@ -102,7 +102,7 @@ def projection(xx, yy, fname):
     ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
-    # ax.set_ylim(0,22)
+    ax.set_ylim(0,45)
     ax.set_xlabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
