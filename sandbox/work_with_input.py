@@ -74,9 +74,9 @@ if __name__ == '__main__':
     x = np.transpose(x)
     plot_image(x, f'./sandbox/figures/{name}_image')
     
-    events_numbers = pd.read_csv('/mnt/sda1/nirz/particles_repo/csv_files/epoch_25/events_numbers.csv', header=None, dtype='int')
-    hist_target = pd.read_csv('/mnt/sda1/nirz/particles_repo/csv_files/epoch_25/hist_target.csv', header=None)
-    hist_output = pd.read_csv('/mnt/sda1/nirz/particles_repo/csv_files/epoch_25/hist_output.csv', header=None)
+    events_numbers = pd.read_csv('./csv_files/epoch_25/events_numbers.csv', header=None, dtype='int')
+    hist_target = pd.read_csv('./csv_files/epoch_25/hist_target.csv', header=None)
+    hist_output = pd.read_csv('./csv_files/epoch_25/hist_output.csv', header=None)
     events_numbers = events_numbers.to_numpy().squeeze(axis=1)
     hist_target = hist_target.to_numpy()
     hist_output = hist_output.to_numpy()

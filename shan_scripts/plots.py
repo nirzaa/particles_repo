@@ -18,7 +18,7 @@ def hist(xx, yy1, yy2, location, case=None):
     target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
 
     residue = numpy.array(yy2)-numpy.array(yy1)
-    residue_normalised = residue/yy1
+    residue_normalised = residue/yy2
 
     std_t = target_std['target_std']
     std_o = output_std['output_std']
@@ -86,7 +86,7 @@ def projection(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
     # ax.set_ylim(0,22)
-    ax.set_xlabel(r'(Nout - Ntrue)/Ntrue')
+    ax.set_xlabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -100,7 +100,7 @@ def rel_error(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_xlabel(r'Epochs')
-    ax.set_ylabel(r'(Nout - Ntarget)/Ntarget [%]')
+    ax.set_ylabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
     ax.set_ylim(-10,10)
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -115,7 +115,7 @@ def tot(xx, yy, fname):
     ax.set_xlim(0,3500)
     ax.set_ylim(-1,1)
     ax.set_xlabel(r'Multiplicity')
-    ax.set_ylabel(r'(Nout - Ntrue)/Ntrue')
+    ax.set_ylabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
     ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
@@ -129,8 +129,8 @@ def ratio(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,4000)
-    ax.set_xlabel(r'E[GeV](target)')
-    ax.set_ylabel(r'E[GeV](output) / PixelSum')
+    ax.set_xlabel(r'$E_{generated}[GeV]$')
+    ax.set_ylabel(r'$E_{reconstructed}[GeV] / PixelSum$')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top', set_horizontalalignment='right')
     ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
