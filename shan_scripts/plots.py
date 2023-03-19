@@ -31,11 +31,12 @@ def hist(xx, yy1, yy2, location, case=None):
 
 
     cov = multiply - mean_o * mean_t
+    correlation = cov / (std_t * std_o)
     delta = 1/(yy2**2)*(std_o**2) + ((yy1**2) / (yy2**4)) * (std_t**2) - 2*(yy1/yy2**3)*cov
-
+    delta_root = np.sqrt(delta)
     # ========== Save the Values ============= #
 
-    df = pd.DataFrame({'cov': cov, 'delta': delta})
+    df = pd.DataFrame({'cov': cov, 'delta': delta, 'correlation' : correlation, 'delta_root': delta_root})
     df.to_csv(f"./shan_scripts/multiple_runs/case_{case}/cov_delta.csv", index=False)
     
     # ======================================== #
