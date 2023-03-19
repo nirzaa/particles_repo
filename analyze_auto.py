@@ -110,8 +110,10 @@ def fluctuation_calculator(num_case, epoch):
     output_mean = np.mean(output_hist, axis=0)
     target_mean = np.mean(target_hist, axis=0)
 
-    df_output = pd.DataFrame({'output_mean': output_mean, 'output_std': output_std})
-    df_target = pd.DataFrame({'target_mean': target_mean, 'target_std': target_std})
+    multiply_mean = np.mean(target_hist * output_hist, axis=0)
+
+    df_output = pd.DataFrame({'output_mean': output_mean, 'output_std': output_std, 'multiply_mean':multiply_mean})
+    df_target = pd.DataFrame({'target_mean': target_mean, 'target_std': target_std, 'multiply_mean':multiply_mean})
 
     df_output.to_csv(f"./shan_scripts/multiple_runs/case_{num_case}/output_std.csv", index=False)
     df_target.to_csv(f"./shan_scripts/multiple_runs/case_{num_case}/target_std.csv", index=False)
@@ -125,7 +127,7 @@ def fluctuation_calculator(num_case, epoch):
 if __name__ == '__main__':
 
 
-    num_case = 4
+    num_case = 3
     epochs_every = 5
     total_epochs = 40
     total_runs = 10
@@ -147,7 +149,7 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
 
-    # fluctuation_calculator(num_case=3, epoch=25)
+    # fluctuation_calculator(num_case=5, epoch=25)
     
     # analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 

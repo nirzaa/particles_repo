@@ -13,6 +13,9 @@ layers = 5
 
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
+    
+    yy1 = np.array(yy1)
+    yy2 = np.array(yy2)
 
     output_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/output_std.csv')
     target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
@@ -22,8 +25,20 @@ def hist(xx, yy1, yy2, location, case=None):
 
     std_t = target_std['target_std']
     std_o = output_std['output_std']
-    cov = np.mean(yy2*yy1) - np.mean(yy1) * np.mean(yy2)
+    mean_t = target_std['target_mean']
+    mean_o = output_std['output_mean']
+    multiply = output_std['multiply_mean']
+
+
+    cov = multiply - mean_o * mean_t
     delta = 1/(yy2**2)*(std_o**2) + ((yy1**2) / (yy2**4)) * (std_t**2) - 2*(yy1/yy2**3)*cov
+
+    # ========== Save the Values ============= #
+
+    df = pd.DataFrame({'cov': cov, 'delta': delta})
+    df.to_csv(f"./shan_scripts/multiple_runs/case_{case}/cov_delta.csv", index=False)
+    
+    # ======================================== #
 
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
     fig = pyplot.figure(num=123, figsize=(14.025,14.025))
