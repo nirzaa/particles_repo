@@ -9,7 +9,7 @@ import pandas as pd
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
-layers = 5
+layers = 20
 
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
@@ -133,10 +133,10 @@ def tot(xx, yy, fname):
     ax.set_ylim(-1,1)
     ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
+    ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
 def ratio(xx, yy, fname):

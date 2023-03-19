@@ -127,7 +127,7 @@ def fluctuation_calculator(num_case, epoch):
 if __name__ == '__main__':
 
 
-    num_case = 4
+    num_case = 5
     epochs_every = 5
     total_epochs = 40
     total_runs = 10
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     num_runs = 10
     input_shape = (128,1,110,21)
     location = f'./csv_files/multiple_runs/case_{num_case}'
-    my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_35'
+    my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_25'
     model = model.model_2d_48_1(model_type=None, num_classes=None)
 
     with open('./run.txt', 'r') as f:
