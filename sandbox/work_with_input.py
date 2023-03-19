@@ -31,8 +31,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_4' # case number
-    layers = 1
+    name = 'case_5' # case number
+    layers = 20
 
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     # mat = scipy.io.loadmat(en_dep_file)
     # x = list(mat.keys())[3:]
     en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
-    energies = EcalDataIO.energymatio(en_file)
+    # energies = EcalDataIO.energymatio(en_file)
     
     key = list(en_dep.keys())[0]
 

@@ -64,7 +64,7 @@ def hist(xx, yy1, yy2, location, case=None):
     for label in ax.get_xticklabels(): label.set_visible(False)
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
-    ax2.set_ylabel(r'$(N_{generated} - N_{reconstructed})$/$N_\mathregular{true}$', loc="center")
+    ax2.set_ylabel(r'$(N_{gen} - N_{rec})$/$N_\mathregular{true}$', loc="center")
     fig.align_ylabels([ax1,ax2])
     ax2.set_xlabel(r'$E_e$ [GeV]')
     ax2.set_ylim(-.2,.2)
@@ -103,7 +103,7 @@ def projection(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(-.5,.5)
     ax.set_ylim(0,45)
-    ax.set_xlabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
+    ax.set_xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -117,7 +117,7 @@ def rel_error(xx, yy, fname):
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_xlabel(r'Epochs')
-    ax.set_ylabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
+    ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.set_ylim(-10,10)
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
@@ -132,7 +132,7 @@ def tot(xx, yy, fname):
     ax.set_xlim(0,3500)
     ax.set_ylim(-1,1)
     ax.set_xlabel(r'Multiplicity')
-    ax.set_ylabel(r'$(N_{reconstructed} - N_{generated})/N_{generated}$')
+    ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
@@ -145,12 +145,12 @@ def ratio(xx, yy, fname):
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
-    ax.set_ylim(0,4000)
-    ax.set_xlabel(r'$E_{generated}[GeV]$')
-    ax.set_ylabel(r'$E_{reconstructed}[GeV] / PixelSum$')
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top', set_horizontalalignment='right')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top', set_horizontalalignment='right')
+    ax.set_ylim(0,400)
+    ax.set_xlabel(r'$E_{gen}[GeV]$')
+    ax.set_ylabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        transform=ax.transAxes, verticalalignment='top')
+    ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
