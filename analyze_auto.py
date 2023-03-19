@@ -127,7 +127,7 @@ def fluctuation_calculator(num_case, epoch):
 if __name__ == '__main__':
 
 
-    num_case = 1
+    num_case = 3
     epochs_every = 5
     total_epochs = 40
     total_runs = 10
