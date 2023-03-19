@@ -49,7 +49,7 @@ def hist(xx, yy1, yy2, location, case=None):
     ax.set_ylim(0,50000)
     data1 = numpy.random.normal(0,1, 10000)
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
-    xx_errorbar = np.linspace(1, 13, 48)
+    xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
     yy1 /= ((13-1) / yy1.shape[0])
     yy2 /= ((13-1) / yy2.shape[0])
     ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
@@ -58,12 +58,13 @@ def hist(xx, yy1, yy2, location, case=None):
 
     ax1.stairs(yy2,xx, fill=False, color='k', linestyle='--', label=r"$N_\mathregular{recon}$")
     ax2.stairs(residue_normalised,xx, color='k')
+    ax2.errorbar(xx_errorbar, residue_normalised, yerr=delta_root, linestyle='none')
     ax.set_xlim(xx[0],xx[-1])
     # ax2.set_ylim(-1,1)
     for label in ax.get_xticklabels(): label.set_visible(False)
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
-    ax2.set_ylabel(r'$\Delta N$/$N_\mathregular{true}$', loc="center")
+    ax2.set_ylabel(r'$(N_{generated} - N_{reconstructed})$/$N_\mathregular{true}$', loc="center")
     fig.align_ylabels([ax1,ax2])
     ax2.set_xlabel(r'$E_e$ [GeV]')
     ax2.set_ylim(-.2,.2)
