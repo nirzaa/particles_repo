@@ -23,12 +23,13 @@ def test_func(folder_name):
 
 if __name__ == '__main__':
     # python -u run_auto.py | tee ./csv_files/terminal.txt
+    k = 5
     os.system('clear')
     os.system('tmux clear-history')
     gpu_name = torch.cuda.get_device_name(0)
     print(f'We are using {gpu_name}')
     print('='*70)
-    num_runs = 10
+    # num_runs = 10
     for run in range(num_runs):
         os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
