@@ -30,12 +30,19 @@ if __name__ == '__main__':
     print(f'We are using {gpu_name}')
     print('='*70)
     # num_runs = 10
-    for run in range(num_runs):
+    for run in range(k):
         os.system(f'tmux capture-pane -pS - > ./csv_files/terminal_tmux_{run}.txt')
         os.system('clear')
         os.system('tmux clear-history')
         with h5py.File(os.path.join('./', 'run_num.h5'), 'w') as f:
             dset = f.create_dataset("mydataset", data=run, dtype='int')
+
+        with open('./my_run.txt', 'w') as f:
+            f.write(run)
+
+        with open('./k.txt', 'w') as f:
+            f.write(k)
+
         # fix random seeds for reproducibility
         SEED = run
         torch.manual_seed(SEED)

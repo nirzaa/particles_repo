@@ -26,10 +26,31 @@ class data_loader(BaseDataLoader):
 
     def __init__(self, data_dir, batch_size, shuffle=True, validation_split=0.0, num_workers=1, training=True):
 
+        # if training == True:
+        #     self.dataset = torch.load(Path(data_dir) / "train//train.pt")
+        # else:
+        #     self.dataset = torch.load(Path(data_dir) / "test//test.pt")
+
+        with open('./my_run.txt', 'r') as f:
+            run = int(f.read())
+
+        with open('./k.txt', 'r') as f:
+            k = int(f.read())
+        
+
+        x = torch.load(Path(data_dir) / "train//train.pt")
+        y = torch.load(Path(data_dir) / "test//test.pt")
+        z = torch.utils.data.ConcatDataset([x, y])
+
+        splitter = int(np.floor(len(z) / k))
+        delete_it = list(range(run*splitter, (run+1)*splitter))
+        train_borders = list(range(len(z)))
+
         if training == True:
-            self.dataset = torch.load(Path(data_dir) / "train//train.pt")
+            borders = [i for i in train_borders if i not in delete_it]
+            self.dataset = torch.utils.data.Subset(z, borders)
         else:
-            self.dataset = torch.load(Path(data_dir) / "test//test.pt")
+            self.dataset = torch.utils.data.Subset(z, delete_it)
 
         print("Dataset len: ", len(self.dataset))
         super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
@@ -198,45 +219,7 @@ class Bin_energy_data(Dataset):
         en_list = torch.Tensor(self.energies[key])
         num_showers = len(en_list)
 
-        #########################################
-        ############ Shrink sample ##############
-        # d_tens = d_tens[:, 4:7, 0:10]
-        # d_tens = torch.transpose(d_tens, 0, 1)
-        #########################################
-
-        #########################################
-        ############ Layer Removal ##############
-        # Zerofi Z layers
-        # for i in range(0, 7):
-        #     d_tens[:, :, (20 - i)] = 0
-
-        # Zerofi Y layers
-        # for i in range(0, 6):
-        #     d_tens[:, (10 - i), :] = 0
-        #     d_tens[:, i, :] = 0
-        #########################################
-
-        #########################################
-        ########## Alpha Experiment #############
-        # alpha = 1
-        #
-        # d_tens = np.cos(np.deg2rad(alpha)) * d_tens + np.sin(np.deg2rad(alpha)) * torch.rand(torch.Size([110, 11, 21]))
-        # d_tens = np.cos(np.deg2rad(alpha)) * d_tens + np.sin(np.deg2rad(alpha)) * torch.rand(torch.Size([110, 3, 10]))
-        # d_tens = (1-alpha) * d_tens + (alpha) * torch.rand(torch.Size([110, 11, 21]))
-        #########################################
-
-        #########################################
-        ############ Normalization ##############
-        # if self.file == 3:
-        #     d_tens = (d_tens - 0.0935) / 1.4025
-        #########################################
-
-        #########################################
-        ############ Superposition ##############
-        # d_tens, num_showers = self.random_sample_for_addition(d_tens, num_showers, 1)
-        #########################################
-
-        #########################################
+        
         ######### Energy bins Generation ########
         hf = h5py.File(os.path.join('./', 'num_classes.h5'), 'r')
         num_classes = hf.get('dataset_1')
@@ -267,6 +250,6 @@ class Bin_energy_data(Dataset):
         #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:1], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:20], final_list, num_showers, idx
         
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
