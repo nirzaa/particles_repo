@@ -38,10 +38,10 @@ if __name__ == '__main__':
             dset = f.create_dataset("mydataset", data=run, dtype='int')
 
         with open('./my_run.txt', 'w') as f:
-            f.write(run)
+            f.write(str(run))
 
         with open('./k.txt', 'w') as f:
-            f.write(k)
+            f.write(str(k))
 
         # fix random seeds for reproducibility
         SEED = run
