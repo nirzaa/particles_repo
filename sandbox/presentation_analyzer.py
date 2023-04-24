@@ -48,7 +48,7 @@ project_width = 0.2
     
 
 # ==== hist figure ==== #
-def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
+def hist_fig(my_path, shan_location, energy_start, energy_end, presentation=False, case=None):
 
     # ================ good for specific run ================ #
     # df = pd.read_csv(f'{my_path}/data_frame.csv')
@@ -59,8 +59,8 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     # ================ good for average run ================ #
     df = pd.read_csv(f'{my_path}/data_frame.csv')
-    ho = pd.read_csv(f"./{my_path}/output_std.csv")
-    ht = pd.read_csv(f"./{my_path}/target_std.csv")
+    ho = pd.read_csv(f"./{shan_location}/output_std.csv")
+    ht = pd.read_csv(f"./{shan_location}/target_std.csv")
     # ======================================================== #
     
 
@@ -87,8 +87,8 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     # ================ good for average run ================ #
     if presentation:
-        p.hist(energies, ho['output_mean'], ht['target_mean'], f'./{my_path}/hist.pdf', case)
-        p.hist(energies, ho['output_mean'], ht['target_mean'], f'./{my_path}/hist.jpeg', case)
+        p.hist(shan_location, energies, ho['output_mean'], ht['target_mean'], f'./{shan_location}/hist.pdf', case)
+        p.hist(shan_location, energies, ho['output_mean'], ht['target_mean'], f'./{shan_location}/hist.jpeg', case)
     # ======================================================== #
 
     
@@ -115,8 +115,8 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     y[y>0.5] = 0
     yy1, xx = np.histogram(y, bins=30)
     if presentation:
-        p.projection(xx, yy1, f'./{my_path}/projection.pdf')
-        p.projection(xx, yy1, f'./{my_path}/projection.jpeg')
+        p.projection(xx, yy1, f'./{shan_location}/projection.pdf')
+        p.projection(xx, yy1, f'./{shan_location}/projection.jpeg')
     # ==== output-target ==== #
 
 
@@ -129,5 +129,5 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
     x = np.linspace(0, df.shape[0]-1, df.shape[0], dtype='int')
 
     if presentation:
-        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./{my_path}/tot.pdf')   
-        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./{my_path}/tot.jpeg')
+        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./{shan_location}/tot.pdf')   
+        p.tot(df['target'], (df['output'] - df['target'])/df['target'], f'./{shan_location}/tot.jpeg')

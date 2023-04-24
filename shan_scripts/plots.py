@@ -11,14 +11,14 @@ pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
 layers = 20
 
-def hist(xx, yy1, yy2, location, case=None):
+def hist(shan_location, xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
     
     yy1 = np.array(yy1)
     yy2 = np.array(yy2)
 
-    output_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/output_std.csv')
-    target_std = pd.read_csv(f'./shan_scripts/multiple_runs/case_{case}/target_std.csv')
+    output_std = pd.read_csv(f'./{shan_location}/output_std.csv')
+    target_std = pd.read_csv(f'./{shan_location}/target_std.csv')
 
     residue = numpy.array(yy2)-numpy.array(yy1)
     residue_normalised = residue/yy2
@@ -37,7 +37,7 @@ def hist(xx, yy1, yy2, location, case=None):
     # ========== Save the Values ============= #
 
     df = pd.DataFrame({'cov': cov, 'delta': delta, 'correlation' : correlation, 'delta_root': delta_root})
-    df.to_csv(f"./shan_scripts/multiple_runs/case_{case}/cov_delta.csv", index=False)
+    df.to_csv(f"./{shan_location}/cov_delta.csv", index=False)
     
     # ======================================== #
 

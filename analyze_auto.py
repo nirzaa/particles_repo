@@ -30,7 +30,8 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         sys.stdout = log_file
         print('Model architecture')
         print('='*40)
-        summary(model, input_size=input_shape, col_names=('input_size', 'output_size'))
+        print(model)
+        # summary(model, input_size=input_shape, col_names=('input_size', 'output_size'))
         print('\n\nThe Results:')
         print('='*50)
         print()
@@ -92,11 +93,11 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f'\nthe target N value is: {mean_target.sum()}')
         f.write(f'\nrelative error for total N: {my_rel_error_mean:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
-def fluctuation_calculator(num_case, epoch, my_path):
+def fluctuation_calculator(num_case, epoch):
     output_list = list()
     target_list = list()
     for run in range(10):
-        my_path = f'./{my_path}/run_{run}/epoch_{epoch}'
+        my_path = f'./csv_files/multiple_runs/case_{num_case}/run_{run}/epoch_{epoch}'
         ho = np.array(pd.read_csv(f'{my_path}/hist_output.csv'))
         ht = np.array(pd.read_csv(f'{my_path}/hist_target.csv'))
         output_list.append(ho.sum(axis=0))
@@ -115,8 +116,8 @@ def fluctuation_calculator(num_case, epoch, my_path):
     df_output = pd.DataFrame({'output_mean': output_mean, 'output_std': output_std, 'multiply_mean':multiply_mean})
     df_target = pd.DataFrame({'target_mean': target_mean, 'target_std': target_std, 'multiply_mean':multiply_mean})
 
-    df_output.to_csv(f"./{my_path}/output_std.csv", index=False)
-    df_target.to_csv(f"./{my_path}/target_std.csv", index=False)
+    df_output.to_csv(f"./{shan_location}/output_std.csv", index=False)
+    df_target.to_csv(f"./{shan_location}/target_std.csv", index=False)
 
 
 
@@ -135,10 +136,10 @@ if __name__ == '__main__':
     energy_end = 13
     epochs_num = 40
     num_runs = 5
-    input_shape = (128,20,110,21)
+    input_shape = (128,1,110,21)
     location = f'./csv_files/kfold5/case_{num_case}'
-    # location = f'./csv_files/multiple_runs/case_{num_case}'
-    # my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_25'
+    shan_location = f'./shan_scripts/kfold5/case_{num_case}'
+    my_path = f'./csv_files/kfold5/case_{num_case}/run_1/epoch_25'
     model = model.model_2d_48_1(model_type=None, num_classes=None)
 
     with open('./run.txt', 'r') as f:
@@ -150,17 +151,14 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
 
-    fluctuation_calculator(num_case=5, epoch=25, location=location)
+    fluctuation_calculator(num_case=2, epoch=25)
     
     analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
     re.rel_fig(location, num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
 
     # pay attention the hist is based on the run mentioned in my_path
-    # pa.hist_fig(my_path, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
-
-    # pay attention the hist is based on averaging the runs mentioned in my_path
-    pa.hist_fig(location, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
+    pa.hist_fig(my_path, shan_location, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
     
     la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
