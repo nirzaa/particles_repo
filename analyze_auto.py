@@ -135,8 +135,9 @@ if __name__ == '__main__':
     energy_end = 13
     epochs_num = 40
     num_runs = 5
-    input_shape = (128,1,110,21)
-    location = f'./csv_files/multiple_runs/case_{num_case}'
+    input_shape = (128,20,110,21)
+    location = f'./csv_files/kfold5/case_{num_case}'
+    # location = f'./csv_files/multiple_runs/case_{num_case}'
     # my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_25'
     model = model.model_2d_48_1(model_type=None, num_classes=None)
 
