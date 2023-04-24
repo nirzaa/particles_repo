@@ -93,11 +93,11 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f'\nthe target N value is: {mean_target.sum()}')
         f.write(f'\nrelative error for total N: {my_rel_error_mean:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
-def fluctuation_calculator(num_case, epoch):
+def fluctuation_calculator(location, total_runs, num_case, epoch):
     output_list = list()
     target_list = list()
-    for run in range(10):
-        my_path = f'./csv_files/multiple_runs/case_{num_case}/run_{run}/epoch_{epoch}'
+    for run in range(total_runs):
+        my_path = f'{location}/run_{run}/epoch_{epoch}'
         ho = np.array(pd.read_csv(f'{my_path}/hist_output.csv'))
         ht = np.array(pd.read_csv(f'{my_path}/hist_target.csv'))
         output_list.append(ho.sum(axis=0))
@@ -151,7 +151,7 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
 
-    fluctuation_calculator(num_case=2, epoch=25)
+    fluctuation_calculator(location, total_runs, num_case=2, epoch=25)
     
     analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
