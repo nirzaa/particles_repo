@@ -126,15 +126,15 @@ def fluctuation_calculator(num_case, epoch):
 
 if __name__ == '__main__':
 
-
-    num_case = 5
+    # 1: WOB 20 layers, 2: WB, 20 layers, 3: WB, 10, 4: WB, 5, 5: WB, 1
+    num_case = 2
     epochs_every = 5
     total_epochs = 40
-    total_runs = 10
+    total_runs = 5
     energy_start = 1
     energy_end = 13
     epochs_num = 40
-    num_runs = 10
+    num_runs = 5
     input_shape = (128,1,110,21)
     location = f'./csv_files/multiple_runs/case_{num_case}'
     my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_25'
