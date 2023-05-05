@@ -111,4 +111,8 @@ if __name__ == '__main__':
         # x.append(np.array(energies[str(event)]).sum())
         # y.append(np.array(energies[str(event)]).sum() / sum_dict[str(event)])
     p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png')
+    x_numpy = np.array(x)
+    y_numpy = np.array(y)
+    yy1, xx = np.histogram(y_numpy[x_numpy>200], bins=30)
+    p.projection_sandbox(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', y_numpy[x_numpy>200], bins=30)
 

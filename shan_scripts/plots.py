@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
-
+import scipy
 import sys, os
 import numpy, matplotlib
 import matplotlib.pyplot as pyplot
 import numpy as np
 import pandas as pd
 # from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+from scipy.stats import norm
+import matplotlib.mlab as mlab
+import matplotlib.pyplot as plt
+from scipy.stats import norm
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
@@ -123,6 +127,36 @@ def projection(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
+def projection_sandbox(xx, yy, fname, data, bins):
+    fig,ax = pyplot.subplots()
+
+    mean,std=norm.fit(data)
+    plt.hist(data, bins=bins, density=True, label='Projection')
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    y = norm.pdf(x, mean, std)
+    y /= y.sum()
+    plt.plot(x, y, 'r--', linewidth=2, label='Gaussian')
+    fname1 = fname[:-4] + '_myplot.png'
+    plt.ylabel('Density')
+    plt.xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
+    plt.text(0.05,0.9,f"mean={round(mean,2)}, std={round(std,2)}", \
+        transform=ax.transAxes, verticalalignment='top')
+    plt.savefig(fname1)
+
+    ax.stairs(yy,xx, fill=True, color='b', label="Projection")
+    ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
+    ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
+    # ax.set_xlim(-.5,.5)
+    # ax.set_ylim(0,45)
+    ax.set_xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
+    ax.set_ylabel(r'Occurrences')
+    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        transform=ax.transAxes, verticalalignment='top')
+    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top')
+    pyplot.savefig(fname)
+
 def rel_error(xx, yy, fname):
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k', label="Relative error")
@@ -138,6 +172,8 @@ def rel_error(xx, yy, fname):
     pyplot.savefig(fname)
 
 def tot(xx, yy, fname):
+    avg = yy[xx > 200].mean()
+    rms = np.sqrt(np.mean(yy[xx > 200]**2))
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
@@ -148,6 +184,8 @@ def tot(xx, yy, fname):
     ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
+    ax.text(0.45,0.3,f"Average={round(avg,2)}, RMS={round(rms,2)}", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
