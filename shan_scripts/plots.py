@@ -13,6 +13,15 @@ layers = 20
 
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
+
+    print()
+    yy1[yy1 == np.inf] = 0
+    yy1_mean = yy1[34:].mean()
+    yy1[34:] = yy1_mean
+
+    yy2[yy2 == np.inf] = 0
+    yy2_mean = yy2[34:].mean()
+    yy2[34:] = yy2_mean
     
     yy1 = np.array(yy1)
     yy2 = np.array(yy2)
@@ -34,6 +43,9 @@ def hist(xx, yy1, yy2, location, case=None):
     correlation = cov / (std_t * std_o)
     delta = 1/(yy2**2)*(std_o**2) + ((yy1**2) / (yy2**4)) * (std_t**2) - 2*(yy1/yy2**3)*cov
     delta_root = np.sqrt(delta)
+
+    delta_root[34:] = 0 # there is no meaning to mean of stds
+
     # ========== Save the Values ============= #
 
     df = pd.DataFrame({'cov': cov, 'delta': delta, 'correlation' : correlation, 'delta_root': delta_root})
