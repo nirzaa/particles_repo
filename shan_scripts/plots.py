@@ -154,3 +154,30 @@ def ratio(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
+
+def image_hist(location, yy1, num_events):
+    pyplot.style.use("./shan_scripts/luxe.mplstyle")
+    fig = pyplot.figure(num=123, figsize=(14.025,14.025))
+    ax1 = pyplot.subplot(7,1,(1,5))
+    ax = ax1 # shared x axis
+    # ax.set_ylim(0,50000)
+    data1 = numpy.random.normal(0,1, 10000)
+    _, xx = numpy.histogram(data1, bins=48, range=(1,13))
+    xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
+    yy1 /= ((13-1) / yy1.shape[0])
+    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
+
+    ax.set_xlim(xx[0],xx[-1])
+    # ax2.set_ylim(-1,1)
+    for label in ax.get_xticklabels(): label.set_visible(False)
+    ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
+    ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
+    ax1.text(0.05,0.9,"$LUXE$ CNN", \
+        transform=ax1.transAxes, verticalalignment='top')
+    ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
+        transform=ax1.transAxes, verticalalignment='top')
+    ax1.text(0.05,0.6,f"Number of events = {num_events}", \
+        transform=ax1.transAxes, verticalalignment='top')
+
+    pyplot.savefig(location)
+

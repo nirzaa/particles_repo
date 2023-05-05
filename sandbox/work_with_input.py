@@ -13,6 +13,8 @@ ecalimage = numpy.transpose(ecalimage)
 from tqdm import tqdm
 import pandas as pd
 from shan_scripts import plots as p
+import torch
+from collections import Counter
 
 def plot_image(ecalimage, name):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
@@ -44,8 +46,9 @@ if __name__ == '__main__':
     # mat = scipy.io.loadmat(en_dep_file)
     # x = list(mat.keys())[3:]
     en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
-    # energies = EcalDataIO.energymatio(en_file)
+    energies = EcalDataIO.energymatio(en_file)
     
+
     key = list(en_dep.keys())[0]
 
     d_tens = np.zeros((110, 11, 21))  # Formatted as [x_idx, y_idx, z_idx]
@@ -63,6 +66,20 @@ if __name__ == '__main__':
                     sum_dict[i] = en_dep[i][j]
     # en_dep[x[0]][y[0]] # taking the 0 event, and then the 0 pixel value
 
+    en_list = torch.Tensor(energies[key])
+    num_showers = len(en_list)
+    bin_num = num_classes = 48
+
+    final_list = [0] * bin_num  # The 20 here is the bin number - it may be changed of course.
+    bin_list = np.linspace(1, 13, bin_num)  # Generate the bin limits
+    binplace = np.digitize(en_list, bin_list)  # Divide the list into bins
+    bin_partition = Counter(binplace)  # Count the number of showers for each bin.
+    for k in bin_partition.keys():
+        final_list[int(k) - 1] = bin_partition[k]
+    n = sum(final_list)
+    # final_list = [f / n for f in final_list]    # Bin Normalization by sum
+    final_list = torch.Tensor(final_list)  # Wrap it in a tensor - important for training and testing.
+    p.image_hist(f'./sandbox/figures/{name}_hist', final_list, num_events=num_showers)
 
     tmp = en_dep[key]
 
