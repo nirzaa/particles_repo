@@ -222,13 +222,14 @@ def image_hist(location, yy1, num_events):
     for label in ax.get_xticklabels(): label.set_visible(False)
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
+    ax1.set_xlabel(r'$E_e$ [GeV]')
     ax1.text(0.05,0.9,"$LUXE$ CNN", \
         transform=ax1.transAxes, verticalalignment='top')
     ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
         transform=ax1.transAxes, verticalalignment='top')
     ax1.text(0.05,0.6,f"Number of events = {num_events}", \
         transform=ax1.transAxes, verticalalignment='top')
-    ax1.set_xlabel(r'$E_e$ [GeV]')
+    
 
     pyplot.savefig(location)
 
