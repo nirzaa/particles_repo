@@ -13,7 +13,7 @@ from scipy.stats import norm
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
-layers = 20
+layers = 10
 
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
