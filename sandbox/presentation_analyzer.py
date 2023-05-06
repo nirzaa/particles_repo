@@ -87,8 +87,8 @@ def hist_fig(my_path, energy_start, energy_end, presentation=False, case=None):
 
     # ================ good for average run ================ #
     if presentation:
-        p.hist_projection(energies, ho['output_mean'], ht['target_mean'], f'./shan_scripts/multiple_runs/case_{case}/hist.pdf', case)
-        p.hist_projection(energies, ho['output_mean'], ht['target_mean'], f'./shan_scripts/multiple_runs/case_{case}/hist.jpeg', case)
+        p.hist(energies, ho['output_mean'], ht['target_mean'], f'./shan_scripts/multiple_runs/case_{case}/hist.pdf', case)
+        p.hist(energies, ho['output_mean'], ht['target_mean'], f'./shan_scripts/multiple_runs/case_{case}/hist.jpeg', case)
 
       
     # ======================================================== #
