@@ -228,6 +228,7 @@ def image_hist(location, yy1, num_events):
         transform=ax1.transAxes, verticalalignment='top')
     ax1.text(0.05,0.6,f"Number of events = {num_events}", \
         transform=ax1.transAxes, verticalalignment='top')
+    ax1.set_xlabel(r'$E_e$ [GeV]')
 
     pyplot.savefig(location)
 
