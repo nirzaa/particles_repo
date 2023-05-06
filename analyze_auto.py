@@ -137,7 +137,7 @@ if __name__ == '__main__':
     num_runs = 10
     input_shape = (128,1,110,21)
     location = f'./csv_files/multiple_runs/case_{num_case}'
-    my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_25'
+    my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_35'
     model = model.model_2d_48_10(model_type=None, num_classes=None)
 
     with open('./run.txt', 'r') as f:
@@ -153,7 +153,7 @@ if __name__ == '__main__':
     
     # analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
-    re.rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
+    # re.rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
 
     # pay attention the hist is based on the run mentioned in my_path
     pa.hist_fig(my_path, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
