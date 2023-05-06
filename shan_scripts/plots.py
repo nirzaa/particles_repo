@@ -139,17 +139,18 @@ def projection_sandbox(xx, yy, fname, data, bins):
     plt.plot(x, y, 'r--', linewidth=2, label='Gaussian')
     fname1 = fname[:-4] + '_myplot.png'
     plt.ylabel('Density')
-    plt.xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
+    plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     plt.text(0.05,0.9,f"mean={round(mean,2)}, std={round(std,2)}", \
         transform=ax.transAxes, verticalalignment='top')
     plt.savefig(fname1)
+    plt.clf()
 
     ax.stairs(yy,xx, fill=True, color='b', label="Projection")
     ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-.5,.5)
     # ax.set_ylim(0,45)
-    ax.set_xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
+    ax.set_xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     ax.set_ylabel(r'Occurrences')
     ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top')
