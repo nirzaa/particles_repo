@@ -13,7 +13,7 @@ from scipy.stats import norm
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
-layers = 5
+layers = 20
 
 def hist(xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
@@ -173,13 +173,18 @@ def rel_error(xx, yy, fname):
     pyplot.savefig(fname)
 
 def tot(xx, yy, fname):
+    ymax = 1
+    ymin = -1
     avg = yy[xx > 200].mean()
     rms = np.sqrt(np.mean(yy[xx > 200]**2))
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k')
+    xplot = np.linspace(200, 200, num=200)
+    yplot = np.linspace(ymin, ymax, 200)
+    ax.plot(xplot, yplot)
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(0,3500)
-    ax.set_ylim(-1,1)
+    ax.set_ylim(ymin,ymax)
     ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
