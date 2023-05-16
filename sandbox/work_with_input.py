@@ -33,7 +33,7 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_3' # case number
+    name = 'case_5' # case number
     path_name = f'./csv_files/multiple_runs/{name}/run_7/epoch_35/epoch_35'
     layers = 5
 

@@ -220,7 +220,7 @@ def image_hist(location, yy1, num_events):
 
     ax.set_xlim(xx[0],xx[-1])
     # ax2.set_ylim(-1,1)
-    for label in ax.get_xticklabels(): label.set_visible(False)
+    # for label in ax.get_xticklabels(): label.set_visible(False)
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
     ax1.set_xlabel(r'$E_e$ [GeV]')
