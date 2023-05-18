@@ -282,3 +282,27 @@ def projection_sand(xdata, ydata, filename, bins):
     plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     plt.ylabel(f'Occurences, bins={bins}')
     plt.savefig(filename)
+
+def interval_sand(x, y, interval, filename):
+    sort = np.argsort(x)
+    y = y[sort]
+    x = x[sort]
+    maxy = x.max()
+    intervals = np.arange(0, maxy, interval, dtype='int')
+    ylist = list()
+    ystd = list()
+    xlist = list()
+    for i in range(len(intervals)-1):
+        cond = np.logical_and(x > intervals[i], x < intervals[i+1])
+        ylist.append(y[cond].mean())
+        ystd.append(y[cond].std())
+        xlist.append(x[cond].mean())
+    plt.figure()
+    plt.clf()
+    xaxis = range(len(xlist))
+    plt.errorbar(xaxis, ylist, ystd)
+    plt.plot(xaxis, ylist)
+    plt.title(f'Mean values in intervals of {interval}')
+    plt.xlabel('intervals')
+    plt.ylabel(r'Mean of: $E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    plt.savefig(filename, bbox_inches='tight')

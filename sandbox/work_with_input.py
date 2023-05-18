@@ -33,9 +33,9 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_4' # case number
+    name = 'case_5' # case number
     path_name = f'./csv_files/multiple_runs/{name}/run_7/epoch_35/epoch_35'
-    layers = 1
+    layers = 20
 
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
@@ -122,3 +122,4 @@ if __name__ == '__main__':
     # p.projection_sandbox(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', y_numpy, bins=30)
     
     p.projection_sand(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', bins)
+    p.interval_sand(x_numpy, y_numpy, interval=1000, filename=f'./sandbox/figures/{name}_intervals.png')
