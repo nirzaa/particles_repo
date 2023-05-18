@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from __future__ import print_function
 import scipy
 import sys, os
 import numpy, matplotlib
@@ -239,3 +240,45 @@ def image_hist(location, yy1, num_events):
 
     pyplot.savefig(location)
 
+def projection_sand(xdata, ydata, filename, bins):
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.optimize import curve_fit
+    
+    plt.figure()
+    plt.clf()
+
+    xdata = xdata[:-1]
+
+    xdata = xdata[ydata > 1]
+    ydata = ydata[ydata > 1]
+
+    ymean = np.mean(ydata)
+    ystd = np.std(ydata) * 10
+
+    # Recast xdata and ydata into numpy arrays so we can use their handy features
+    ydata_original = np.asarray(ydata)
+    ydata = ydata_original[np.logical_and(ydata_original < ymean+ystd, ydata_original > ymean-ystd)]
+    xdata = np.asarray(xdata)
+    xdata = xdata[np.logical_and(ydata_original < ymean+ystd, ydata_original > ymean-ystd)]
+
+
+    plt.plot(xdata, ydata, 'o')
+    
+    # Define the Gaussian function
+    def Gauss(x, A, B):
+        y = A*np.exp(-1*B*x**2)
+        return y
+    parameters, covariance = curve_fit(Gauss, xdata, ydata)
+    
+    fit_A = parameters[0]
+    fit_B = parameters[1]
+    
+    fit_y = Gauss(xdata, fit_A, fit_B)
+    plt.plot(xdata, ydata, 'o', label='data')
+    plt.plot(xdata, fit_y, '-', label='fit')
+    plt.legend()
+    plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    plt.ylabel(f'Occurences, bins={bins}')
+    plt.savefig(filename)
