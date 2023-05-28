@@ -6,6 +6,8 @@ import matplotlib.pyplot as pyplot
 import numpy as np
 import pandas as pd
 # from matplotlib.ticker import (MultipleLocator, AutoMinorLocator)
+import matplotlib.pyplot as plt
+from scipy.stats import norm
 
 pyplot.style.use("./shan_scripts/luxe.mplstyle")
 
@@ -111,6 +113,37 @@ def projection(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
+def projection_sandbox(xx, yy, fname, data, bins):
+    fig,ax = pyplot.subplots()
+
+    mean,std=norm.fit(data)
+    plt.hist(data, bins=bins, density=True, label='Projection')
+    xmin, xmax = plt.xlim()
+    x = np.linspace(xmin, xmax, 100)
+    y = norm.pdf(x, mean, std)
+    y /= y.sum()
+    plt.plot(x, y, 'r--', linewidth=2, label='Gaussian')
+    fname1 = fname[:-4] + '_myplot.png'
+    plt.ylabel('Density')
+    plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    plt.text(0.05,0.9,f"mean={round(mean,2)}, std={round(std,2)}", \
+        transform=ax.transAxes, verticalalignment='top')
+    plt.savefig(fname1)
+    plt.clf()
+
+    ax.stairs(yy,xx, fill=True, color='b', label="Projection")
+    ax.stairs(yy,xx, fill=False, color='k') # redraw the outline in black
+    ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
+    # ax.set_xlim(-.5,.5)
+    # ax.set_ylim(0,45)
+    ax.set_xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    ax.set_ylabel(r'Occurrences')
+    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        transform=ax.transAxes, verticalalignment='top')
+    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top')
+    pyplot.savefig(fname)
+
 def rel_error(xx, yy, fname):
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k', label="Relative error")
@@ -126,16 +159,25 @@ def rel_error(xx, yy, fname):
     pyplot.savefig(fname)
 
 def tot(xx, yy, fname):
+    ymax = 1
+    ymin = -1
+    avg = yy[xx > 200].mean()
+    rms = np.sqrt(np.mean(yy[xx > 200]**2))
     fig,ax = pyplot.subplots()
     ax.scatter(xx,yy, color='k')
+    xplot = np.linspace(200, 200, num=200)
+    yplot = np.linspace(ymin, ymax, 200)
+    ax.plot(xplot, yplot)
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     ax.set_xlim(0,3500)
-    ax.set_ylim(-1,1)
+    ax.set_ylim(ymin,ymax)
     ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
+    ax.text(0.45,0.3,f"Average={round(avg,2)}, RMS={round(rms,2)}", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
@@ -153,4 +195,103 @@ def ratio(xx, yy, fname):
     ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
         transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
+
+def image_hist(location, yy1, num_events):
+    pyplot.style.use("./shan_scripts/luxe.mplstyle")
+    fig = pyplot.figure(num=123, figsize=(14.025,14.025))
+    ax1 = pyplot.subplot(7,1,(1,5))
+    ax = ax1 # shared x axis
+    # ax.set_ylim(0,50000)
+    data1 = numpy.random.normal(0,1, 10000)
+    _, xx = numpy.histogram(data1, bins=48, range=(1,13))
+    xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
+    yy1 /= ((13-1) / yy1.shape[0])
+    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
+
+    ax.set_xlim(xx[0],xx[-1])
+    # ax2.set_ylim(-1,1)
+    # for label in ax.get_xticklabels(): label.set_visible(False)
+    ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
+    ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
+    ax1.set_xlabel(r'$E_e$ [GeV]')
+    ax1.text(0.05,0.9,"$LUXE$ CNN", \
+        transform=ax1.transAxes, verticalalignment='top')
+    ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
+        transform=ax1.transAxes, verticalalignment='top')
+    ax1.text(0.05,0.6,f"Number of events = {num_events}", \
+        transform=ax1.transAxes, verticalalignment='top')
+    
+
+    pyplot.savefig(location)
+
+def projection_sand(xdata, ydata, filename, bins):
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+    from scipy.optimize import curve_fit
+    
+    plt.figure()
+    plt.clf()
+
+    xdata = xdata[:-1]
+
+    xdata = xdata[ydata > 1]
+    ydata = ydata[ydata > 1]
+
+    ymean = np.mean(ydata)
+    ystd = np.std(ydata) * 10
+
+    # Recast xdata and ydata into numpy arrays so we can use their handy features
+    ydata_original = np.asarray(ydata)
+    ydata = ydata_original[np.logical_and(ydata_original < ymean+ystd, ydata_original > ymean-ystd)]
+    xdata = np.asarray(xdata)
+    xdata = xdata[np.logical_and(ydata_original < ymean+ystd, ydata_original > ymean-ystd)]
+
+
+    plt.plot(xdata, ydata, 'o')
+    
+    # Define the Gaussian function
+    def Gauss(x, A, B):
+        y = A*np.exp(-1*B*x**2)
+        return y
+    parameters, covariance = curve_fit(Gauss, xdata, ydata)
+    
+    fit_A = parameters[0]
+    fit_B = parameters[1]
+    
+    fit_y = Gauss(xdata, fit_A, fit_B)
+    plt.plot(xdata, ydata, 'o', label='data')
+    plt.plot(xdata, fit_y, '-', label='fit')
+    plt.legend()
+    plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    plt.ylabel(f'Occurences, bins={bins}')
+    plt.savefig(filename)
+
+def interval_sand(x, y, interval, filename):
+    sort = np.argsort(x)
+    y = y[sort]
+    x = x[sort]
+    maxy = x.max()
+    intervals = np.arange(0, maxy, interval, dtype='int')
+    ylist = list()
+    ystd = list()
+    xlist = list()
+    for i in range(len(intervals)-1):
+        cond = np.logical_and(x > intervals[i], x < intervals[i+1])
+        ylist.append(y[cond].mean())
+        ystd.append(y[cond].std())
+        xlist.append(x[cond].mean())
+    plt.figure()
+    plt.clf()
+    xaxis = range(len(xlist))
+    plt.errorbar(xaxis, ylist, ystd)
+    plt.plot(xaxis, ylist)
+    plt.title(f'Mean values in intervals of {interval}')
+    plt.xlabel('intervals')
+    plt.ylabel(r'Mean of: $E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
+    plt.savefig(filename, bbox_inches='tight')
+
+
+
+
 
