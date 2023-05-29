@@ -1,0 +1,1807 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This is the 1 run
+==================================================
+rm: cannot remove './saved/models/new_model/*': No such file or directory
+
+
+
+
+
+
+
+
+
+
+
+
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  726
+INFO:train:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+WARNING:trainer:Warning: visualization (Tensorboard) is configured to use, but currently not installed on this machine. Please install TensorboardX with 'pip install t
+ensorboardx', upgrade PyTorch to version >= 1.1 to use 'torch.utils.tensorboard' or turn off the option in the 'config.json' file.
+DEBUG:trainer:Train Epoch: 1 [1/40 (2%)] Loss: 1481.617554
+INFO:trainer:    epoch          : 1
+INFO:trainer:    loss           : 960.5123545328776
+INFO:trainer:    bias_avg       : 6.2016944487889605
+INFO:trainer:    bias_std       : 26.844855944315594
+INFO:trainer:    val_loss       : 459.7380116780599
+INFO:trainer:    val_bias_avg   : 4.345696647961934
+INFO:trainer:    val_bias_std   : 20.885506629943848
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch1.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 2 [2/40 (5%)] Loss: 482.614594
+INFO:trainer:    epoch          : 2
+INFO:trainer:    loss           : 552.3249918619791
+INFO:trainer:    bias_avg       : 7.3587485154469805
+INFO:trainer:    bias_std       : 22.18365987141927
+INFO:trainer:    val_loss       : 520.5318501790365
+INFO:trainer:    val_bias_avg   : -0.464768906434377
+INFO:trainer:    val_bias_std   : 22.745774904886883
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch2.pth ...
+DEBUG:trainer:Train Epoch: 3 [3/40 (8%)] Loss: 507.707458
+INFO:trainer:    epoch          : 3
+INFO:trainer:    loss           : 469.4522959391276
+INFO:trainer:    bias_avg       : -0.09996102253595988
+INFO:trainer:    bias_std       : 21.205309867858887
+INFO:trainer:    val_loss       : 397.489252726237
+INFO:trainer:    val_bias_avg   : 1.342591404914856
+INFO:trainer:    val_bias_std   : 19.811340014139812
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch3.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 4 [4/40 (10%)] Loss: 462.483490
+INFO:trainer:    epoch          : 4
+INFO:trainer:    loss           : 350.46181233723956
+INFO:trainer:    bias_avg       : -3.5334085623423257
+INFO:trainer:    bias_std       : 17.948981285095215
+INFO:trainer:    val_loss       : 295.1325988769531
+INFO:trainer:    val_bias_avg   : 1.5394367674986522
+INFO:trainer:    val_bias_std   : 17.067484219868977
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch4.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 5 [5/40 (12%)] Loss: 270.237366
+INFO:trainer:    epoch          : 5
+INFO:trainer:    loss           : 252.19205729166666
+INFO:trainer:    bias_avg       : 0.8238870998223623
+INFO:trainer:    bias_std       : 15.393365859985352
+INFO:trainer:    val_loss       : 208.97051239013672
+INFO:trainer:    val_bias_avg   : -5.116377194722493
+INFO:trainer:    val_bias_std   : 13.50917879740397
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch5.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 6 [6/40 (15%)] Loss: 205.704803
+INFO:trainer:    epoch          : 6
+INFO:trainer:    loss           : 157.5320905049642
+INFO:trainer:    bias_avg       : -0.6545989414056143
+INFO:trainer:    bias_std       : 12.191199938456217
+INFO:trainer:    val_loss       : 123.39080810546875
+INFO:trainer:    val_bias_avg   : 0.9251128832499186
+INFO:trainer:    val_bias_std   : 10.965812683105469
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch6.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 7 [7/40 (18%)] Loss: 110.773315
+INFO:trainer:    epoch          : 7
+INFO:trainer:    loss           : 132.92704391479492
+INFO:trainer:    bias_avg       : -0.6550283332665762
+INFO:trainer:    bias_std       : 11.381223201751709
+INFO:trainer:    val_loss       : 121.82234954833984
+INFO:trainer:    val_bias_avg   : 2.3034205238024392
+INFO:trainer:    val_bias_std   : 10.78917662302653
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch7.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 8 [8/40 (20%)] Loss: 116.422409
+INFO:trainer:    epoch          : 8
+INFO:trainer:    loss           : 111.31321970621745
+INFO:trainer:    bias_avg       : 1.1937415500481923
+INFO:trainer:    bias_std       : 10.324275016784668
+INFO:trainer:    val_loss       : 86.67326990763347
+INFO:trainer:    val_bias_avg   : -1.6124900778134663
+INFO:trainer:    val_bias_std   : 9.135638078053793
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch8.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 9 [9/40 (22%)] Loss: 101.883263
+INFO:trainer:    epoch          : 9
+INFO:trainer:    loss           : 69.98788706461589
+INFO:trainer:    bias_avg       : 0.22095680981874466
+INFO:trainer:    bias_std       : 8.220763047536215
+INFO:trainer:    val_loss       : 53.62588310241699
+INFO:trainer:    val_bias_avg   : 0.8051419407129288
+INFO:trainer:    val_bias_std   : 7.213033437728882
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch9.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 10 [10/40 (25%)] Loss: 53.075340
+INFO:trainer:    epoch          : 10
+INFO:trainer:    loss           : 51.28257942199707
+INFO:trainer:    bias_avg       : -0.574786365032196
+INFO:trainer:    bias_std       : 7.085702419281006
+INFO:trainer:    val_loss       : 47.17659060160319
+INFO:trainer:    val_bias_avg   : 0.8667081793149313
+INFO:trainer:    val_bias_std   : 6.808634996414185
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch10.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 11 [11/40 (28%)] Loss: 45.393902
+INFO:trainer:    epoch          : 11
+INFO:trainer:    loss           : 44.91145579020182
+INFO:trainer:    bias_avg       : 0.4386631151040395
+INFO:trainer:    bias_std       : 6.615825414657593
+INFO:trainer:    val_loss       : 37.75298182169596
+INFO:trainer:    val_bias_avg   : -0.42444969216982525
+INFO:trainer:    val_bias_std   : 6.114371140797933
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch11.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 12 [12/40 (30%)] Loss: 33.815022
+INFO:trainer:    epoch          : 12
+INFO:trainer:    loss           : 39.30888430277506
+INFO:trainer:    bias_avg       : 0.08179856340090434
+INFO:trainer:    bias_std       : 6.199133237202962
+INFO:trainer:    val_loss       : 34.48379643758138
+INFO:trainer:    val_bias_avg   : 0.05161305392781893
+INFO:trainer:    val_bias_std   : 5.864619970321655
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch12.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 13 [13/40 (32%)] Loss: 32.393845
+INFO:trainer:    epoch          : 13
+INFO:trainer:    loss           : 32.79097525278727
+INFO:trainer:    bias_avg       : 0.5014231217404207
+INFO:trainer:    bias_std       : 5.654609203338623
+INFO:trainer:    val_loss       : 31.94152037302653
+INFO:trainer:    val_bias_avg   : -0.3516867011785507
+INFO:trainer:    val_bias_std   : 5.63063923517863
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch13.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 14 [14/40 (35%)] Loss: 32.134956
+INFO:trainer:    epoch          : 14
+INFO:trainer:    loss           : 31.17070992787679
+INFO:trainer:    bias_avg       : 0.30498142664631206
+INFO:trainer:    bias_std       : 5.5650553703308105
+INFO:trainer:    val_loss       : 31.521187782287598
+INFO:trainer:    val_bias_avg   : -0.5167914281288782
+INFO:trainer:    val_bias_std   : 5.583065509796143
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch14.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 15 [15/40 (38%)] Loss: 28.075062
+INFO:trainer:    epoch          : 15
+INFO:trainer:    loss           : 29.490941365559895
+INFO:trainer:    bias_avg       : -0.23400250142246173
+INFO:trainer:    bias_std       : 5.40952483812968
+INFO:trainer:    val_loss       : 28.15310509999593
+INFO:trainer:    val_bias_avg   : 0.4303486992915471
+INFO:trainer:    val_bias_std   : 5.286169767379761
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch15.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 16 [16/40 (40%)] Loss: 26.803915
+INFO:trainer:    epoch          : 16
+INFO:trainer:    loss           : 26.150071779886883
+INFO:trainer:    bias_avg       : 0.3021062420060237
+INFO:trainer:    bias_std       : 5.085153818130493
+INFO:trainer:    val_loss       : 27.234477996826172
+INFO:trainer:    val_bias_avg   : -0.24313081055879593
+INFO:trainer:    val_bias_std   : 5.210567792256673
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch16.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 17 [17/40 (42%)] Loss: 28.246334
+INFO:trainer:    epoch          : 17
+INFO:trainer:    loss           : 26.525219599405926
+INFO:trainer:    bias_avg       : -0.28399489540606737
+INFO:trainer:    bias_std       : 5.13535722096761
+INFO:trainer:    val_loss       : 26.77813148498535
+INFO:trainer:    val_bias_avg   : -0.14826455463965735
+INFO:trainer:    val_bias_std   : 5.162897904713948
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch17.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 18 [18/40 (45%)] Loss: 28.199356
+INFO:trainer:    epoch          : 18
+INFO:trainer:    loss           : 27.056361198425293
+INFO:trainer:    bias_avg       : -0.07185816174993913
+INFO:trainer:    bias_std       : 5.196282704671224
+INFO:trainer:    val_loss       : 26.542530059814453
+INFO:trainer:    val_bias_avg   : 0.0001062514881292979
+INFO:trainer:    val_bias_std   : 5.150463819503784
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch18.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 19 [19/40 (48%)] Loss: 25.620649
+INFO:trainer:    epoch          : 19
+INFO:trainer:    loss           : 25.606744130452473
+INFO:trainer:    bias_avg       : -0.123113464564085
+INFO:trainer:    bias_std       : 5.043536980946858
+INFO:trainer:    val_loss       : 25.324764251708984
+INFO:trainer:    val_bias_avg   : -0.05783785289774338
+INFO:trainer:    val_bias_std   : 5.023470004399617
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch19.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 20 [20/40 (50%)] Loss: 27.122778
+INFO:trainer:    epoch          : 20
+INFO:trainer:    loss           : 26.95601749420166
+INFO:trainer:    bias_avg       : -0.02389567531645298
+INFO:trainer:    bias_std       : 5.1841104825337725
+INFO:trainer:    val_loss       : 25.476833979288738
+INFO:trainer:    val_bias_avg   : 0.09970016746471326
+INFO:trainer:    val_bias_std   : 5.039918899536133
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch20.pth ...
+DEBUG:trainer:Train Epoch: 21 [21/40 (52%)] Loss: 25.171055
+INFO:trainer:    epoch          : 21
+INFO:trainer:    loss           : 25.700878143310547
+INFO:trainer:    bias_avg       : 0.004035994876176119
+INFO:trainer:    bias_std       : 5.062870422999064
+INFO:trainer:    val_loss       : 24.89317226409912
+INFO:trainer:    val_bias_avg   : -0.17470312615235647
+INFO:trainer:    val_bias_std   : 4.976763089497884
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch21.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 22 [22/40 (55%)] Loss: 25.258293
+INFO:trainer:    epoch          : 22
+INFO:trainer:    loss           : 26.778347333272297
+INFO:trainer:    bias_avg       : -0.1328682986398538
+INFO:trainer:    bias_std       : 5.166470448176066
+INFO:trainer:    val_loss       : 25.00584348042806
+INFO:trainer:    val_bias_avg   : -0.05388994984483967
+INFO:trainer:    val_bias_std   : 4.99437673886617
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch22.pth ...
+DEBUG:trainer:Train Epoch: 23 [23/40 (58%)] Loss: 26.391384
+INFO:trainer:    epoch          : 23
+INFO:trainer:    loss           : 24.661192576090496
+INFO:trainer:    bias_avg       : -0.024638274994989235
+INFO:trainer:    bias_std       : 4.955626487731934
+INFO:trainer:    val_loss       : 25.061770757039387
+INFO:trainer:    val_bias_avg   : -0.019236436967427533
+INFO:trainer:    val_bias_std   : 4.995541175206502
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch23.pth ...
+DEBUG:trainer:Train Epoch: 24 [24/40 (60%)] Loss: 25.736837
+INFO:trainer:    epoch          : 24
+INFO:trainer:    loss           : 25.36886978149414
+INFO:trainer:    bias_avg       : -0.07859866258998711
+INFO:trainer:    bias_std       : 5.0268222490946455
+INFO:trainer:    val_loss       : 24.630788803100586
+INFO:trainer:    val_bias_avg   : -0.09429155911008517
+INFO:trainer:    val_bias_std   : 4.954519748687744
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch24.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 25 [25/40 (62%)] Loss: 25.268013
+INFO:trainer:    epoch          : 25
+INFO:trainer:    loss           : 24.553598403930664
+INFO:trainer:    bias_avg       : -0.10239934176206589
+INFO:trainer:    bias_std       : 4.9456939697265625
+INFO:trainer:    val_loss       : 25.618980089823406
+INFO:trainer:    val_bias_avg   : -0.02892791914443175
+INFO:trainer:    val_bias_std   : 5.056820392608643
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch25.pth ...
+DEBUG:trainer:Train Epoch: 26 [26/40 (65%)] Loss: 25.070202
+INFO:trainer:    epoch          : 26
+INFO:trainer:    loss           : 26.207246780395508
+INFO:trainer:    bias_avg       : 0.04046828020364046
+INFO:trainer:    bias_std       : 5.109344561894734
+INFO:trainer:    val_loss       : 25.25663661956787
+INFO:trainer:    val_bias_avg   : -0.03792615684991082
+INFO:trainer:    val_bias_std   : 5.019602298736572
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch26.pth ...
+DEBUG:trainer:Train Epoch: 27 [27/40 (68%)] Loss: 24.204147
+INFO:trainer:    epoch          : 27
+INFO:trainer:    loss           : 24.965396245320637
+INFO:trainer:    bias_avg       : -0.2702226520826419
+INFO:trainer:    bias_std       : 4.9824760754903155
+INFO:trainer:    val_loss       : 25.234625498453777
+INFO:trainer:    val_bias_avg   : 0.20843424399693808
+INFO:trainer:    val_bias_std   : 5.015507857004802
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch27.pth ...
+DEBUG:trainer:Train Epoch: 28 [28/40 (70%)] Loss: 22.626827
+INFO:trainer:    epoch          : 28
+INFO:trainer:    loss           : 24.38966242472331
+INFO:trainer:    bias_avg       : 0.28389186846713227
+INFO:trainer:    bias_std       : 4.908979177474976
+INFO:trainer:    val_loss       : 25.50645128885905
+INFO:trainer:    val_bias_avg   : -0.07058282962922628
+INFO:trainer:    val_bias_std   : 5.040719985961914
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch28.pth ...
+DEBUG:trainer:Train Epoch: 29 [29/40 (72%)] Loss: 23.945415
+INFO:trainer:    epoch          : 29
+INFO:trainer:    loss           : 25.69441254933675
+INFO:trainer:    bias_avg       : -0.2627652887410174
+INFO:trainer:    bias_std       : 5.052481015523274
+INFO:trainer:    val_loss       : 24.108477274576824
+INFO:trainer:    val_bias_avg   : -0.06617904081940651
+INFO:trainer:    val_bias_std   : 4.90522567431132
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch29.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 30 [30/40 (75%)] Loss: 26.312979
+INFO:trainer:    epoch          : 30
+INFO:trainer:    loss           : 23.728822072347004
+INFO:trainer:    bias_avg       : 0.03018316688636939
+INFO:trainer:    bias_std       : 4.860525767008464
+INFO:trainer:    val_loss       : 24.78838570912679
+INFO:trainer:    val_bias_avg   : 0.073043763016661
+INFO:trainer:    val_bias_std   : 4.9750754833221436
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch30.pth ...
+DEBUG:trainer:Train Epoch: 31 [31/40 (78%)] Loss: 22.753727
+INFO:trainer:    epoch          : 31
+INFO:trainer:    loss           : 23.49112065633138
+INFO:trainer:    bias_avg       : 0.018013249306629103
+INFO:trainer:    bias_std       : 4.83771554629008
+INFO:trainer:    val_loss       : 23.55979283650716
+INFO:trainer:    val_bias_avg   : -0.014496861336131891
+INFO:trainer:    val_bias_std   : 4.847836176554362
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch31.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 32 [32/40 (80%)] Loss: 22.857086
+INFO:trainer:    epoch          : 32
+INFO:trainer:    loss           : 25.090138753255207
+INFO:trainer:    bias_avg       : -0.07078450025680165
+INFO:trainer:    bias_std       : 4.999406576156616
+INFO:trainer:    val_loss       : 25.261216799418133
+INFO:trainer:    val_bias_avg   : 0.023244882002472878
+INFO:trainer:    val_bias_std   : 5.008575836817424
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch32.pth ...
+DEBUG:trainer:Train Epoch: 33 [33/40 (82%)] Loss: 26.861868
+INFO:trainer:    epoch          : 33
+INFO:trainer:    loss           : 25.140601476033527
+INFO:trainer:    bias_avg       : -0.025967398037513096
+INFO:trainer:    bias_std       : 5.004757801691691
+INFO:trainer:    val_loss       : 24.373819669087727
+INFO:trainer:    val_bias_avg   : -0.036259789019823074
+INFO:trainer:    val_bias_std   : 4.935251235961914
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch33.pth ...
+DEBUG:trainer:Train Epoch: 34 [34/40 (85%)] Loss: 23.510626
+INFO:trainer:    epoch          : 34
+INFO:trainer:    loss           : 24.073879559834797
+INFO:trainer:    bias_avg       : -0.04587713908404112
+INFO:trainer:    bias_std       : 4.904656092325847
+INFO:trainer:    val_loss       : 23.415871302286785
+INFO:trainer:    val_bias_avg   : -0.11051831052949031
+INFO:trainer:    val_bias_std   : 4.828746795654297
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch34.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+DEBUG:trainer:Train Epoch: 35 [35/40 (88%)] Loss: 21.782211
+INFO:trainer:    epoch          : 35
+INFO:trainer:    loss           : 25.3104829788208
+INFO:trainer:    bias_avg       : -0.05532565029958884
+INFO:trainer:    bias_std       : 5.017852147420247
+INFO:trainer:    val_loss       : 23.95484447479248
+INFO:trainer:    val_bias_avg   : 0.02798793837428093
+INFO:trainer:    val_bias_std   : 4.887975295384725
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch35.pth ...
+DEBUG:trainer:Train Epoch: 36 [36/40 (90%)] Loss: 23.992851
+INFO:trainer:    epoch          : 36
+INFO:trainer:    loss           : 25.35274378458659
+INFO:trainer:    bias_avg       : 0.05175713977466027
+INFO:trainer:    bias_std       : 5.020932197570801
+INFO:trainer:    val_loss       : 23.502243359883625
+INFO:trainer:    val_bias_avg   : -0.033933401418228946
+INFO:trainer:    val_bias_std   : 4.841283480326335
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch36.pth ...
+DEBUG:trainer:Train Epoch: 37 [37/40 (92%)] Loss: 24.977661
+INFO:trainer:    epoch          : 37
+INFO:trainer:    loss           : 22.804020245869953
+INFO:trainer:    bias_avg       : -0.1219118433073163
+INFO:trainer:    bias_std       : 4.756060719490051
+INFO:trainer:    val_loss       : 23.745434443155926
+INFO:trainer:    val_bias_avg   : -0.1077127178820471
+INFO:trainer:    val_bias_std   : 4.867253383000691
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch37.pth ...
+DEBUG:trainer:Train Epoch: 38 [38/40 (95%)] Loss: 25.019222
+INFO:trainer:    epoch          : 38
+INFO:trainer:    loss           : 24.52184804280599
+INFO:trainer:    bias_avg       : -0.08231638371944427
+INFO:trainer:    bias_std       : 4.947396198908488
+INFO:trainer:    val_loss       : 24.16899808247884
+INFO:trainer:    val_bias_avg   : 0.050569161462287106
+INFO:trainer:    val_bias_std   : 4.910470088322957
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch38.pth ...
+DEBUG:trainer:Train Epoch: 39 [39/40 (98%)] Loss: 23.192062
+INFO:trainer:    epoch          : 39
+INFO:trainer:    loss           : 23.811523119608562
+INFO:trainer:    bias_avg       : 0.03843995948166897
+INFO:trainer:    bias_std       : 4.875311613082886
+INFO:trainer:    val_loss       : 24.20752016703288
+INFO:trainer:    val_bias_avg   : 0.129240876606976
+INFO:trainer:    val_bias_std   : 4.910988171895345
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch39.pth ...
+DEBUG:trainer:Train Epoch: 40 [40/40 (100%)] Loss: 24.685638
+INFO:trainer:    epoch          : 40
+INFO:trainer:    loss           : 24.08120632171631
+INFO:trainer:    bias_avg       : 0.034581512988855444
+INFO:trainer:    bias_std       : 4.905679861704509
+INFO:trainer:    val_loss       : 23.36646906534831
+INFO:trainer:    val_bias_avg   : -0.03050574625376612
+INFO:trainer:    val_bias_std   : 4.8261533578236895
+INFO:trainer:Saving checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch40.pth ...
+INFO:trainer:Saving current best: model_best.pth ...
+
+Working on epoch num: 1...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch1.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.58s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1286393.770, Bias: 479738.859
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['777.735', '706.832', '-919.886', '938.119', '2479.498', '4106.211', '5585.327', '7440.924', '7597.723', '8448.990', '9334.874', '9014.469', '9173.958', '8
+683.558', '8922.908', '8325.033', '7817.908', '7002.668', '6623.847', '5602.367', '5165.810', '4378.714', '3587.799', '3012.491', '2490.876', '2057.478', '1666.045', '
+829.326', '-509.130', '-713.625', '-1035.931', '365.735', '-1519.954', '-1103.949', '1107.103', '595.075', '-2.509', '-416.423', '355.942', '663.394', '414.322', '805.
+028', '484.429', '723.119', '-980.665', '122.840', '1109.438', '233.338']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 141549.1789644328, target N: 197171.0
+Mean E: 4.895997498378011, target E: 4.97335845535094
+INFO:test:{'loss': 572.7462158203125, 'bias_avg': 6.402142772358426, 'bias_std': 23.05989403487569}
+Working on epoch num: 10...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch10.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:33<00:00, 33.75s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1685577.869, Bias: 80554.760
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['20.518', '168.209', '1073.195', '1925.304', '3522.884', '4990.676', '6575.423', '7766.132', '8952.412', '10154.068', '11024.791', '11588.597', '11924.773'
+, '11447.280', '11167.924', '10566.795', '10181.618', '9415.424', '8665.124', '7868.769', '7056.747', '6193.559', '5391.336', '4825.682', '3892.137', '3225.058', '2711
+.658', '2314.284', '1266.368', '990.123', '485.940', '88.779', '181.205', '95.616', '178.496', '312.393', '191.236', '207.079', '109.063', '-21.185', '-26.448', '1.595
+', '-41.578', '28.038', '6.856', '7.126', '-0.883', '-45.487']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 188624.70542607922, target N: 197171.0
+Mean E: 5.01738123003882, target E: 4.97335845535094
+INFO:test:{'loss': 52.5784912109375, 'bias_avg': 0.9836895347300155, 'bias_std': 7.184069217239296}
+Working on epoch num: 11...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch11.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.80s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1805170.072, Bias: -39037.443
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['33.081', '152.747', '946.592', '2318.374', '3867.771', '5557.884', '7074.498', '8781.150', '10205.985', '11114.014', '11712.377', '12365.258', '12612.226'
+, '12453.687', '12418.721', '11436.457', '11050.097', '9746.349', '8935.913', '7767.962', '7021.120', '5891.150', '5044.221', '4533.110', '3667.913', '3083.936', '2329
+.190', '1547.655', '1291.550', '1004.287', '1011.009', '1180.029', '705.806', '684.912', '498.601', '248.014', '396.876', '216.186', '195.776', '197.680', '-4.722', '2
+1.570', '-79.300', '27.613', '2.281', '26.222', '-15.484', '9.260']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 201287.60319376213, target N: 197171.0
+Mean E: 5.011960767793627, target E: 4.97335845535094
+INFO:test:{'loss': 37.671199798583984, 'bias_avg': -0.47382632935244734, 'bias_std': 6.1193692539278315}
+Working on epoch num: 12...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch12.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.38s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1779506.782, Bias: -13374.153
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['73.120', '352.946', '1221.017', '2472.699', '3768.791', '5619.694', '7149.322', '8797.008', '10159.048', '11491.074', '11934.206', '12475.127', '12799.380
+', '12681.764', '12360.858', '11319.980', '10622.656', '9939.879', '8927.307', '7936.564', '6794.244', '5928.329', '4957.018', '3859.690', '3256.519', '2484.106', '199
+6.640', '1722.522', '1473.208', '1199.838', '638.588', '187.229', '241.379', '77.890', '157.924', '141.604', '2.182', '83.835', '125.298', '169.784', '34.822', '98.777
+', '-56.254', '64.054', '23.712', '48.029', '6.430', '45.549']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197865.38424842432, target N: 197171.0
+Mean E: 4.9024984050965115, target E: 4.97335845535094
+INFO:test:{'loss': 37.250282287597656, 'bias_avg': -0.07992452547695096, 'bias_std': 6.102777807752072}
+Working on epoch num: 13...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch13.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.43s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1802500.688, Bias: -36368.059
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['53.167', '504.436', '1081.062', '2321.686', '3828.090', '5557.074', '7204.139', '8855.039', '10013.418', '11268.157', '11958.235', '12750.801', '12743.139
+', '12574.913', '12075.066', '11341.436', '10689.208', '9942.315', '9044.782', '8040.263', '7030.029', '6271.622', '5195.957', '4342.436', '3481.686', '2910.112', '231
+4.573', '1853.483', '1249.279', '938.029', '857.953', '709.028', '570.929', '435.150', '192.745', '35.232', '-24.924', '-143.337', '9.277', '-7.511', '85.876', '53.116
+', '-44.591', '40.288', '33.893', '17.630', '0.634', '-1.304']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 200253.71520548966, target N: 197171.0
+Mean E: 4.939754599384571, target E: 4.97335845535094
+INFO:test:{'loss': 33.747440338134766, 'bias_avg': -0.3548244665999439, 'bias_std': 5.798408634754834}
+Working on epoch num: 14...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch14.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.96s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1811664.203, Bias: -45531.574
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['104.972', '413.175', '1257.574', '2526.968', '3930.214', '5667.021', '7342.156', '9159.374', '10427.795', '11456.011', '12305.143', '12623.901', '12939.52
+4', '12442.533', '12134.158', '11517.658', '10599.023', '9648.962', '8765.032', '7791.521', '6646.477', '5784.455', '4915.695', '4375.599', '3306.804', '2921.518', '21
+50.510', '1762.621', '1479.873', '1151.371', '867.166', '784.216', '413.013', '495.905', '584.518', '410.889', '275.540', '141.762', '167.702', '-3.509', '161.241', '1
+3.749', '32.126', '35.926', '34.859', '14.617', '13.531', '-2.142']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 201988.74617638416, target N: 197171.0
+Mean E: 4.955668665014946, target E: 4.97335845535094
+INFO:test:{'loss': 32.03885269165039, 'bias_avg': -0.5545287580121288, 'bias_std': 5.633058663889848}
+Working on epoch num: 15...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch15.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.27s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1733179.422, Bias: 32953.207
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['84.025', '229.651', '1035.916', '2165.092', '3678.565', '5386.251', '6906.678', '8400.869', '9791.284', '10887.594', '11584.334', '12410.865', '12162.654'
+, '12319.778', '11831.023', '10999.118', '10252.259', '9660.105', '8471.342', '7714.310', '6737.605', '5929.803', '5030.435', '4377.926', '3586.959', '2830.410', '2342
+.796', '1925.584', '1308.951', '997.480', '850.296', '340.576', '514.319', '184.820', '76.395', '176.689', '79.275', '12.073', '-24.091', '-74.996', '-64.191', '-15.77
+6', '-13.765', '-10.582', '2.935', '17.777', '-7.033', '13.730']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 193098.11168023665, target N: 197171.0
+Mean E: 4.936646268941863, target E: 4.97335845535094
+INFO:test:{'loss': 30.06824493408203, 'bias_avg': 0.46879468043206146, 'bias_std': 5.463376208563536}
+Working on epoch num: 16...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch16.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.66s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1784800.927, Bias: -18668.297
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['35.262', '391.953', '1138.489', '2319.166', '3898.845', '5682.030', '7241.840', '8768.215', '10116.308', '11229.244', '11892.262', '12742.350', '12515.129
+', '12592.814', '12095.959', '11166.947', '10315.764', '9624.271', '8625.496', '7844.441', '6771.745', '5881.439', '5028.565', '4329.523', '3511.845', '2867.071', '235
+6.223', '1906.143', '1372.599', '1032.348', '922.849', '651.192', '581.473', '319.429', '294.078', '275.330', '232.645', '178.510', '114.156', '93.751', '80.573', '10.
+137', '15.174', '3.941', '13.951', '-17.593', '11.372', '-8.793']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 199066.45976308594, target N: 197171.0
+Mean E: 4.959155014609927, target E: 4.97335845535094
+INFO:test:{'loss': 29.472768783569336, 'bias_avg': -0.218169870956168, 'bias_std': 5.424497151243094}
+Working on epoch num: 17...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch17.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.78s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1784272.220, Bias: -18139.591
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['25.464', '425.366', '1170.603', '2347.101', '3849.059', '5562.321', '7156.916', '8719.215', '9956.092', '11108.727', '11804.446', '12437.399', '12491.563'
+, '12361.248', '11928.631', '11080.686', '10344.883', '9547.417', '8731.913', '7863.674', '6842.821', '5957.803', '5104.327', '4382.658', '3548.485', '2997.456', '2434
+.531', '1971.576', '1554.335', '1213.538', '973.891', '984.629', '591.122', '542.458', '466.934', '219.776', '209.636', '160.688', '113.656', '60.033', '36.091', '33.1
+88', '3.248', '-10.705', '-7.485', '6.715', '-0.280', '18.093']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 199321.93987237895, target N: 197171.0
+Mean E: 4.991414284630523, target E: 4.97335845535094
+INFO:test:{'loss': 29.007658004760742, 'bias_avg': -0.24757596010661256, 'bias_std': 5.380182592908322}
+Working on epoch num: 18...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch18.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.26s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1764212.411, Bias: 1920.218
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['58.271', '330.547', '1134.352', '2317.697', '3810.027', '5490.583', '7086.578', '8705.066', '9868.870', '10990.363', '11791.119', '12182.961', '12493.546'
+, '12149.620', '11843.357', '11066.303', '10450.000', '9499.693', '8762.262', '7798.452', '6809.132', '5948.680', '5101.049', '4346.832', '3493.577', '2949.510', '2394
+.907', '1922.574', '1537.931', '1213.978', '877.139', '713.792', '507.415', '455.190', '341.418', '207.996', '155.521', '82.378', '52.605', '7.397', '2.924', '14.725',
+ '10.407', '3.779', '6.055', '-4.342', '-8.449', '-13.444']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 196960.3428955865, target N: 197171.0
+Mean E: 4.971496769268756, target E: 4.97335845535094
+INFO:test:{'loss': 28.58889389038086, 'bias_avg': 0.024246898145306835, 'bias_std': 5.346803781077348}
+Working on epoch num: 19...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch19.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.32s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1769083.183, Bias: -2950.554
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['24.354', '395.300', '1157.103', '2321.258', '3838.047', '5523.319', '7165.162', '8792.405', '9960.327', '11083.756', '11944.087', '12223.682', '12602.132'
+, '12222.087', '11949.179', '11226.294', '10595.351', '9582.250', '8773.939', '7742.002', '6747.896', '5895.595', '5032.413', '4265.913', '3422.705', '2832.493', '2292
+.575', '1838.498', '1424.073', '1099.892', '779.924', '601.038', '517.382', '349.273', '244.654', '288.181', '216.345', '169.741', '103.283', '85.155', '60.547', '13.8
+59', '14.351', '-3.016', '3.986', '5.071', '2.326', '10.041']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197436.23018313292, target N: 197171.0
+Mean E: 4.956842526961177, target E: 4.97335845535094
+INFO:test:{'loss': 28.33363151550293, 'bias_avg': -0.030528331988424227, 'bias_std': 5.322846976433011}
+Working on epoch num: 2...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch2.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.49s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1758751.617, Bias: 7381.012
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-436.460', '188.651', '1920.158', '1624.810', '1750.446', '4830.757', '6493.679', '6678.921', '12632.008', '14687.742', '16490.694', '13958.605', '15416.4
+40', '15606.967', '11678.120', '11049.567', '11955.454', '9457.864', '7821.960', '7810.217', '4127.011', '3716.999', '2848.937', '1865.434', '278.517', '-667.118', '-1
+356.187', '-1301.785', '573.193', '117.075', '272.805', '855.493', '1067.250', '1679.313', '478.591', '431.460', '705.515', '241.466', '482.957', '-243.593', '339.244'
+, '-120.162', '116.047', '-399.034', '731.417', '-301.943', '-273.563', '150.624']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 188032.56458175182, target N: 197171.0
+Mean E: 4.665123205285923, target E: 4.97335845535094
+INFO:test:{'loss': 547.2823486328125, 'bias_avg': 1.0518458245208908, 'bias_std': 23.37040583995166}
+Working on epoch num: 20...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch20.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:33<00:00, 33.28s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1756813.216, Bias: 9319.414
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['40.263', '360.953', '1093.069', '2206.758', '3698.804', '5324.556', '6987.128', '8558.393', '9789.640', '10909.582', '11717.803', '12096.461', '12468.284'
+, '12110.522', '11838.187', '11176.813', '10547.962', '9585.013', '8758.641', '7822.325', '6848.642', '6027.720', '5121.570', '4406.409', '3520.733', '2948.041', '2345
+.308', '1935.606', '1472.048', '1120.714', '840.853', '767.942', '519.386', '357.640', '353.324', '137.843', '141.621', '77.497', '75.120', '7.339', '2.548', '13.300',
+ '-6.619', '-9.603', '-3.453', '-2.677', '-0.395', '-1.474']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 196108.1381286939, target N: 197171.0
+Mean E: 4.976457039308531, target E: 4.97335845535094
+INFO:test:{'loss': 28.21399688720703, 'bias_avg': 0.12233677226535523, 'bias_std': 5.310276094721167}
+Working on epoch num: 21...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch21.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.87s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1778881.862, Bias: -12749.233
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['40.612', '371.989', '1124.885', '2278.333', '3846.701', '5536.971', '7194.310', '8763.535', '10025.921', '11165.837', '11892.504', '12342.424', '12597.856
+', '12235.594', '11876.942', '11157.111', '10533.608', '9559.810', '8728.267', '7822.261', '6858.565', '6029.452', '5034.324', '4369.885', '3523.420', '2990.577', '236
+1.327', '1966.336', '1523.465', '1234.736', '942.898', '725.505', '500.278', '414.161', '401.748', '147.907', '132.426', '65.854', '30.459', '25.958', '13.140', '15.76
+4', '7.847', '2.797', '5.496', '-0.934', '3.950', '1.367']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 198424.1780444407, target N: 197171.0
+Mean E: 4.967166285039737, target E: 4.97335845535094
+INFO:test:{'loss': 27.900253295898438, 'bias_avg': -0.1442424184051008, 'bias_std': 5.28009876230145}
+Working on epoch num: 22...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch22.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.07s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1768296.215, Bias: -2163.586
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['22.720', '351.371', '1130.836', '2280.187', '3737.357', '5534.719', '7060.282', '8620.002', '9901.836', '11144.598', '11753.025', '12314.176', '12405.796'
+, '12237.693', '11824.156', '11056.071', '10520.862', '9540.573', '8725.691', '7795.078', '6896.671', '6037.229', '4975.156', '4350.201', '3543.813', '2968.366', '2357
+.840', '1913.383', '1470.964', '1196.512', '947.702', '741.058', '556.089', '388.835', '293.643', '298.012', '202.331', '161.107', '113.755', '59.357', '54.956', '14.0
+51', '9.650', '2.109', '-5.989', '0.448', '-3.298', '2.172']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197503.1554760728, target N: 197171.0
+Mean E: 4.9824455555421805, target E: 4.97335845535094
+INFO:test:{'loss': 27.78579330444336, 'bias_avg': -0.0382315229974399, 'bias_std': 5.2710844429816985}
+Working on epoch num: 23...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch23.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.69s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1768431.451, Bias: -2298.821
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['39.888', '361.499', '1099.481', '2308.483', '3681.131', '5491.899', '7016.833', '8629.187', '9936.849', '11171.680', '11818.032', '12389.197', '12406.183'
+, '12339.825', '11894.868', '11140.642', '10515.688', '9640.166', '8709.318', '7831.714', '6899.454', '6004.898', '5027.615', '4291.249', '3498.875', '2886.278', '2298
+.066', '1826.335', '1476.090', '1053.024', '893.465', '875.352', '586.330', '382.127', '275.740', '251.530', '153.852', '94.157', '86.543', '22.896', '26.443', '7.940'
+, '7.757', '-2.074', '3.155', '3.720', '4.496', '-4.451']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197353.42378219077, target N: 197171.0
+Mean E: 4.970688061631053, target E: 4.97335845535094
+INFO:test:{'loss': 27.577482223510742, 'bias_avg': -0.020997204174652943, 'bias_std': 5.251384587577693}
+Working on epoch num: 24...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch24.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.16s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1771813.049, Bias: -5680.419
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['13.552', '375.230', '1122.241', '2340.561', '3783.461', '5485.277', '7069.243', '8668.202', '10011.915', '11148.987', '11858.317', '12331.239', '12425.569
+', '12238.795', '11898.760', '11149.820', '10423.082', '9606.832', '8667.829', '7858.244', '6883.384', '5996.834', '5087.798', '4326.991', '3539.675', '2944.586', '237
+0.995', '1893.260', '1509.141', '1127.884', '917.086', '732.576', '587.761', '416.967', '335.504', '141.307', '165.910', '112.909', '67.352', '69.675', '11.814', '8.72
+6', '7.698', '2.329', '-2.350', '3.000', '-2.361', '8.417']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197742.02344396187, target N: 197171.0
+Mean E: 4.971113545339511, target E: 4.97335845535094
+INFO:test:{'loss': 27.335556030273438, 'bias_avg': -0.06572554256375981, 'bias_std': 5.227928540983252}
+Working on epoch num: 25...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch25.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.82s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1766494.830, Bias: -362.201
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['47.384', '335.043', '1167.502', '2307.067', '3844.732', '5431.489', '7143.614', '8596.791', '10020.717', '11081.959', '11716.109', '12197.169', '12372.226
+', '12037.830', '11781.396', '11042.368', '10420.028', '9545.865', '8654.728', '7855.902', '6856.694', '6009.781', '5152.329', '4406.630', '3615.638', '2990.636', '245
+2.458', '1937.633', '1495.325', '1214.564', '916.890', '658.996', '545.223', '432.538', '360.515', '230.630', '186.208', '112.997', '71.723', '2.146', '33.154', '17.58
+1', '3.834', '0.773', '3.109', '-9.710', '0.406', '-3.075']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197295.54506426334, target N: 197171.0
+Mean E: 4.9792142208735, target E: 4.97335845535094
+INFO:test:{'loss': 27.35321617126465, 'bias_avg': -0.014335303016789052, 'bias_std': 5.230010480511913}
+Working on epoch num: 26...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch26.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.64s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1775035.496, Bias: -8902.867
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['38.118', '371.865', '1186.447', '2328.084', '3878.372', '5515.529', '7172.167', '8743.510', '10122.425', '11178.361', '11877.583', '12357.444', '12511.515
+', '12170.906', '11899.092', '11117.130', '10521.086', '9641.725', '8751.587', '7767.693', '6781.423', '5966.518', '5061.605', '4318.995', '3516.784', '2907.884', '235
+1.263', '1938.492', '1447.658', '1197.554', '838.717', '686.412', '524.239', '387.063', '291.426', '238.366', '169.579', '103.672', '70.676', '52.985', '17.342', '20.9
+46', '8.195', '2.004', '-0.526', '1.167', '2.137', '-3.951']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 198049.26437463413, target N: 197171.0
+Mean E: 4.9609432651216245, target E: 4.97335845535094
+INFO:test:{'loss': 27.06243133544922, 'bias_avg': -0.10108936162284725, 'bias_std': 5.201174235475656}
+Working on epoch num: 27...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch27.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.03s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1751946.577, Bias: 14186.053
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['20.800', '336.365', '1133.142', '2298.565', '3751.732', '5376.801', '7026.458', '8641.121', '9877.882', '10922.095', '11751.295', '12091.595', '12416.818'
+, '12072.466', '11810.515', '11025.437', '10436.699', '9566.699', '8628.677', '7662.880', '6750.783', '5971.332', '5003.628', '4315.973', '3491.121', '2942.927', '2364
+.361', '1897.769', '1435.442', '1131.350', '828.731', '819.196', '595.039', '419.818', '270.723', '213.441', '190.959', '123.600', '64.453', '35.346', '30.191', '-7.50
+2', '2.938', '5.692', '2.397', '1.064', '-3.454', '8.186']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 195753.54620313947, target N: 197171.0
+Mean E: 4.973686576139798, target E: 4.97335845535094
+INFO:test:{'loss': 26.964542388916016, 'bias_avg': 0.16315077681567788, 'bias_std': 5.1901754305507595}
+Working on epoch num: 28...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch28.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.24s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1774391.752, Bias: -8259.123
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['51.155', '386.583', '1080.699', '2244.185', '3743.954', '5450.345', '7079.068', '8683.574', '9898.114', '11012.148', '11824.824', '12239.973', '12623.709'
+, '12225.210', '12125.451', '11186.228', '10544.309', '9663.502', '8779.884', '7854.450', '6795.998', '5993.844', '5145.481', '4366.300', '3567.588', '2990.652', '2427
+.968', '1901.818', '1510.860', '1107.846', '911.649', '687.493', '516.042', '400.761', '354.315', '182.905', '115.430', '103.493', '88.853', '42.688', '24.873', '33.25
+3', '11.216', '-2.740', '4.706', '-0.001', '1.073', '-5.008']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197976.71858530492, target N: 197171.0
+Mean E: 4.976217464934441, target E: 4.97335845535094
+INFO:test:{'loss': 26.690292358398438, 'bias_avg': -0.09273924221650012, 'bias_std': 5.1654325875129485}
+Working on epoch num: 29...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch29.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.63s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1773216.911, Bias: -7084.282
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['16.068', '363.987', '1124.969', '2308.471', '3789.590', '5551.782', '7145.331', '8685.591', '9975.726', '11095.318', '11803.324', '12257.737', '12643.229'
+, '12213.482', '12030.042', '11084.277', '10480.465', '9597.804', '8734.261', '7835.028', '6772.934', '5900.783', '5160.447', '4381.696', '3506.514', '2961.285', '2414
+.380', '1921.675', '1523.742', '1135.091', '892.107', '661.607', '505.924', '382.815', '321.960', '231.140', '172.454', '117.648', '86.583', '24.937', '30.453', '1.829
+', '8.058', '5.683', '-3.966', '-3.477', '-2.798', '1.315']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197849.2978294457, target N: 197171.0
+Mean E: 4.968870522126368, target E: 4.97335845535094
+INFO:test:{'loss': 26.527420043945312, 'bias_avg': -0.07807294308151329, 'bias_std': 5.149885820420407}
+Working on epoch num: 3...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch3.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.56s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1536085.314, Bias: 230047.315
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-45.111', '342.319', '747.262', '2754.089', '4431.724', '5220.095', '6374.974', '7314.242', '7266.560', '8007.352', '7964.012', '10077.674', '9664.502', '
+9521.970', '9898.924', '9470.435', '8458.734', '8558.376', '7676.308', '7024.305', '6422.128', '5791.372', '5233.452', '4515.758', '4028.877', '3609.694', '3033.993',
+'3019.646', '2582.491', '2334.717', '1638.060', '993.168', '463.933', '-479.747', '16.375', '-365.542', '167.045', '238.703', '-516.805', '-172.007', '-479.382', '-241
+.346', '-260.142', '-160.418', '-343.764', '-227.953', '180.904', '144.559']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 171896.5179745257, target N: 197171.0
+Mean E: 5.039346946708036, target E: 4.97335845535094
+INFO:test:{'loss': 453.1654052734375, 'bias_avg': 2.90912539655991, 'bias_std': 21.087967509064228}
+Working on epoch num: 30...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch30.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.21s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1759142.851, Bias: 6989.778
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['42.572', '329.296', '1129.684', '2337.063', '3734.484', '5498.427', '7062.436', '8594.932', '9941.822', '11029.897', '11668.074', '12206.339', '12404.767'
+, '12160.521', '11839.058', '10939.562', '10458.821', '9557.216', '8700.423', '7761.363', '6832.605', '5892.547', '5073.111', '4407.404', '3381.757', '2859.865', '2329
+.659', '1917.123', '1487.719', '1154.168', '908.916', '859.031', '585.378', '461.589', '299.770', '254.500', '158.683', '122.518', '76.224', '41.703', '25.526', '17.72
+5', '0.124', '1.152', '8.245', '0.466', '3.039', '-6.887']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 196550.4198820476, target N: 197171.0
+Mean E: 4.977631600188445, target E: 4.97335845535094
+INFO:test:{'loss': 26.516544342041016, 'bias_avg': 0.07142957929748198, 'bias_std': 5.148926118460808}
+Working on epoch num: 31...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch31.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.57s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1768446.937, Bias: -2314.307
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['38.315', '367.319', '1144.849', '2352.574', '3766.472', '5530.311', '7127.372', '8675.427', '10023.586', '11111.821', '11731.153', '12292.179', '12469.598
+', '12213.215', '11888.043', '10990.336', '10518.883', '9569.640', '8731.879', '7792.354', '6850.204', '5917.904', '5072.533', '4411.923', '3402.472', '2865.641', '232
+8.137', '1912.770', '1493.870', '1155.743', '925.066', '847.793', '591.687', '434.997', '296.406', '215.774', '145.816', '85.311', '59.388', '37.809', '20.323', '14.50
+2', '-1.742', '2.953', '4.889', '-1.392', '3.654', '0.150']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197429.9069148812, target N: 197171.0
+Mean E: 4.96925109254518, target E: 4.97335845535094
+INFO:test:{'loss': 26.422117233276367, 'bias_avg': -0.029800523051899442, 'bias_std': 5.140158300241713}
+Working on epoch num: 32...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch32.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:32<00:00, 32.46s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1773307.039, Bias: -7174.410
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['26.721', '376.492', '1149.341', '2335.064', '3787.506', '5540.899', '7151.443', '8718.590', '10053.896', '11151.667', '11756.126', '12325.178', '12522.414
+', '12237.367', '11923.446', '11045.507', '10559.259', '9568.674', '8746.606', '7819.045', '6855.875', '5945.590', '5068.175', '4416.223', '3451.043', '2890.902', '234
+1.539', '1919.251', '1505.174', '1162.919', '927.427', '790.590', '578.030', '396.175', '292.648', '180.263', '141.454', '73.056', '56.931', '33.885', '17.183', '9.825
+', '3.139', '1.712', '-0.241', '-2.050', '0.134', '3.702']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197855.79564281227, target N: 197171.0
+Mean E: 4.964981536503504, target E: 4.97335845535094
+INFO:test:{'loss': 26.36273193359375, 'bias_avg': -0.07882086084692518, 'bias_std': 5.1338602139804905}
+Working on epoch num: 33...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch33.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:33<00:00, 33.14s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1771428.755, Bias: -5296.125
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['28.283', '366.617', '1146.967', '2297.005', '3800.613', '5540.207', '7143.213', '8713.563', '10042.859', '11122.098', '11741.225', '12298.794', '12507.349
+', '12217.877', '11908.491', '11058.426', '10540.660', '9543.476', '8733.675', '7814.176', '6856.565', '5977.806', '5066.378', '4417.802', '3504.622', '2932.353', '236
+1.596', '1925.931', '1515.694', '1169.616', '918.296', '733.648', '546.829', '356.570', '284.756', '165.723', '141.229', '76.972', '58.762', '29.531', '17.398', '6.800
+', '7.205', '-1.497', '-1.774', '-1.234', '-1.829', '-0.977']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197630.34422511724, target N: 197171.0
+Mean E: 4.964552258013966, target E: 4.97335845535094
+INFO:test:{'loss': 26.31212615966797, 'bias_avg': -0.05287111398264848, 'bias_std': 5.1292623446132595}
+Working on epoch num: 34...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch34.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.84s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1773565.077, Bias: -7432.448
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['40.005', '357.913', '1149.768', '2296.478', '3820.955', '5550.566', '7181.076', '8737.249', '10062.886', '11144.416', '11783.051', '12307.256', '12534.556
+', '12224.667', '11913.471', '11093.196', '10528.023', '9537.062', '8705.141', '7766.750', '6828.882', '5969.579', '5048.994', '4384.229', '3526.091', '2940.994', '237
+4.186', '1923.027', '1529.730', '1195.031', '923.466', '726.263', '542.874', '360.771', '308.701', '193.166', '158.671', '96.454', '73.502', '27.982', '20.415', '10.38
+6', '-0.920', '1.985', '2.849', '-3.593', '-0.535', '-2.198']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197895.46166944318, target N: 197171.0
+Mean E: 4.965776850144308, target E: 4.97335845535094
+INFO:test:{'loss': 26.26015281677246, 'bias_avg': -0.08338648969955866, 'bias_std': 5.123787389934392}
+Working on epoch num: 35...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch35.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.92s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1772086.637, Bias: -5954.008
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['37.337', '350.079', '1136.342', '2305.110', '3828.377', '5550.334', '7177.757', '8729.127', '10049.434', '11125.319', '11804.191', '12299.230', '12524.863
+', '12204.695', '11903.127', '11094.842', '10500.534', '9540.218', '8680.720', '7733.324', '6812.412', '5962.106', '5030.471', '4351.835', '3550.861', '2950.859', '238
+0.854', '1924.581', '1530.305', '1205.815', '910.374', '720.603', '542.818', '361.044', '326.106', '211.421', '168.683', '108.399', '78.377', '37.739', '27.884', '12.3
+70', '-1.316', '1.423', '3.308', '-1.834', '0.619', '3.985']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197787.0578917476, target N: 197171.0
+Mean E: 4.96785195847887, target E: 4.97335845535094
+INFO:test:{'loss': 26.200437545776367, 'bias_avg': -0.07090905226396592, 'bias_std': 5.118144841483943}
+Working on epoch num: 36...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch36.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.96s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1769585.873, Bias: -3453.244
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['26.171', '372.996', '1124.026', '2317.022', '3811.495', '5535.571', '7168.665', '8714.767', '10011.498', '11079.384', '11838.477', '12276.523', '12497.402
+', '12186.899', '11890.618', '11101.931', '10488.049', '9547.726', '8691.511', '7709.484', '6823.495', '5954.184', '5023.504', '4345.626', '3567.564', '2963.217', '238
+2.152', '1926.619', '1512.430', '1201.482', '884.756', '711.229', '517.606', '366.676', '346.502', '204.898', '167.033', '89.130', '61.381', '21.541', '17.438', '8.284
+', '7.303', '-3.047', '-0.507', '0.027', '-0.019', '0.252']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197490.97028516926, target N: 197171.0
+Mean E: 4.96592164385917, target E: 4.97335845535094
+INFO:test:{'loss': 26.11668586730957, 'bias_avg': -0.03682899211651713, 'bias_std': 5.11031581815435}
+Working on epoch num: 37...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch37.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.46s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1777496.555, Bias: -11363.926
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['26.704', '391.448', '1151.627', '2361.084', '3842.134', '5607.494', '7226.984', '8796.738', '10083.587', '11143.047', '11957.266', '12374.106', '12515.241
+', '12224.754', '11897.005', '11126.276', '10486.745', '9581.668', '8705.568', '7683.044', '6822.410', '5948.458', '5018.828', '4355.730', '3574.513', '2979.318', '238
+4.586', '1951.976', '1513.718', '1201.545', '881.756', '725.378', '511.595', '379.046', '320.437', '195.188', '129.205', '80.186', '50.902', '24.450', '20.327', '9.046
+', '11.133', '1.660', '2.181', '-2.060', '1.275', '-3.321']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 198271.98624634196, target N: 197171.0
+Mean E: 4.959156299266275, target E: 4.97335845535094
+INFO:test:{'loss': 26.105192184448242, 'bias_avg': -0.12672493866135404, 'bias_std': 5.10775234159185}
+Working on epoch num: 38...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch38.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.73s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1767936.456, Bias: -1803.826
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['32.021', '371.051', '1141.227', '2324.298', '3775.862', '5524.457', '7130.846', '8702.805', '9973.133', '11041.404', '11871.790', '12298.481', '12419.426'
+, '12176.275', '11842.526', '11094.072', '10454.096', '9598.169', '8720.848', '7699.211', '6850.796', '5960.701', '5034.018', '4380.020', '3568.378', '2988.772', '2376
+.161', '1947.749', '1489.767', '1175.761', '868.302', '727.177', '521.203', '386.738', '289.695', '200.126', '134.962', '91.827', '63.846', '36.435', '25.686', '12.328
+', '5.153', '5.767', '3.053', '-2.892', '-0.406', '0.143']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197333.26225640578, target N: 197171.0
+Mean E: 4.967188081154702, target E: 4.97335845535094
+INFO:test:{'loss': 26.01987075805664, 'bias_avg': -0.018676587889866276, 'bias_std': 5.100932927421443}
+Working on epoch num: 39...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch39.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.64s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1763837.277, Bias: 2295.352
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['30.752', '351.956', '1159.345', '2331.783', '3754.419', '5473.177', '7096.602', '8667.025', '9915.009', '11009.560', '11823.322', '12233.034', '12399.599'
+, '12172.640', '11818.700', '11074.770', '10452.295', '9601.189', '8701.608', '7730.099', '6857.723', '5963.510', '5049.648', '4395.839', '3555.122', '2980.836', '2351
+.446', '1913.901', '1449.066', '1151.076', '844.816', '708.052', '541.900', '401.071', '274.432', '237.605', '183.025', '120.830', '83.464', '49.214', '32.191', '17.68
+4', '9.198', '2.413', '1.135', '0.328', '0.276', '-0.252']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 196972.43243204174, target N: 197171.0
+Mean E: 4.972382969197587, target E: 4.97335845535094
+INFO:test:{'loss': 26.019079208374023, 'bias_avg': 0.022855379304833175, 'bias_std': 5.1008385083952}
+Working on epoch num: 4...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch4.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:33<00:00, 33.39s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1478918.337, Bias: 287214.293
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['181.819', '116.498', '730.221', '1712.875', '3597.088', '4850.434', '6033.059', '7735.680', '7802.774', '7994.865', '8398.078', '9630.662', '9384.394', '8
+985.300', '9932.733', '9331.648', '8335.695', '8138.929', '7687.930', '6396.871', '6697.759', '6004.959', '5048.307', '4601.576', '4299.730', '3949.741', '3446.779', '
+2777.442', '907.608', '706.429', '274.331', '-54.789', '55.158', '788.764', '463.060', '494.465', '-305.382', '-135.428', '397.103', '139.639', '361.201', '205.849', '
+-11.080', '69.804', '196.053', '78.514', '-56.750', '32.541']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 168410.93886260316, target N: 197171.0
+Mean E: 5.134510009848291, target E: 4.97335845535094
+INFO:test:{'loss': 364.1869201660156, 'bias_avg': 3.3103202693370166, 'bias_std': 18.794378291177487}
+Working on epoch num: 40...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch40.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.42s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1771972.756, Bias: -5840.126
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['29.254', '367.837', '1157.945', '2349.070', '3800.472', '5513.029', '7149.757', '8722.516', '10000.590', '11088.797', '11891.843', '12286.170', '12511.043
+', '12250.033', '11860.607', '11122.183', '10479.599', '9591.486', '8692.128', '7767.293', '6859.566', '5945.682', '5045.698', '4377.570', '3542.802', '2967.359', '234
+7.643', '1897.185', '1446.803', '1153.673', '857.998', '723.683', '555.844', '404.327', '289.475', '237.900', '186.325', '124.976', '88.601', '43.789', '30.267', '16.2
+03', '5.717', '-0.041', '2.493', '-0.126', '1.123', '-0.441']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 197783.74702370807, target N: 197171.0
+Mean E: 4.968053462093709, target E: 4.97335845535094
+INFO:test:{'loss': 25.998849868774414, 'bias_avg': -0.07052797243740018, 'bias_std': 5.098418683636913}
+Working on epoch num: 5...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch5.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.75s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -2157040.171, Bias: -390907.542
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-82.632', '318.251', '1686.987', '2293.715', '3581.114', '5989.032', '8127.245', '10691.093', '12237.611', '13350.892', '14435.502', '14179.430', '14918.6
+39', '14485.408', '14096.021', '13336.604', '12920.667', '11202.167', '10468.341', '9397.886', '8396.378', '7314.975', '6072.125', '5431.529', '4241.344', '3760.559',
+'3159.248', '2004.686', '1345.304', '699.069', '1135.204', '1919.342', '1172.269', '406.979', '271.074', '76.128', '606.710', '90.017', '-70.489', '39.098', '-221.954'
+, '32.412', '76.618', '-90.567', '-66.574', '81.444', '-145.014', '-57.633']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 235314.25433085207, target N: 197171.0
+Mean E: 4.998221895869845, target E: 4.97335845535094
+INFO:test:{'loss': 222.0848388671875, 'bias_avg': -4.390337359180767, 'bias_std': 14.241130006906078}
+Working on epoch num: 6...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch6.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.34s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1630114.565, Bias: 136018.064
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-30.178', '672.916', '785.383', '2386.200', '3004.507', '4370.018', '6040.479', '7320.281', '8474.388', '9841.790', '10761.961', '11022.061', '11635.767',
+ '11413.442', '10843.838', '10189.487', '10068.227', '9124.925', '8168.479', '7807.722', '6563.979', '5834.117', '4734.940', '4192.144', '3641.100', '2522.560', '2053.
+735', '1742.793', '2091.665', '2121.150', '1222.793', '384.255', '422.526', '625.692', '530.169', '458.997', '232.682', '476.046', '-72.014', '-13.762', '-46.875', '22
+.251', '170.201', '121.420', '-103.004', '134.929', '6.155', '-55.372']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 183916.96840086393, target N: 197171.0
+Mean E: 5.0965208666027335, target E: 4.97335845535094
+INFO:test:{'loss': 160.31591796875, 'bias_avg': 1.5255561955067334, 'bias_std': 12.569350774775552}
+Working on epoch num: 7...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch7.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.85s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1551635.585, Bias: 214497.045
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-48.375', '74.610', '752.550', '1647.430', '3369.359', '4801.979', '5985.026', '7130.164', '8193.046', '9194.261', '9803.889', '10592.324', '10734.573', '
+10510.435', '10464.878', '9791.061', '9273.148', '8852.682', '7892.413', '7276.528', '6333.737', '5537.828', '5098.306', '4396.328', '3355.040', '3064.107', '2457.323'
+, '2142.393', '1551.969', '1172.222', '889.851', '1157.680', '724.369', '382.884', '295.197', '224.156', '147.906', '233.319', '193.100', '58.030', '9.568', '-199.267'
+, '106.737', '95.542', '-79.443', '134.736', '59.077', '63.566']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 175898.24271079153, target N: 197171.0
+Mean E: 5.107776313030445, target E: 4.97335845535094
+INFO:test:{'loss': 142.68438720703125, 'bias_avg': 2.4485219038652453, 'bias_std': 11.691411645372929}
+Working on epoch num: 8...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch8.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+/home/nir/.local/lib/python3.10/site-packages/scipy/optimize/_minpack_py.py:881: OptimizeWarning: Covariance of the parameters could not be estimated
+  warnings.warn('Covariance of the parameters could not be estimated',
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:31<00:00, 31.64s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1941379.614, Bias: -175246.984
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['-43.958', '343.341', '1763.979', '2652.566', '4586.602', '6195.201', '7737.326', '9757.650', '11121.841', '11589.621', '12199.230', '12817.452', '12832.44
+6', '13000.562', '13399.832', '12444.521', '11698.520', '10763.086', '9912.466', '8263.532', '7700.346', '6618.226', '5561.776', '4923.925', '4158.506', '3764.005', '3
+146.824', '2155.421', '879.200', '558.865', '524.999', '29.849', '141.639', '39.908', '-53.333', '-143.671', '-395.998', '-509.753', '-70.914', '-177.923', '111.481',
+'139.696', '100.731', '36.868', '54.158', '88.244', '34.451', '64.719']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 212518.0625878079, target N: 197171.0
+Mean E: 4.8760335535889245, target E: 4.97335845535094
+INFO:test:{'loss': 104.70044708251953, 'bias_avg': -1.7664666781767955, 'bias_std': 10.078692188579074}
+Working on epoch num: 9...
+==================================================
+Warning: logging configuration file is not found in logger/logger_config.json.
+Dataset len:  181
+INFO:test:Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+INFO:test:Loading checkpoint: saved/models/new_model/0529_090443/checkpoint-epoch9.pth ...
+  0%|                                                                                                                                            | 0/1 [00:00<?, ?it/s]
+/mnt/sda1/nirz/particles_repo/./test.py:21: RuntimeWarning: overflow encountered in exp
+  y = A*np.exp(-1*B*x**2)
+100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:30<00:00, 30.87s/it]
+Entopies: True distribution: -1766132.629, Predicted distribution: -1670357.018, Bias: 95775.611
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:88: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_target[i] + 0.0000001)) for i, f in enumerate(total_out)])
+/mnt/sda1/nirz/particles_repo/utils/my_utils.py:90: RuntimeWarning: invalid value encountered in log
+  [f * np.log((f + 0.0000001) / (total_out[i] + 0.0000001)) for i, f in enumerate(total_target)])
+KL dist - KL1(q=target): nan, KL2(q=output): nan, Symmetric: nan
+total out: ['0.590', '705.677', '897.043', '2248.886', '3252.371', '5142.048', '6493.176', '8198.885', '9313.072', '10488.151', '11160.201', '11704.006', '11941.517',
+'11682.155', '11134.690', '10508.824', '9859.906', '9193.352', '8181.623', '7574.021', '6573.248', '5776.224', '4708.077', '4015.686', '3146.006', '2551.599', '2027.89
+8', '1453.084', '1763.590', '1429.143', '1131.342', '1175.655', '716.779', '587.068', '382.271', '119.042', '251.730', '294.533', '-96.576', '-70.422', '11.220', '-32.
+969', '1.802', '11.542', '27.206', '3.140', '-76.247', '24.834']
+total target: ['37.000', '354.000', '1057.000', '2335.000', '3669.000', '5524.000', '7134.000', '8637.000', '9957.000', '11091.000', '11878.000', '12223.000', '12447.0
+00', '12030.000', '11781.000', '11205.000', '10473.000', '9845.000', '8799.000', '7717.000', '6657.000', '5933.000', '5040.000', '4386.000', '3593.000', '2905.000', '2
+283.000', '1926.000', '1553.000', '1163.000', '960.000', '717.000', '522.000', '381.000', '289.000', '211.000', '158.000', '98.000', '76.000', '68.000', '25.000', '19.
+000', '9.000', '2.000', '3.000', '0.000', '0.000', '1.000']
+total N: 187586.70157311112, target N: 197171.0
+Mean E: 4.996417142972249, target E: 4.97335845535094
+INFO:test:{'loss': 65.04415893554688, 'bias_avg': 1.1031650100623704, 'bias_std': 7.98919171918163}
+
+mkdir: cannot create directory ‘./saved/models/saved_models/run_1’: File exists
+
+
+
+
+
+
+
+
+
+
+
+
+
+
