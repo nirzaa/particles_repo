@@ -205,7 +205,7 @@ class Bin_energy_data(Dataset):
         with open('without_noise.npy', 'wb') as f:
             np.save(f, d_tens)
 
-        # d_tens += en_dep_noise
+        d_tens += en_dep_noise
 
         with open('with_noise.npy', 'wb') as f:
             np.save(f, d_tens)
