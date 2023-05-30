@@ -9,21 +9,36 @@ We are using NVIDIA TITAN V
 
 
 
+^CTraceback (most recent call last):
+  File "/mnt/sda1/nirz/particles_repo/./data_loader/EcalDataIO.py", line 59, in ecalList2Dict
+    edepdict[tuple(map(int, edep[0:3]))] += edep[3]
+KeyError: (10, 24, 4)
 
+During handling of the above exception, another exception occurred:
 
-
-
+Traceback (most recent call last):
+  File "/mnt/sda1/nirz/particles_repo/./utils/my_utils.py", line 204, in <module>
+    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[3])
+  File "/mnt/sda1/nirz/particles_repo/./utils/my_utils.py", line 37, in merge_and_split_data
+    dataset = Bin_energy_data(edep_file, en_file, moment=moment,
+  File "/mnt/sda1/nirz/particles_repo/./data_loader/data_loaders.py", line 84, in __init__
+    self.en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
+  File "/mnt/sda1/nirz/particles_repo/./data_loader/EcalDataIO.py", line 91, in ecalmatio
+    dictOfInput[keyString] = ecalList2Dict(inputdict[keyString].tolist())
+  File "/mnt/sda1/nirz/particles_repo/./data_loader/EcalDataIO.py", line 62, in ecalList2Dict
+    edepdict[tuple(map(int, edep[0:3]))] = edep[3]
+KeyboardInterrupt
 This is the 0 run
 ==================================================
 rm: cannot remove './saved/models/new_model/*': No such file or directory
 
-
-
-
-
-
-
-
+^CTraceback (most recent call last):
+  File "/mnt/sda1/nirz/particles_repo/./train.py", line 3, in <module>
+    import torch
+  File "/home/nir/.local/lib/python3.10/site-packages/torch/__init__.py", line 202, in <module>
+    from torch._C import *  # noqa: F403
+RuntimeError: KeyboardInterrupt:
+^C
 
 
 
