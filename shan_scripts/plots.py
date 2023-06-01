@@ -15,7 +15,15 @@ layers = 20
 
 def hist(shan_location, xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
-    
+
+    yy1[yy1 == np.inf] = 0
+    yy1_mean = yy1[34:].mean()
+    yy1[34:] = yy1_mean
+
+    yy2[yy2 == np.inf] = 0
+    yy2_mean = yy2[34:].mean()
+    yy2[34:] = yy2_mean
+
     yy1 = np.array(yy1)
     yy2 = np.array(yy2)
 
