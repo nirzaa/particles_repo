@@ -128,7 +128,7 @@ def fluctuation_calculator(location, total_runs, num_case, epoch):
 if __name__ == '__main__':
 
     # 1: WOB 20 layers, 2: WB, 20 layers, 3: WB, 10, 4: WB, 5, 5: WB, 1
-    num_case = 2
+    num_case = 5
     epochs_every = 5
     total_epochs = 40
     total_runs = 5
@@ -140,7 +140,7 @@ if __name__ == '__main__':
     location = f'./csv_files/kfold5/case_{num_case}'
     shan_location = f'./shan_scripts/kfold5/case_{num_case}'
     my_path = f'./csv_files/kfold5/case_{num_case}/run_1/epoch_25'
-    model = model.model_2d_48_1(model_type=None, num_classes=None)
+    model = model.model_2d_48(model_type=None, num_classes=None)
 
     with open('./run.txt', 'r') as f:
         run = int(f.read())
