@@ -44,6 +44,9 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     correlation = cov / (std_t * std_o)
     delta = 1/(yy2**2)*(std_o**2) + ((yy1**2) / (yy2**4)) * (std_t**2) - 2*(yy1/yy2**3)*cov
     delta_root = np.sqrt(delta)
+
+    delta_root[34:] = 0 # there is no meaning to mean of stds
+
     # ========== Save the Values ============= #
 
     df = pd.DataFrame({'cov': cov, 'delta': delta, 'correlation' : correlation, 'delta_root': delta_root})
