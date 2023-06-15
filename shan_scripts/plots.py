@@ -27,8 +27,8 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     yy1 = np.array(yy1) / 180
     yy2 = np.array(yy2) / 180
 
-    output_std = pd.read_csv(f'./{shan_location}/output_std.csv')
-    target_std = pd.read_csv(f'./{shan_location}/target_std.csv')
+    output_std = pd.read_csv(f'./{shan_location}/output_std.csv') / 180
+    target_std = pd.read_csv(f'./{shan_location}/target_std.csv') / 180
 
     residue = numpy.array(yy2)-numpy.array(yy1)
     residue_normalised = residue/yy2
@@ -59,7 +59,7 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     ax1 = pyplot.subplot(7,1,(1,5))
     ax2 = pyplot.subplot(7,1,(6,7), sharex=ax1)
     ax = ax1 # shared x axis
-    ax.set_ylim(0,50000)
+    ax.set_ylim(0,500)
     data1 = numpy.random.normal(0,1, 10000)
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
     xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
@@ -192,15 +192,24 @@ def tot(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
-def ratio(xx, yy, fname):
+def ratio(xx, yy, fname, my_path):
+
+    df = pd.read_csv(f'{my_path}/data_frame.csv')
+    xx = df['target']
+
     fig,ax = pyplot.subplots()
     # ax.scatter(xx,yy, color='k', label="E[GeV](output) / PixelSum")
-    xx /= 180
+
+    # xx /= 180
+
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,400)
-    ax.set_xlabel(r'$E_{gen}[GeV]$')
+
+    # ax.set_xlabel(r'$E_{gen}[GeV]$')
+    ax.set_xlabel(r'Multiplicity')
+
     ax.set_ylabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     # ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         # transform=ax.transAxes, verticalalignment='top')
@@ -279,7 +288,13 @@ def projection_sand(xdata, ydata, filename, bins):
     plt.ylabel(f'Occurences, bins={bins}')
     plt.savefig(filename)
 
-def interval_sand(x, y, interval, filename):
+def interval_sand(x, y, interval, filename, mypath):
+
+    df = pd.read_csv(f'{mypath}/data_frame.csv')
+    xx = df['target']
+
+    x = xx
+
     sort = np.argsort(x)
     y = y[sort]
     x = x[sort]
@@ -295,11 +310,17 @@ def interval_sand(x, y, interval, filename):
         xlist.append(x[cond].mean())
     plt.figure()
     plt.clf()
-    xaxis = range(len(xlist))
-    plt.errorbar(xaxis, ylist, ystd)
-    plt.plot(xaxis, ylist)
-    plt.title(f'Mean values in batch of energies of size {interval} [GeV]')
-    plt.xlabel('Energy Batch [10*GeV]')
+    xaxis = np.array(range(len(xlist)))
+    ystd = np.array(ystd)
+    y = np.array(ylist)
+    xaxis = xaxis[y > 0]
+    ystd = ystd[y > 0]
+    y = y[y > 0]
+    plt.errorbar(xaxis, y, ystd)
+    plt.ylim(0, 400)
+    plt.plot(xaxis, y)
+    plt.title(f'Mean values in batch of {interval} Multiplicity')
+    plt.xlabel('Multiplicity')
     plt.ylabel(r'Mean of: $E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     plt.savefig(filename, bbox_inches='tight')
 

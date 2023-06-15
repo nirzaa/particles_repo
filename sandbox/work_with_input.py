@@ -33,7 +33,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_5' # case number
+
+    name = 'case_4' # case number
     layers = 20
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
     # x = np.random.rand(110,20)
@@ -110,7 +111,7 @@ if __name__ == '__main__':
         
         # x.append(np.array(energies[str(event)]).sum())
         # y.append(np.array(energies[str(event)]).sum() / sum_dict[str(event)])
-    p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png')
+    p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png', location)
 
     x_numpy = np.array(x)
     y_numpy = np.array(y)
@@ -122,5 +123,5 @@ if __name__ == '__main__':
     # p.projection_sandbox(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', y_numpy, bins=30)
     
     p.projection_sand(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', bins)
-    p.interval_sand(x_numpy, y_numpy, interval=10, filename=f'./sandbox/figures/{name}_intervals.png')
+    p.interval_sand(x_numpy, y_numpy, interval=100, filename=f'./sandbox/figures/{name}_intervals.png', mypath=location)
 
