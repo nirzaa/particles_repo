@@ -24,8 +24,8 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     yy2_mean = yy2[34:].mean()
     yy2[34:] = yy2_mean
 
-    yy1 = np.array(yy1)
-    yy2 = np.array(yy2)
+    yy1 = np.array(yy1) / 180
+    yy2 = np.array(yy2) / 180
 
     output_std = pd.read_csv(f'./{shan_location}/output_std.csv')
     target_std = pd.read_csv(f'./{shan_location}/target_std.csv')
@@ -65,7 +65,7 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
     yy1 /= ((13-1) / yy1.shape[0])
     yy2 /= ((13-1) / yy2.shape[0])
-    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
+    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{gen}$")
     ax1.errorbar(xx_errorbar, yy1, yerr=output_std['output_std'], linestyle='none')
     ax1.errorbar(xx_errorbar, yy2, yerr=target_std['target_std'], linestyle='none')
 
@@ -77,21 +77,21 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     for label in ax.get_xticklabels(): label.set_visible(False)
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
-    ax2.set_ylabel(r'$(N_{gen} - N_{rec})$/$N_\mathregular{true}$', loc="center")
+    ax2.set_ylabel(r'$(N_{gen} - N_{rec})$/$N_\mathregular{gen}$', loc="center")
     fig.align_ylabels([ax1,ax2])
     ax2.set_xlabel(r'$E_e$ [GeV]')
     ax2.set_ylim(-.2,.2)
     ax2.set_yticks(numpy.arange(-.2,.21,.1), labels=[None,None,"0",None,None])
     ax2.set_yticks(numpy.arange(-.2,.21,0.02), \
-        [None,None,r"$-.16$",None,None,None,r"$-0.08$",None,None,None,"0", \
-            None,None,None,"0.08",None,None,None,".16",None,None], \
+        [r"$-.2$",None,None,None,r"$-0.1$",None,None,None,None,None,"0", \
+            None,None,None,None,None,"0.1",None,None,None,".2"], \
             minor=True)
-    ax1.text(0.05,0.9,"$LUXE$ CNN", \
-        transform=ax1.transAxes, verticalalignment='top')
-    ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
-        transform=ax1.transAxes, verticalalignment='top')
-    ax1.text(0.05,0.6,f"180 BXs {layers} first layers", \
-        transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.9,"$LUXE$ CNN", \
+        # transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
+        # transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.6,f"180 BXs {layers} first layers", \
+        # transform=ax1.transAxes, verticalalignment='top')
 
     pyplot.savefig(location)
 
@@ -103,10 +103,10 @@ def loss(xx, yy, fname):
     ax.set_ylim(0,600)
     ax.set_xlabel(r'Epochs')
     ax.set_ylabel(r'MSELoss')
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
 def projection(xx, yy, fname):
@@ -118,10 +118,10 @@ def projection(xx, yy, fname):
     ax.set_ylim(0,45)
     ax.set_xlabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.set_ylabel(r'Occurrences')
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
 def projection_sandbox(xx, yy, fname, data, bins):
@@ -137,8 +137,8 @@ def projection_sandbox(xx, yy, fname, data, bins):
     fname1 = fname[:-4] + '_myplot.png'
     plt.ylabel('Density')
     plt.xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
-    plt.text(0.05,0.9,f"mean={round(mean,2)}, std={round(std,2)}", \
-        transform=ax.transAxes, verticalalignment='top')
+    # plt.text(0.05,0.9,f"mean={round(mean,2)}, std={round(std,2)}", \
+        # transform=ax.transAxes, verticalalignment='top')
     plt.savefig(fname1)
     plt.clf()
 
@@ -149,10 +149,10 @@ def projection_sandbox(xx, yy, fname, data, bins):
     # ax.set_ylim(0,45)
     ax.set_xlabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     ax.set_ylabel(r'Occurrences')
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
 def rel_error(xx, yy, fname):
@@ -163,10 +163,10 @@ def rel_error(xx, yy, fname):
     ax.set_xlabel(r'Epochs')
     ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
     ax.set_ylim(-10,10)
-    ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.05,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
 def tot(xx, yy, fname):
@@ -184,27 +184,28 @@ def tot(xx, yy, fname):
     ax.set_ylim(ymin,ymax)
     ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'$(N_{rec} - N_{gen})/N_{gen}$')
-    ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
-    ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
-    ax.text(0.45,0.3,f"Average={round(avg,2)}, RMS={round(rms,2)}", \
+    # ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
+    # ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
+    ax.text(0.45,0.3,f"Average={abs(round(avg,2))}, RMS={round(rms,2)}", \
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
 def ratio(xx, yy, fname):
     fig,ax = pyplot.subplots()
     # ax.scatter(xx,yy, color='k', label="E[GeV](output) / PixelSum")
+    xx /= 180
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,400)
     ax.set_xlabel(r'$E_{gen}[GeV]$')
     ax.set_ylabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
-    ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
-        transform=ax.transAxes, verticalalignment='top')
-    ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
-        transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
+        # transform=ax.transAxes, verticalalignment='top')
+    # ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
+        # transform=ax.transAxes, verticalalignment='top')
     pyplot.savefig(fname)
 
 def image_hist(location, yy1, num_events):
@@ -217,7 +218,7 @@ def image_hist(location, yy1, num_events):
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
     xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
     yy1 /= ((13-1) / yy1.shape[0])
-    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{true}$")
+    ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{gen}$")
 
     ax.set_xlim(xx[0],xx[-1])
     # ax2.set_ylim(-1,1)
@@ -225,12 +226,12 @@ def image_hist(location, yy1, num_events):
     ax1.legend(loc=(0.7,0.7))  # defined by left-bottom of legend box; in the ratio of figure size
     ax1.set_ylabel(r'd$N$/d$E_e$ [1/GeV]')
     ax1.set_xlabel(r'$E_e$ [GeV]')
-    ax1.text(0.05,0.9,"$LUXE$ CNN", \
-        transform=ax1.transAxes, verticalalignment='top')
-    ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
-        transform=ax1.transAxes, verticalalignment='top')
-    ax1.text(0.05,0.6,f"Number of events = {num_events}", \
-        transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.9,"$LUXE$ CNN", \
+        # transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.8,"e-laser IPstrong ECAL", \
+        # transform=ax1.transAxes, verticalalignment='top')
+    # ax1.text(0.05,0.6,f"Number of events = {num_events}", \
+        # transform=ax1.transAxes, verticalalignment='top')
     
 
     pyplot.savefig(location)
@@ -297,8 +298,8 @@ def interval_sand(x, y, interval, filename):
     xaxis = range(len(xlist))
     plt.errorbar(xaxis, ylist, ystd)
     plt.plot(xaxis, ylist)
-    plt.title(f'Mean values in intervals of {interval}')
-    plt.xlabel('intervals')
+    plt.title(f'Mean values in batch of energies of size {interval} [GeV]')
+    plt.xlabel('Energy Batch [10*GeV]')
     plt.ylabel(r'Mean of: $E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     plt.savefig(filename, bbox_inches='tight')
 
