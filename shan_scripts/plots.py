@@ -16,22 +16,8 @@ layers = 20
 def hist(shan_location, xx, yy1, yy2, location, case=None):
     # yy1 is output, yy2 is target
 
-    yy1[yy1 == np.inf] = 0
-    yy1_mean = yy1[34:].mean()
-    yy1[34:] = yy1_mean
-
-    yy2[yy2 == np.inf] = 0
-    yy2_mean = yy2[34:].mean()
-    yy2[34:] = yy2_mean
-
-    yy1 = np.array(yy1) / 180
-    yy2 = np.array(yy2) / 180
-
-    output_std = pd.read_csv(f'./{shan_location}/output_std.csv') / 180
-    target_std = pd.read_csv(f'./{shan_location}/target_std.csv') / 180
-
-    residue = numpy.array(yy2)-numpy.array(yy1)
-    residue_normalised = residue/yy2
+    output_std = pd.read_csv(f'./{shan_location}/output_std.csv')
+    target_std = pd.read_csv(f'./{shan_location}/target_std.csv')
 
     std_t = target_std['target_std']
     std_o = output_std['output_std']
@@ -47,6 +33,27 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
 
     delta_root[34:] = 0 # there is no meaning to mean of stds
 
+    yy1 /= 180
+    yy2 /= 180
+
+    yy1[yy1 == np.inf] = 0
+    yy1_mean = yy1[34:].mean()
+    yy1[34:] = yy1_mean
+
+    yy2[yy2 == np.inf] = 0
+    yy2_mean = yy2[34:].mean()
+    yy2[34:] = yy2_mean
+
+    yy1 = np.array(yy1)
+    yy2 = np.array(yy2)
+
+    
+
+    residue = numpy.array(yy2)-numpy.array(yy1)
+    residue_normalised = residue/yy2
+
+    
+
     # ========== Save the Values ============= #
 
     df = pd.DataFrame({'cov': cov, 'delta': delta, 'correlation' : correlation, 'delta_root': delta_root})
@@ -59,19 +66,19 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
     ax1 = pyplot.subplot(7,1,(1,5))
     ax2 = pyplot.subplot(7,1,(6,7), sharex=ax1)
     ax = ax1 # shared x axis
-    ax.set_ylim(0,500)
+    ax.set_ylim(0,50_000/180)
     data1 = numpy.random.normal(0,1, 10000)
     _, xx = numpy.histogram(data1, bins=48, range=(1,13))
     xx_errorbar = np.linspace(1.125, 12.875, 48) # + 12 / 48 / 2 = 0.125
     yy1 /= ((13-1) / yy1.shape[0])
     yy2 /= ((13-1) / yy2.shape[0])
     ax1.stairs(yy1,xx, fill=False, color='b', linestyle='-', label=r"$N_\mathregular{gen}$")
-    ax1.errorbar(xx_errorbar, yy1, yerr=output_std['output_std'], linestyle='none')
-    ax1.errorbar(xx_errorbar, yy2, yerr=target_std['target_std'], linestyle='none')
+    ax1.errorbar(xx_errorbar, yy1, yerr=output_std['output_std']/180, linestyle='none')
+    ax1.errorbar(xx_errorbar, yy2, yerr=target_std['target_std']/180, linestyle='none')
 
     ax1.stairs(yy2,xx, fill=False, color='k', linestyle='--', label=r"$N_\mathregular{recon}$")
     ax2.stairs(residue_normalised,xx, color='k')
-    ax2.errorbar(xx_errorbar, residue_normalised, yerr=delta_root, linestyle='none')
+    ax2.errorbar(xx_errorbar, residue_normalised, yerr=delta_root/180, linestyle='none')
     ax.set_xlim(xx[0],xx[-1])
     # ax2.set_ylim(-1,1)
     for label in ax.get_xticklabels(): label.set_visible(False)
