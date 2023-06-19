@@ -78,7 +78,7 @@ def hist(shan_location, xx, yy1, yy2, location, case=None):
 
     ax1.stairs(yy2,xx, fill=False, color='k', linestyle='--', label=r"$N_\mathregular{recon}$")
     ax2.stairs(residue_normalised,xx, color='k')
-    ax2.errorbar(xx_errorbar, residue_normalised, yerr=delta_root/180, linestyle='none')
+    ax2.errorbar(xx_errorbar, residue_normalised, yerr=delta_root, linestyle='none')
     ax.set_xlim(xx[0],xx[-1])
     # ax2.set_ylim(-1,1)
     for label in ax.get_xticklabels(): label.set_visible(False)
