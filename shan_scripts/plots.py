@@ -200,7 +200,7 @@ def tot(xx, yy, fname):
     pyplot.savefig(fname)
 
 def ratio(xx, yy, fname, my_path):
-
+    energies = xx
     df = pd.read_csv(f'{my_path}/data_frame.csv')
     xx = df['target']
 
@@ -222,7 +222,19 @@ def ratio(xx, yy, fname, my_path):
         # transform=ax.transAxes, verticalalignment='top')
     # ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
         # transform=ax.transAxes, verticalalignment='top')
-    pyplot.savefig(fname)
+    pyplot.savefig(fname+'_ratio.png')
+
+    fig,ax = pyplot.subplots(num=0)
+
+    energies = np.array(energies)
+    energies /= 180
+    ax.scatter(xx,energies, color='k')
+    # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
+    # ax.set_xlim(-3,3)
+    # ax.set_ylim(0,400)
+    ax.set_xlabel(r'Multiplicity')
+    ax.set_ylabel("Energy[GeV]")
+    pyplot.savefig(fname+'_energyvsmultiplicity.png')
 
 def image_hist(location, yy1, num_events):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")

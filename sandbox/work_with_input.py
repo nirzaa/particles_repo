@@ -111,7 +111,7 @@ if __name__ == '__main__':
         
         # x.append(np.array(energies[str(event)]).sum())
         # y.append(np.array(energies[str(event)]).sum() / sum_dict[str(event)])
-    p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png', location)
+    p.ratio(x, y, f'./sandbox/figures/{name}', location)
 
     x_numpy = np.array(x)
     y_numpy = np.array(y)
