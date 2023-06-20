@@ -33,8 +33,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_3' # case number
-    layers = 5
+    name = 'case_5' # case number
+    layers = 20
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
