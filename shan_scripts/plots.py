@@ -199,20 +199,28 @@ def tot(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
-def ratio(xx, yy, fname):
+def ratio(xx, yy, fname, my_path):
+
+    energies = xx
+    df = pd.read_csv(f'{my_path}/data_frame.csv')
+    xx = df['target']
+
     fig,ax = pyplot.subplots()
     # ax.scatter(xx,yy, color='k', label="E[GeV](output) / PixelSum")
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,400)
-    ax.set_xlabel(r'$E_{gen}[GeV]$')
+    # ax.set_xlabel(r'$E_{gen}[GeV]$')
+    ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     # ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         # transform=ax.transAxes, verticalalignment='top')
     # ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
         # transform=ax.transAxes, verticalalignment='top')
-    pyplot.savefig(fname)
+    pyplot.savefig(fname+'_ratio.png')
+
+    
 
 def image_hist(location, yy1, num_events):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
@@ -285,7 +293,13 @@ def projection_sand(xdata, ydata, filename, bins):
     plt.ylabel(f'Occurences, bins={bins}')
     plt.savefig(filename)
 
-def interval_sand(x, y, interval, filename):
+def interval_sand(x, y, interval, filename, mypath):
+
+    df = pd.read_csv(f'{mypath}/data_frame.csv')
+    xx = df['target']
+
+    x = xx
+
     sort = np.argsort(x)
     y = y[sort]
     x = x[sort]

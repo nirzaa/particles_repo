@@ -33,8 +33,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_5' # case number
-    layers = 20
+    name = 'case_3' # case number
+    layers = 5
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
@@ -110,7 +110,8 @@ if __name__ == '__main__':
         
         # x.append(np.array(energies[str(event)]).sum())
         # y.append(np.array(energies[str(event)]).sum() / sum_dict[str(event)])
-    p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png')
+    # p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png')
+    p.ratio(x, y, f'./sandbox/figures/{name}', location)
 
     x_numpy = np.array(x)
     y_numpy = np.array(y)
@@ -122,4 +123,26 @@ if __name__ == '__main__':
     # p.projection_sandbox(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', y_numpy, bins=30)
     
     p.projection_sand(xx, yy1, f'./sandbox/figures/{name}_ratio_projection.png', bins)
-    p.interval_sand(x_numpy, y_numpy, interval=1000, filename=f'./sandbox/figures/{name}_intervals.png')
+    # p.interval_sand(x_numpy, y_numpy, interval=1000, filename=f'./sandbox/figures/{name}_intervals.png')
+    p.interval_sand(x_numpy, y_numpy, interval=100, filename=f'./sandbox/figures/{name}_intervals.png', mypath=location)
+
+    myE = EcalDataIO.energymatio(en_file)
+    events = list(en_dep.keys())
+    energies = list()
+    multiplicties = list()
+
+    for event in events:
+        energies.append(sum(list(myE[event])))
+        multiplicties.append(len(myE[event]))
+
+    fig,ax = pyplot.subplots(num=0)
+
+    energies = np.array(energies)
+    ax.scatter(multiplicties,energies, color='k')
+    # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
+    # ax.set_xlim(-3,3)
+    # ax.set_ylim(0,400)
+    ax.set_xlabel(r'Multiplicity')
+    ax.set_ylabel("Energy[GeV]")
+    fname = f'./sandbox/figures/{name}'
+    pyplot.savefig(fname+'_energyvsmultiplicity.png')
