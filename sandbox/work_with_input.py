@@ -16,6 +16,7 @@ from shan_scripts import plots as p
 import torch
 from collections import Counter
 from scipy.io import loadmat
+from statistics import mean, stdev
 
 def plot_image(ecalimage, name):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
@@ -34,8 +35,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_5' # case number
-    layers = 20
+    name = 'case_3' # case number
+    layers = 5
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
 
     noise = False if name[-1] == '5' else True
@@ -182,6 +183,7 @@ if __name__ == '__main__':
     fig,ax = pyplot.subplots(num=1)
 
     ax.scatter(z_multicipities,z, color='k')
+    print(f'No. events: {len(z)}\nAverage: {mean(z):.3}\nStd: {stdev(z):.3}')
     # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,400)
