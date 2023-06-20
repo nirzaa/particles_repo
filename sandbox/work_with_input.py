@@ -15,6 +15,7 @@ import pandas as pd
 from shan_scripts import plots as p
 import torch
 from collections import Counter
+from scipy.io import loadmat
 
 def plot_image(ecalimage, name):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
@@ -33,9 +34,20 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_2' # case number
-    layers = 10
+    name = 'case_5' # case number
+    layers = 20
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
+
+    noise = False if name[-1] == '5' else True
+
+    noise_file = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
+    en_dep = loadmat(noise_file)['0']
+    en_dep_noise = torch.zeros((110, 11, 21))
+    for i in range(en_dep_noise.shape[0]):
+        for j in range(en_dep_noise.shape[1]):
+            for k in range(en_dep_noise.shape[2]):
+                en_dep_noise[i,j,k] = en_dep[k,i,j]
+
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
     # plot_image(x)
@@ -59,10 +71,17 @@ if __name__ == '__main__':
         y = list(en_dep[i].keys())
         for j in y:
             if j[0] <= layers: # taking only the pixels that are in the layers we take into account
+                (z, x, y) = j
                 try:
-                    sum_dict[i] += en_dep[i][j]
+                    if noise:
+                        sum_dict[i] += en_dep[i][j] + float(en_dep_noise[(x,y,z)])
+                    else:
+                        sum_dict[i] += en_dep[i][j]
                 except:
-                    sum_dict[i] = en_dep[i][j]
+                    if noise:
+                        sum_dict[i] = en_dep[i][j] + float(en_dep_noise[(x,y,z)])
+                    else:
+                        sum_dict[i] = en_dep[i][j]
     # en_dep[x[0]][y[0]] # taking the 0 event, and then the 0 pixel value
 
     en_list = torch.Tensor(energies[key])
