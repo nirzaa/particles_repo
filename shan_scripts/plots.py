@@ -199,42 +199,20 @@ def tot(xx, yy, fname):
         transform=ax.transAxes, verticalalignment='top', horizontalalignment='left')
     pyplot.savefig(fname)
 
-def ratio(xx, yy, fname, my_path):
-    energies = xx
-    df = pd.read_csv(f'{my_path}/data_frame.csv')
-    xx = df['target']
-
+def ratio(xx, yy, fname):
     fig,ax = pyplot.subplots()
     # ax.scatter(xx,yy, color='k', label="E[GeV](output) / PixelSum")
-
-    # xx /= 180
-
     ax.scatter(xx,yy, color='k')
     ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
     ax.set_ylim(0,400)
-
-    # ax.set_xlabel(r'$E_{gen}[GeV]$')
-    ax.set_xlabel(r'Multiplicity')
-
+    ax.set_xlabel(r'$E_{gen}[GeV]$')
     ax.set_ylabel(r'$E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     # ax.text(0.45,0.9,"$LUXE$ CNN\ne-laser IPstrong ECAL", \
         # transform=ax.transAxes, verticalalignment='top')
     # ax.text(0.45,0.7,f"180 BXs {layers} first layers", \
         # transform=ax.transAxes, verticalalignment='top')
-    pyplot.savefig(fname+'_ratio.png')
-
-    fig,ax = pyplot.subplots(num=0)
-
-    energies = np.array(energies)
-    energies /= 180
-    ax.scatter(xx,energies, color='k')
-    # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
-    # ax.set_xlim(-3,3)
-    # ax.set_ylim(0,400)
-    ax.set_xlabel(r'Multiplicity')
-    ax.set_ylabel("Energy[GeV]")
-    pyplot.savefig(fname+'_energyvsmultiplicity.png')
+    pyplot.savefig(fname)
 
 def image_hist(location, yy1, num_events):
     pyplot.style.use("./shan_scripts/luxe.mplstyle")
@@ -307,13 +285,7 @@ def projection_sand(xdata, ydata, filename, bins):
     plt.ylabel(f'Occurences, bins={bins}')
     plt.savefig(filename)
 
-def interval_sand(x, y, interval, filename, mypath):
-
-    df = pd.read_csv(f'{mypath}/data_frame.csv')
-    xx = df['target']
-
-    x = xx
-
+def interval_sand(x, y, interval, filename):
     sort = np.argsort(x)
     y = y[sort]
     x = x[sort]
@@ -329,17 +301,11 @@ def interval_sand(x, y, interval, filename, mypath):
         xlist.append(x[cond].mean())
     plt.figure()
     plt.clf()
-    xaxis = np.array(range(len(xlist)))
-    ystd = np.array(ystd)
-    y = np.array(ylist)
-    xaxis = xaxis[y > 0]
-    ystd = ystd[y > 0]
-    y = y[y > 0]
-    plt.errorbar(xaxis, y, ystd)
-    plt.ylim(0, 400)
-    plt.plot(xaxis, y)
-    plt.title(f'Mean values in batch of {interval} Multiplicity')
-    plt.xlabel('Multiplicity')
+    xaxis = range(len(xlist))
+    plt.errorbar(xaxis, ylist, ystd)
+    plt.plot(xaxis, ylist)
+    plt.title(f'Mean values in intervals of {interval}')
+    plt.xlabel('intervals')
     plt.ylabel(r'Mean of: $E_{rec}[GeV] / E^{tot}_{dep}[MeV]$')
     plt.savefig(filename, bbox_inches='tight')
 
