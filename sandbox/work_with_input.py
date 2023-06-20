@@ -33,8 +33,8 @@ def plot_image(ecalimage, name):
 
 if __name__ == '__main__':
 
-    name = 'case_3' # case number
-    layers = 5
+    name = 'case_2' # case number
+    layers = 10
     location = f'./csv_files/kfold5/{name}/run_0/epoch_25'
     # x = np.random.rand(110,20)
     # x = np.transpose(x)
@@ -97,13 +97,29 @@ if __name__ == '__main__':
     events_numbers = events_numbers.to_numpy().squeeze(axis=1)
     hist_target = hist_target.to_numpy()
     hist_output = hist_output.to_numpy()
+
+    myE = EcalDataIO.energymatio(en_file)
+    events = list(en_dep.keys())
+    energies = list()
+    multiplicties = list()
+
+    for event in events:
+        energies.append(sum(list(myE[event])))
+        multiplicties.append(len(myE[event]))
+
     x = list()
     y = list()
+    z = list()
+    j =  EcalDataIO.energymatio(en_file)
+    z_multicipities = list()
     energy_bins = np.linspace(1, 13, 48)
     for i, event in enumerate(events_numbers):
         
         x.append((hist_target[i] * energy_bins).sum())
         y.append((hist_output[i] * energy_bins).sum() / sum_dict[str(x_keys[event])])
+        
+        z_multicipities.append(len(myE[str(event)]))
+        z.append((hist_target[i] * energy_bins).sum() / sum_dict[str(x_keys[event])])
 
         # x.append((hist_target[0] * energy_bins).sum())
         # y.append((hist_target[0] * energy_bins).sum() / sum_dict[str(x_keys[event])])
@@ -111,7 +127,9 @@ if __name__ == '__main__':
         # x.append(np.array(energies[str(event)]).sum())
         # y.append(np.array(energies[str(event)]).sum() / sum_dict[str(event)])
     # p.ratio(x, y, f'./sandbox/figures/{name}_ratio.png')
-    p.ratio(x, y, f'./sandbox/figures/{name}', location)
+    
+    # p.ratio(x, y, f'./sandbox/figures/{name}', location)
+    p.ratio(z_multicipities, y, f'./sandbox/figures/{name}', location)
 
     x_numpy = np.array(x)
     y_numpy = np.array(y)
@@ -126,18 +144,11 @@ if __name__ == '__main__':
     # p.interval_sand(x_numpy, y_numpy, interval=1000, filename=f'./sandbox/figures/{name}_intervals.png')
     p.interval_sand(x_numpy, y_numpy, interval=100, filename=f'./sandbox/figures/{name}_intervals.png', mypath=location)
 
-    myE = EcalDataIO.energymatio(en_file)
-    events = list(en_dep.keys())
-    energies = list()
-    multiplicties = list()
-
-    for event in events:
-        energies.append(sum(list(myE[event])))
-        multiplicties.append(len(myE[event]))
+    
 
     fig,ax = pyplot.subplots(num=0)
 
-    energies = np.array(energies)
+    energies = np.array(energies) / 1000
     ax.scatter(multiplicties,energies, color='k')
     # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
     # ax.set_xlim(-3,3)
@@ -145,4 +156,19 @@ if __name__ == '__main__':
     ax.set_xlabel(r'Multiplicity')
     ax.set_ylabel("Energy[GeV]")
     fname = f'./sandbox/figures/{name}'
+    pyplot.tight_layout()
     pyplot.savefig(fname+'_energyvsmultiplicity.png')
+
+
+    fig,ax = pyplot.subplots(num=1)
+
+    ax.scatter(z_multicipities,z, color='k')
+    # ax.legend(loc=(0.625,0.8))  # defined by left-bottom of legend box; in the ratio of figure size
+    # ax.set_xlim(-3,3)
+    ax.set_ylim(0,400)
+    ax.set_xlabel(r'Multiplicity')
+    ax.set_ylabel(r'$E_{gen}[GeV] / E^{tot}_{dep}[MeV]$')
+    fname = f'./sandbox/figures/{name}'
+    pyplot.tight_layout()
+    pyplot.savefig(fname+'_ratio_real.png')
+
