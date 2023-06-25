@@ -1,0 +1,35 @@
+Stats for our data
+========================================
+
+Model architecture
+========================================
+Model(
+  (fc1): Linear(in_features=2688, out_features=256, bias=True)
+  (fc2): Linear(in_features=256, out_features=48, bias=True)
+  (conv1): Conv2d(1, 8, kernel_size=(2, 2), stride=(2, 2), padding=(1, 1))
+  (conv2): Conv2d(8, 16, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1))
+  (global1): AvgPool2d(kernel_size=3, stride=1, padding=1)
+  (avgpool): AdaptiveAvgPool2d(output_size=(1, 1))
+)
+
+
+The Results:
+==================================================
+
+run 0
+==================================================
+The average results for 30 epoch
+==================================================
+The output average number of particles per event is: 6.11
+The target average number of particles per event is: 3.08
+the output N value is: 25815.685546875
+the target N value is: 13000.0
+relative error for total N: 98.58%
+
+The average results for all the above epochs
+==================================================
+The output average number of particles per event is: 293.36
+The target average number of particles per event is: 147.73
+the output N value is: 25815.685546875
+the target N value is: 13000.0
+relative error for total N: 98.58%, std: 0.00%

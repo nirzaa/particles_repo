@@ -30,7 +30,8 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         sys.stdout = log_file
         print('Model architecture')
         print('='*40)
-        summary(model, input_size=input_shape, col_names=('input_size', 'output_size'))
+        print(model)
+        # summary(model, input_size=input_shape, col_names=('input_size', 'output_size'))
         print('\n\nThe Results:')
         print('='*50)
         print()
@@ -44,6 +45,7 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         
         # epochs_list = np.append([0], np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int'))
         epochs_list = np.linspace(5, epoch_nums, int(epoch_nums / 5), dtype='int')
+        epochs_list = [30]
         
         
         # epochs_list = np.linspace(10, epoch_nums, int(epoch_nums / 5)-1, dtype='int')
@@ -92,11 +94,11 @@ def analyze(model, input_shape, num_runs, folder_name, epoch_nums):
         f'\nthe target N value is: {mean_target.sum()}')
         f.write(f'\nrelative error for total N: {my_rel_error_mean:.2f}%, std: {my_rel_error_std*100:.2f}%\n')
 
-def fluctuation_calculator(num_case, epoch):
+def fluctuation_calculator(location, total_runs, num_case, epoch):
     output_list = list()
     target_list = list()
-    for run in range(10):
-        my_path = f'./csv_files/multiple_runs/case_{num_case}/run_{run}/epoch_{epoch}'
+    for run in range(total_runs):
+        my_path = f'{location}/run_{run}/epoch_{epoch}'
         ho = np.array(pd.read_csv(f'{my_path}/hist_output.csv'))
         ht = np.array(pd.read_csv(f'{my_path}/hist_target.csv'))
         output_list.append(ho.sum(axis=0))
@@ -115,8 +117,8 @@ def fluctuation_calculator(num_case, epoch):
     df_output = pd.DataFrame({'output_mean': output_mean, 'output_std': output_std, 'multiply_mean':multiply_mean})
     df_target = pd.DataFrame({'target_mean': target_mean, 'target_std': target_std, 'multiply_mean':multiply_mean})
 
-    df_output.to_csv(f"./shan_scripts/multiple_runs/case_{num_case}/output_std.csv", index=False)
-    df_target.to_csv(f"./shan_scripts/multiple_runs/case_{num_case}/target_std.csv", index=False)
+    df_output.to_csv(f"./{shan_location}/output_std.csv", index=False)
+    df_target.to_csv(f"./{shan_location}/target_std.csv", index=False)
 
 
 
@@ -126,19 +128,21 @@ def fluctuation_calculator(num_case, epoch):
 
 if __name__ == '__main__':
 
-
-    num_case = 5
+    # 1: WOB 20 layers, 2: WB, 20 layers, 3: WB, 10, 4: WB, 5, 5: WB, 1
+    num_case = 6
     epochs_every = 5
     total_epochs = 40
-    total_runs = 10
+    total_runs = 1
     energy_start = 1
     energy_end = 13
     epochs_num = 40
-    num_runs = 10
+    num_runs = 1
     input_shape = (128,1,110,21)
-    # location = f'./csv_files/5micron_test/case_{num_case}'
-    my_path = f'./csv_files/5micron_test/epoch_30'
+    location = f'./csv_files/5micron_test'
+    my_path = f'./csv_files/5micron_test/run_0/epoch_30'
     model = model.model_2d_48(model_type=None, num_classes=None)
+
+    shan_location = f'./shan_scripts/multiple_runs/case_{num_case}'
 
     with open('./run.txt', 'r') as f:
         run = int(f.read())
@@ -149,21 +153,19 @@ if __name__ == '__main__':
     np.random.seed(SEED)
     random.seed(SEED)
 
-    # fluctuation_calculator(num_case=5, epoch=25)
+    fluctuation_calculator(location, total_runs, num_case=6, epoch=30)
     
-    # analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
+    analyze(model, input_shape=input_shape, num_runs=num_runs, folder_name=location, epoch_nums=epochs_num)
 
-    # re.rel_fig(num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
+    # re.rel_fig(location, num_case, epochs_every, total_epochs, total_runs, presentation=True, case=num_case) # relative error vs. epochs
 
     # pay attention the hist is based on the run mentioned in my_path
-    pa.hist_fig(my_path, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
-
+    pa.hist_fig(my_path, shan_location, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
     
     # la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
     
     
     
-
 
 
