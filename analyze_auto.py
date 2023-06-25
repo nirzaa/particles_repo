@@ -136,8 +136,8 @@ if __name__ == '__main__':
     epochs_num = 40
     num_runs = 10
     input_shape = (128,1,110,21)
-    location = f'./csv_files/multiple_runs/case_{num_case}'
-    my_path = f'./csv_files/multiple_runs/case_{num_case}/run_7/epoch_35'
+    # location = f'./csv_files/5micron_test/case_{num_case}'
+    my_path = f'./csv_files/5micron_test/epoch_30'
     model = model.model_2d_48(model_type=None, num_classes=None)
 
     with open('./run.txt', 'r') as f:
@@ -159,7 +159,7 @@ if __name__ == '__main__':
     pa.hist_fig(my_path, energy_start, energy_end, presentation=True, case=num_case) # the figures for the presentation
 
     
-    la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
+    # la.calculate_loss(location, num_runs, epochs_num, presentation=True, case=num_case) # loss function vs. epochs
 
     
     

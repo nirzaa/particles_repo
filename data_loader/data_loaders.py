@@ -11,9 +11,12 @@ from data_loader import EcalDataIO
 import json
 import pandas as pd
 import pickle
-
+import torch
+from torch.utils.data import ConcatDataset, DataLoader
 import os
 import h5py
+from tqdm import tqdm
+from torch.utils.data import TensorDataset
 
 
 # ------------------------------------------------- DATALOADERS ----------------------------------------------------- #
@@ -26,10 +29,57 @@ class data_loader(BaseDataLoader):
 
     def __init__(self, data_dir, batch_size, shuffle=True, validation_split=0.0, num_workers=1, training=True):
 
+
+        data_dir = 'data_5/'
+
         if training == True:
             self.dataset = torch.load(Path(data_dir) / "train//train.pt")
         else:
             self.dataset = torch.load(Path(data_dir) / "test//test.pt")
+
+        x = torch.load(Path(data_dir) / "train//train.pt")
+        y = torch.load(Path(data_dir) / "test//test.pt")
+
+        dataset = torch.utils.data.ConcatDataset([x, y])
+
+        # Create a new list to store the summed samples
+        summed_samples = []
+        x1 = list()
+        x2 = list()
+        x3 = list()
+        x4 = list()
+
+        # Iterate over the original dataset
+        for i in tqdm(range(0, len(dataset)-10, 10)):
+            # Get the current batch of samples
+            batch = [dataset[j] for j in range(i, i + 10)]
+
+            batchy0 = [batch[k][0] for k in range (10)]
+            # Sum the samples in the batch
+            summed_sample0 = torch.stack(batchy0).sum(dim=0)
+
+            batchy1 = [batch[k][1] for k in range (10)]
+            # Sum the samples in the batch
+            summed_sample1 = torch.stack(batchy1).sum(dim=0)
+
+            # Add the summed sample to the new list
+            summed_samples.append((summed_sample0, summed_sample1, dataset[0][2], dataset[0][3]))
+            x1.append(summed_sample0)
+            x2.append(summed_sample1)
+            x3.append(dataset[0][2])
+            x4.append(dataset[0][3])
+
+        x1 = torch.stack(x1)
+        x2 = torch.stack(x2)
+        x3 = torch.tensor(x3)
+        x4 = torch.tensor(x4)
+
+        self.dataset = TensorDataset(x1, x2, x3, x4)
+
+        # # Create a new ConcatDataset from the summed samples
+        # summed_dataset = ConcatDataset(summed_samples)
+
+        # self.dataset = summed_dataset
 
         print("Dataset len: ", len(self.dataset))
         super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
@@ -267,6 +317,6 @@ class Bin_energy_data(Dataset):
         #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:5], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:20], final_list, num_showers, idx
         
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
