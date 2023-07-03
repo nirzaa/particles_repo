@@ -78,16 +78,33 @@ class Bin_energy_data(Dataset):
 
         self.moment = moment
         self.file = file
+        self.ignore_list = list()
+
+        # # Eliminate multiple numbers of some kind
+        # if min_shower_num > 0:
+        #     del_list = []
+        #     for key in self.energies:
+        #         if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
+        #             del_list.append(key)
+        #     for d in del_list:
+        #         del self.energies[d]
+        #         del self.en_dep[d]
 
         # Eliminate multiple numbers of some kind
-        if min_shower_num > 0:
-            del_list = []
-            for key in self.energies:
-                if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
-                    del_list.append(key)
-            for d in del_list:
-                del self.energies[d]
-                del self.en_dep[d]
+        num_positrons = list()
+        min_shower_num = 15
+        del_list = []
+        for key in self.energies:
+            # if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
+            num_positrons.append(len(self.energies[key]))
+            if len(self.energies[key]) < min_shower_num:
+                del_list.append(key)
+        self.ignore_list = del_list
+        for d in del_list:
+            del self.energies[d]
+            del self.en_dep[d]
+        print(len(num_positrons))
+        print(len(self.energies))
 
     def __len__(self):
         return len(self.en_dep)
@@ -168,16 +185,7 @@ class Bin_energy_data(Dataset):
 
     def __getitem__(self, idx):
 
-        # Eliminate multiple numbers of some kind
-        min_shower_num = 600
-        del_list = []
-        for key in self.energies:
-            # if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
-            if len(self.energies[key]) < min_shower_num:
-                del_list.append(key)
-        for d in del_list:
-            del self.energies[d]
-            del self.en_dep[d]
+        
 
         if torch.is_tensor(idx):
             idx = idx.tolist()

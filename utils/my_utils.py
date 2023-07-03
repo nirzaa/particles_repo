@@ -10,9 +10,11 @@ from scipy.io import loadmat
 import h5py
 # from scipy.optimize import curve_fit
 
+
 my_path = os.path.join('./')
 sys.path.append(my_path)
 from data_loader.data_loaders import Bin_energy_data
+from data_loader import EcalDataIO
 
 
 project_path = Path(__file__).parent.parent
@@ -30,9 +32,16 @@ def merge_and_split_data(path, relation, moment, min_shower_num, max_shower_num,
         # edep_file = path / "raw" / f"signal.al.elaser.IP0{i}.edeplist.mat"
         # en_file = path / "raw" / f"signal.al.elaser.IP0{i}.energy.mat"
 
+        os.system("cp ./data/original_raw/ ./data/raw -r")
+
         edep_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.edeplist.mat')
         edep_file_noise = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
         en_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.energy.mat')
+
+        en_dep = EcalDataIO.ecalmatio(edep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
+        energies = EcalDataIO.energymatio(en_file)
+
+
 
         dataset = Bin_energy_data(edep_file, en_file, moment=moment,
                                   min_shower_num=min_shower_num, max_shower_num=max_shower_num, file=i, noise_file=edep_file_noise)
@@ -201,5 +210,5 @@ if __name__ == '__main__':
     # data_path = Path("C:\\Users\\elihu\\PycharmProjects\\LUXE\\LUXE-project-master\\data\\")
 
     data_path = Path(my_path = os.path.join('./', 'data'))
-    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[3])
+    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[5])
     exit()

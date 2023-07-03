@@ -16,6 +16,11 @@ import matplotlib.pyplot as plt
 import h5py
 import numpy as np
 from scipy.optimize import curve_fit
+import sys
+my_path = os.path.join('./')
+sys.path.append(my_path)
+from data_loader.data_loaders import Bin_energy_data
+from data_loader import EcalDataIO
 
 def Gauss(x, A, B):
     y = A*np.exp(-1*B*x**2)
@@ -27,6 +32,32 @@ RAND_NUM = 0
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 def main(config):
+    i = 5
+    edep_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.edeplist.mat')
+    edep_file_noise = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
+    en_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.energy.mat')
+
+    en_dep = EcalDataIO.ecalmatio(edep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
+    energies = EcalDataIO.energymatio(en_file)
+
+    # Eliminate multiple numbers of some kind
+    num_positrons = list()
+    min_shower_num = 15
+    del_list = []
+    use_list = []
+    for key in energies:
+        # if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
+        num_positrons.append(len(energies[key]))
+        if len(energies[key]) < min_shower_num:
+            del_list.append(key)
+        else:
+            use_list.append(int(key))
+    for d in del_list:
+        del energies[d]
+        del en_dep[d]
+    print(len(num_positrons))
+    print(len(energies))
+
     logger = config.get_logger('test')
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -74,7 +105,14 @@ def main(config):
 
     with torch.no_grad():
         for i, data in enumerate(tqdm(data_loader)):
+            
             en_dep, target, num, idx = data
+            use_those = np.where(np.in1d(idx, use_list))[0]
+
+            en_dep = en_dep[use_those]
+            target = target[use_those]
+            num = num[use_those]
+            idx = idx[use_those]
 
             ###############################################
             ### For testing on a totally random dataset ###
