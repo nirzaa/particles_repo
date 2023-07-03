@@ -52,6 +52,8 @@ class data_loader(BaseDataLoader):
         else:
             self.dataset = torch.utils.data.Subset(z, delete_it)
 
+        self.dataset = z
+
         print("Dataset len: ", len(self.dataset))
         super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
 
@@ -250,6 +252,6 @@ class Bin_energy_data(Dataset):
         #     pickle.dump(sum_pixels, file, protocol=pickle.HIGHEST_PROTOCOL)
 
         # return d_tens.sum(axis=2)[:,:,:], final_list, num_showers, idx
-        return d_tens.sum(axis=2)[:,:,:1], final_list, num_showers, idx
+        return d_tens.sum(axis=2)[:,:,:20], final_list, num_showers, idx
         
         # return d_tens.sum(axis=2)[:,:,:3], final_list, num_showers, idx
