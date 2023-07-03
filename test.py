@@ -33,7 +33,7 @@ os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 def main(config):
 
-    i = 3
+    i = 5
     edep_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.edeplist.mat')
     edep_file_noise = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
     en_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.energy.mat')
