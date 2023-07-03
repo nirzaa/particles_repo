@@ -41,6 +41,8 @@ class data_loader(BaseDataLoader):
 
         self.dataset = torch.utils.data.ConcatDataset([x, y])
 
+        self.dataset = y
+
         print("Dataset len: ", len(self.dataset))
         super().__init__(self.dataset, batch_size, shuffle, validation_split, num_workers)
 

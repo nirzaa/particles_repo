@@ -32,7 +32,7 @@ RAND_NUM = 0
 os.environ['KMP_DUPLICATE_LIB_OK']='True'
 
 def main(config):
-    i = 5
+    i = 3
     edep_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.edeplist.mat')
     edep_file_noise = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
     en_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.energy.mat')
@@ -64,7 +64,7 @@ def main(config):
     # setup data_loader instances
     data_loader = getattr(module_data, config['data_loader']['type'])(
         config['data_loader']['args']['data_dir'],
-        batch_size=512,  # 512
+        batch_size=1000000,  # 512
         shuffle=False,
         validation_split=0.0,
         training=False,
