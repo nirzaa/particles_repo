@@ -52,25 +52,32 @@ if __name__ == '__main__':
 
             energy_hist += final_list
         energy_hist = energy_hist / energy_hist.sum()
-        plt.bar(bin_list, energy_hist, label=str(i))
+        plt.bar(bin_list, energy_hist, alpha=0.5,label=str(i))
     plt.legend()
     plt.savefig(fname+'_energy_histogram.png')
     print()
 
     # ==== Energy vs. Multiplicies ==== #
 
-    #     myE = EcalDataIO.energymatio(en_file)
-    #     events = list(en_dep.keys())
-    #     energies = list()
-    #     multiplicties = list()
-    #     for event in events:
-    #         energies.append(sum(list(myE[event])))
-    #         multiplicties.append(len(myE[event]))
+    plt.figure(num=1)
+    plt.clf()
+    for i in [3,5]:
+        en_dep_file = f'./data/raw/signal.al.elaser.IP0{i}.edeplist.mat'
+        en_file = f'./data/raw/signal.al.elaser.IP0{i}.energy.mat'
+        en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
+        energies = EcalDataIO.energymatio(en_file)
+        myE = EcalDataIO.energymatio(en_file)
+        events = list(en_dep.keys())
+        energies = list()
+        multiplicties = list()
+        for event in events:
+            energies.append(sum(list(myE[event])))
+            multiplicties.append(len(myE[event]))
 
-    #     energies = np.array(energies) / 1000
-    #     ax.scatter(multiplicties,energies, label=str(i))
-    #     ax.set_xlabel(r'Multiplicity')
-    #     ax.set_ylabel("Energy[GeV]")
-    # pyplot.tight_layout()
-    # pyplot.legend()
-    # pyplot.savefig(fname+'_energyvsmultiplicity.png')
+        energies = np.array(energies) / 1000
+        plt.scatter(multiplicties,energies, alpha=0.5,label=str(i))
+        plt.xlabel(r'Multiplicity')
+        plt.ylabel("Energy[GeV]")
+    plt.tight_layout()
+    plt.legend()
+    plt.savefig(fname+'_energyvsmultiplicity.png')
