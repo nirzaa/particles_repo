@@ -184,8 +184,8 @@ def main(config):
             # y_value = y_value[y_value < 2]
             plt.scatter(range(len(y_value)), y_value, label='rel_error')
             
-            parameters, covariance = curve_fit(Gauss, np.array(range(len(y_value))), y_value)
-            plt.plot(range(len(y_value)), Gauss(np.array(range(len(y_value))), parameters[0], parameters[1]), label='Gauss distribution')
+            # parameters, covariance = curve_fit(Gauss, np.array(range(len(y_value))), y_value)
+            # plt.plot(range(len(y_value)), Gauss(np.array(range(len(y_value))), parameters[0], parameters[1]), label='Gauss distribution')
             plt.ylabel('rel error in %')
             plt.xlabel('events number')
             # plt.scatter(range(len(df['rel_error'])), df['rel_error'], label='rel_error')
@@ -200,8 +200,8 @@ def main(config):
             # y_value = y_value[y_value < 2]
             plt.scatter(range(len(y_value)), y_value.cpu(), label='rel_error no normalization')
             
-            parameters, covariance = curve_fit(Gauss, np.array(range(len(y_value))), y_value.cpu())
-            plt.plot(range(len(y_value)), Gauss(np.array(range(len(y_value))), parameters[0], parameters[1]), label='Gauss distribution')
+            # parameters, covariance = curve_fit(Gauss, np.array(range(len(y_value))), y_value.cpu())
+            # plt.plot(range(len(y_value)), Gauss(np.array(range(len(y_value))), parameters[0], parameters[1]), label='Gauss distribution')
             plt.ylabel('rel error : (target - output)')
             plt.xlabel('events number')
             # plt.scatter(range(len(df['rel_error'])), df['rel_error'], label='rel_error')
