@@ -97,7 +97,7 @@ class Bin_energy_data(Dataset):
 
         del_list = []
         for key in self.energies:
-            if len(self.energies[key]) < 200:
+            if len(self.energies[key]) < 100:
                 del_list.append(key)
         for d in del_list:
             del self.energies[d]
