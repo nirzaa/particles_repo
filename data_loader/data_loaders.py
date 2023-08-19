@@ -95,13 +95,23 @@ class Bin_energy_data(Dataset):
         # Eliminate multiple numbers of some kind
         events = list(self.en_dep.keys())
 
+        # ==== David question for 3 micron ==== #
         del_list = []
         for key in self.energies:
-            if len(self.energies[key]) < 100:
+            if int(key) > 5:
                 del_list.append(key)
         for d in del_list:
             del self.energies[d]
             del self.en_dep[d]
+        # ====================================== #
+
+        # del_list = []
+        # for key in self.energies:
+        #     if len(self.energies[key]) < 185:
+        #         del_list.append(key)
+        # for d in del_list:
+        #     del self.energies[d]
+        #     del self.en_dep[d]
 
 
 
