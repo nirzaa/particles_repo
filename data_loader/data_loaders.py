@@ -96,13 +96,30 @@ class Bin_energy_data(Dataset):
         events = list(self.en_dep.keys())
 
         # ==== David question for 3 micron ==== #
+
+        energies_dict = dict()
+        for energy in self.energies:
+            energies_dict[energy] = len(self.energies[energy])
+        # Sort the dictionary items by their values in ascending order
+        sorted_items = sorted(energies_dict.items(), key=lambda x: x[1])
+        # Extract the keys of the first three items (lowest values)
+        lowest_keys = [item[0] for item in sorted_items[:3]]
+
         del_list = []
         for key in self.energies:
-            if int(key) > 5:
+            if key not in lowest_keys:
                 del_list.append(key)
         for d in del_list:
             del self.energies[d]
             del self.en_dep[d]
+
+        # del_list = []
+        # for key in self.energies:
+        #     if int(key) > 5:
+        #         del_list.append(key)
+        # for d in del_list:
+        #     del self.energies[d]
+        #     del self.en_dep[d]
         # ====================================== #
 
         # del_list = []
