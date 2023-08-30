@@ -105,13 +105,15 @@ class Bin_energy_data(Dataset):
         # Extract the keys of the first three items (lowest values)
         lowest_keys = [item[0] for item in sorted_items[:3]]
 
-        del_list = []
-        for key in self.energies:
-            if key not in lowest_keys:
-                del_list.append(key)
-        for d in del_list:
-            del self.energies[d]
-            del self.en_dep[d]
+        # del_list = []
+        # for key in self.energies:
+        #     if key not in lowest_keys:
+        #         del_list.append(key)
+        # for d in del_list:
+        #     del self.energies[d]
+        #     del self.en_dep[d]
+
+        # ======================================= #
 
         # del_list = []
         # for key in self.energies:
@@ -132,14 +134,14 @@ class Bin_energy_data(Dataset):
 
 
 
-        # if min_shower_num > 0:
-        #     del_list = []
-        #     for key in self.energies:
-        #         if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
-        #             del_list.append(key)
-        #     for d in del_list:
-        #         del self.energies[d]
-        #         del self.en_dep[d]
+        if min_shower_num > 0:
+            del_list = []
+            for key in self.energies:
+                if len(self.energies[key]) < min_shower_num or len(self.energies[key]) >= max_shower_num:
+                    del_list.append(key)
+            for d in del_list:
+                del self.energies[d]
+                del self.en_dep[d]
 
     def __len__(self):
         return len(self.en_dep)
