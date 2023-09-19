@@ -83,7 +83,8 @@ class Bin_energy_data(Dataset):
 
         self.en_dep = EcalDataIO.ecalmatio(en_dep_file)  # Dict with 100000 samples {(Z,X,Y):energy_stamp}
         self.energies = EcalDataIO.energymatio(en_file)
-        if noise_file is not None:
+        # if noise_file is not None:
+        if None:
             self.en_dep_noise = loadmat(noise_file)
         # self.energies = EcalDataIO.xymatio(en_file)
 
@@ -192,11 +193,12 @@ class Bin_energy_data(Dataset):
 
         key_noise = str(np.random.random_integers(999))
 
-        en_dep_noise = torch.zeros((110, 11, 21))
-        for i in range(en_dep_noise.shape[0]):
-            for j in range(en_dep_noise.shape[1]):
-                for k in range(en_dep_noise.shape[2]):
-                    en_dep_noise[i,j,k] = self.en_dep_noise[key_noise][k,i,j]
+        # en_dep_noise = torch.zeros((110, 11, 21))
+        # for i in range(en_dep_noise.shape[0]):
+        #     for j in range(en_dep_noise.shape[1]):
+        #         for k in range(en_dep_noise.shape[2]):
+        #             en_dep_noise[i,j,k] = self.en_dep_noise[key_noise][k,i,j]
+
         # plt.figure(num=0, figsize=(12, 6))
         # plt.clf()
         # plt.imshow(d_tens.sum(axis=2).squeeze(axis=0), interpolation="nearest", origin="upper", aspect="auto")
@@ -205,7 +207,7 @@ class Bin_energy_data(Dataset):
         with open('without_noise.npy', 'wb') as f:
             np.save(f, d_tens)
 
-        d_tens += en_dep_noise
+        # d_tens += en_dep_noise
 
         with open('with_noise.npy', 'wb') as f:
             np.save(f, d_tens)
