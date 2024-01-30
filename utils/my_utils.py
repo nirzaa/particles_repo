@@ -34,9 +34,9 @@ def merge_and_split_data(path, relation, moment, min_shower_num, max_shower_num,
         # edep_file_noise = os.path.join('./', 'data', 'raw', 'fast.elaser_randomised_bg')
         # en_file = os.path.join('./', 'data', 'raw', f'signal.al.elaser.IP0{i}.energy.mat')
 
-        edep_file = os.path.join('./', 'data', 'raw', f'2p0-edeplist.mat')
-        edep_file_noise = os.path.join('./', 'data', 'raw', '2p0-edeplist.mat')
-        en_file = os.path.join('./', 'data', 'raw', f'2p0-energy.mat')
+        edep_file = os.path.join('./', 'data', 'raw', f'{i}p0-edeplist.mat')
+        edep_file_noise = os.path.join('./', 'data', 'raw', f'{i}p0-edeplist.mat')
+        en_file = os.path.join('./', 'data', 'raw', f'{i}p0-energy.mat')
 
         dataset = Bin_energy_data(edep_file, en_file, moment=moment,
                                   min_shower_num=min_shower_num, max_shower_num=max_shower_num, file=i, noise_file=edep_file_noise)
@@ -205,5 +205,5 @@ if __name__ == '__main__':
     # data_path = Path("C:\\Users\\elihu\\PycharmProjects\\LUXE\\LUXE-project-master\\data\\")
 
     data_path = Path(my_path = os.path.join('./', 'data'))
-    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[3])
+    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[2,4,7])
     exit()
