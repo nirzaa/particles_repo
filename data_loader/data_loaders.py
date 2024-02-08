@@ -101,6 +101,9 @@ class Bin_energy_data(Dataset):
                 del self.energies[d]
                 del self.en_dep[d]
 
+        if random.random() < 0.1:
+            self.energies[key] = tuple(0 for _ in self.energies[key])
+
     def __len__(self):
         return len(self.en_dep)
 

@@ -205,5 +205,5 @@ if __name__ == '__main__':
     # data_path = Path("C:\\Users\\elihu\\PycharmProjects\\LUXE\\LUXE-project-master\\data\\")
 
     data_path = Path(my_path = os.path.join('./', 'data'))
-    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[13])
+    merge_and_split_data(data_path, 0.8, moment=3, min_shower_num=1, max_shower_num=50000, file=[2,4,7])
     exit()
